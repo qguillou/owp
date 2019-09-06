@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.24.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.11.0",
+    "popper.js": "^1.14.7",
+    "sass-loader": "^7.0.1",
+    "vue": "^2.6.8",
+    "vue-loader": "15.x",
+    "vue-template-compiler": "^2.6.8",
+    "webpack-notifier": "^1.6.0"
+  },
+  "dependencies": {
+    "encore": "^0.0.30-beta"
+  }
+}

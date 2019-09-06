@@ -11,6 +11,9 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
+    "symfony/asset": {
+        "version": "v3.4.31"
+    },
     "symfony/cache": {
         "version": "v3.4.31"
     },
@@ -107,6 +110,27 @@
             "config/packages/routing.yaml",
             "config/packages/test/routing.yaml",
             "config/routes.yaml"
+        ]
+    },
+    "symfony/service-contracts": {
+        "version": "v1.1.6"
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "d3b160b9799c91cbfc3df6f018c795f3bf88698a"
+        },
+        "files": [
+            "./assets/css/app.css",
+            "./assets/js/app.js",
+            "./config/packages/assets.yaml",
+            "./config/packages/prod/webpack_encore.yaml",
+            "./config/packages/webpack_encore.yaml",
+            "./package.json",
+            "./webpack.config.js"
         ]
     },
     "symfony/yaml": {

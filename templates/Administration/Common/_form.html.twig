@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {% for element in form %}
+        <div class="form-group">
+            {{ form_row(element, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    {% endfor %}
+
+    <button class="btn btn-primary">Enregistrer</button>
+{{ form_end(form) }}

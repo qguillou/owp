@@ -9,7 +9,19 @@
     </head>
     <body>
         {% include 'navbar_header.html.twig' %}
-        {% block body %}{% endblock %}
+        <div class="container my-4 {{ app.request.get('_route') == 'owp_common_homepage' ? 'd-none' }}">
+            <div class="row">
+                <div class="btn-group btn-breadcrumb">
+                    <a href="{{ path('owp_common_homepage')}}" class="btn btn-default"><i class="fa fa-home"></i></a>
+                    {% block breadcrumb %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="flex row m-4">
+            {% block body %}{% endblock %}
+        </div>
+
         {% include 'navbar_footer.html.twig' %}
 
         {% block javascripts %}

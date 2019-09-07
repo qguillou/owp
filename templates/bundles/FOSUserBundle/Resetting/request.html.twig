@@ -1,5 +1,10 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block breadcrumb %}
+    {{ parent() }}
+    <a href="{{ path('fos_user_security_login')}}" class="btn btn-default">Réinitialisation du mot de passe du compte</a>
+{% endblock %}
+
 {% block fos_user_content %}
 {% include "@FOSUser/Resetting/request_content.html.twig" %}
 {% endblock fos_user_content %}

@@ -14,4 +14,11 @@ class DefaultController extends AbstractController
 
         ]);
     }
+
+    public function about(): Response
+    {
+        return $this->render('Common/about.html.twig', [
+
+        ]);
+    }
 }

@@ -1,10 +1,34 @@
 # This file is the entry point to configure your own HTTP routes.
 # Files in the routes/ subdirectory configure the routes for your dependencies.
 
-owp_homepage:
+owp_common_homepage:
     path: /
     defaults: { _controller: 'App\Common\Controller\DefaultController::index' }
+owp_common_news_show:
+    path: /news/{id}
+    defaults: { _controller: 'App\Common\Controller\NewsController::show' }
+owp_common_about:
+    path: /about
+    defaults: { _controller: 'App\Common\Controller\DefaultController::about' }
+owp_common_user_delete:
+    path: /profile/delete/{id}
+    defaults: { _controller: 'App\Common\Controller\UserController::delete' }
 
-owp_administration:
+owp_administration_administration:
     path: /admin
     defaults: { _controller: 'App\Administration\Controller\DefaultController::index' }
+owp_administration_administration_content_news:
+    path: /admin/news
+    defaults: { _controller: 'App\Administration\Controller\NewsController::index' }
+owp_administration_administration_content_news_add:
+    path: /admin/news/add
+    defaults: { _controller: 'App\Administration\Controller\NewsController::add' }
+owp_administration_administration_content_news_edit:
+    path: /admin/news/edit/{id}
+    defaults: { _controller: 'App\Administration\Controller\NewsController::edit' }
+owp_administration_administration_content_news_delete:
+    path: /admin/news/delete/{id}
+    defaults: { _controller: 'App\Administration\Controller\NewsController::delete' }
+owp_administration_administration_users:
+    path: /admin/user
+    defaults: { _controller: 'App\Administration\Controller\UserController::index' }

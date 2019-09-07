@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <a class="btn btn-default">{{ news.title }}</a>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if is_granted('ROLE_WEBMASTER') %}
+        <div class="float-right">
+            <a href="{{ path('owp_administration_administration_content_news_edit', {'id': news.id}) }}" class='btn btn-info btn-xs' href=""><i class="fa fa-edit"></i></a>
+            <a href="{{ path('owp_administration_administration_content_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-danger btn-xs' href=""><i class="fa fa-trash"></i></a>
+        </div>
+        {% endif %}
+        <h1>{{ news.title }}</h1>
+        {{ news.content|raw }}
+    </div>
+{% endblock %}

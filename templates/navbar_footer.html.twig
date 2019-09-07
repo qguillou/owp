@@ -1,7 +1,55 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-  <div class="offset-lg-2 col-lg-8">
-    <div class="text-light font-weight-bold flex-row">
-        {{ app_name }}
-    </div>
-  </div>
-</nav>
+<!-- Footer -->
+	<section id="footer">
+		<div class="container">
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Plan du site</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="{{ path('owp_common_homepage') }}"><i class="fa fa-angle-double-right"></i>Accueil</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('owp_administration_administration') }}"><i class="fa fa-angle-double-right"></i>Administration</a></li>
+                        {% endif %}
+                    </ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Liens utiles</h5>
+					<ul class="list-unstyled quick-links">
+                        <li><a href="http://www.ffcorientation.fr/"><i class="fa fa-angle-double-right"></i>Fédération Française de Course d'Orientation (FFCO)</a></li>
+                        <li><a href="http://www.co-bretagne.com/"><i class="fa fa-angle-double-right"></i>Ligue de Bretagne de Course d'Orientation (LBRCO)</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Quick links</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+						<li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+					<ul class="list-unstyled list-inline social text-center">
+						<li class="list-inline-item"><a href=""><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href=""><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href=""><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href=""><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-envelope"></i></a></li>
+					</ul>
+				</div>
+				</hr>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 mt-2 text-center text-white">
+					<p><u><a href="">{{ app_name }}</a></u> est un club de course d'orientation affilié à la Fédération Française de Course d'Orientation.</p>
+					<p class="h6">&copy Tous droits réservés. </p>
+				</div>
+                <div class="col-lg-12 mt-6 text-center text-white">
+					<p>Site développé par Quentin GUILLOU. <u><a href="{{ path('owp_common_about') }}">En savoir plus</a></u></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ./Footer -->

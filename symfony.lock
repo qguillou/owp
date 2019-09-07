@@ -81,11 +81,26 @@
     "egulias/email-validator": {
         "version": "2.1.11"
     },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
+        },
+        "files": [
+            "./config/packages/fos_ckeditor.yaml"
+        ]
+    },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "nikic/php-parser": {
+        "version": "v4.2.4"
     },
     "ocramius/package-versions": {
         "version": "1.5.1"
@@ -160,6 +175,9 @@
     "symfony/event-dispatcher": {
         "version": "v3.4.31"
     },
+    "symfony/expression-language": {
+        "version": "v3.4.31"
+    },
     "symfony/filesystem": {
         "version": "v3.4.31"
     },
@@ -211,6 +229,15 @@
     },
     "symfony/intl": {
         "version": "v3.4.31"
+    },
+    "symfony/maker-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
     },
     "symfony/options-resolver": {
         "version": "v3.4.31"

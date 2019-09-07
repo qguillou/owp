@@ -1,0 +1,45 @@
+{% extends 'Administration/base_administration.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <a href="{{ path('owp_administration_administration_users')}}" class="btn btn-default">Utilisateurs</a>
+{% endblock %}
+
+{% block content %}
+<div class="flex">
+    <h1 class="row">Gérer les utilisateurs</h1>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Adresse mail</th>
+                    <th scope="col">Rôles</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>{{ user.email}}</td>
+                        <td>
+                            {% for role in user.roles %}
+                                <span class="badge badge-primary">{{ role }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a class='btn btn-info btn-xs' href=""><i class="fa fa-edit"></i></a>
+                            <a class='btn btn-danger btn-xs' href=""><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

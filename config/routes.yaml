@@ -17,6 +17,18 @@ owp_common_user_delete:
 owp_administration_administration:
     path: /admin
     defaults: { _controller: 'App\Administration\Controller\DefaultController::index' }
+owp_administration_administration_content_event:
+    path: /admin/event
+    defaults: { _controller: 'App\Administration\Controller\EventController::index' }
+owp_administration_administration_content_event_add:
+    path: /admin/event/add
+    defaults: { _controller: 'App\Administration\Controller\EventController::add' }
+owp_administration_administration_content_event_edit:
+    path: /admin/event/edit/{id}
+    defaults: { _controller: 'App\Administration\Controller\EventController::edit' }
+owp_administration_administration_content_event_delete:
+    path: /admin/event/delete/{id}
+    defaults: { _controller: 'App\Administration\Controller\EventController::delete' }
 owp_administration_administration_content_news:
     path: /admin/news
     defaults: { _controller: 'App\Administration\Controller\NewsController::index' }

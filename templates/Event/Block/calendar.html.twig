@@ -1,0 +1,10 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('event') }}
+{% endblock %}
+
+<h3 class="text-center text-primary"><i class="fa fa-calendar"></i> Les évènements à venir</h3>
+<div id="my-calendar"></div>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('event') }}
+{% endblock %}

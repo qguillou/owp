@@ -4,5 +4,6 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         app_name: '%env(resolve:APP_NAME)%'
+        app_module_event: '%env(resolve:APP_MODULE_EVENT)%'
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

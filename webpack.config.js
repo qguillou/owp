@@ -19,6 +19,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('user', './assets/js/user.js')
+    .addEntry('event', './assets/js/event.js')
     .addEntry('administration', './assets/js/administration.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

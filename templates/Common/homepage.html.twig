@@ -2,21 +2,22 @@
 
 {% block title %}Accueil{% endblock %}
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8">
-            {% for new in news %}
-                <h1>{{ new.title }}</h1>
-                <p>{{ new.content|striptags|slice(0,400) ~ '...' }}</p>
-                <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
-                <div class="mt-2">
-                    <span class="badge">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
-                    <div class="pull-right">
-                        <span class="badge badge-primary">{{ new.updateBy }}</span>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+  <div class="col-lg-9">
+      {% for new in news %}
+          <h1>{{ new.title }}</h1>
+          <p>{{ new.content|striptags|slice(0,400) ~ '...' }}</p>
+          <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
+          <div class="mt-2">
+              <span class="badge">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
+              <div class="pull-right">
+                  <span class="badge badge-primary">{{ new.updateBy }}</span>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+  <div class="col-lg-3">
+    {% if app_module_event == "TRUE" %}
+      {% include 'Event/Block/calendar.html.twig' %}
+    {% endif %}
+  </div>
 {% endblock %}

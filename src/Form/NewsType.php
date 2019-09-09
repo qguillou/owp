@@ -15,6 +15,7 @@ class NewsType extends AbstractType
         $builder
             ->add('title')
             ->add('content', CKEditorType::class)
+            ->add('promote')
         ;
     }
 

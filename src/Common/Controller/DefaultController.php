@@ -12,7 +12,7 @@ class DefaultController extends AbstractController
     public function index(NewsRepository $newsRepository): Response
     {
         return $this->render('Common/homepage.html.twig', [
-            'news' => $newsRepository->findAll()
+            'news' => $newsRepository->findBy(array('promote' => TRUE), array('updateAt' => 'DESC')),
         ]);
     }
 

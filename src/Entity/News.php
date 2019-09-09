@@ -50,6 +50,16 @@ class News
      */
     private $updateAt;
 
+    /**
+     * @ORM\Column(name="promote", type="boolean")
+     */
+    protected $promote;
+
+    public function __construct()
+    {
+        $this->setPromote(TRUE);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,6 +140,18 @@ class News
     public function setUpdateBy(user $user): self
     {
         $this->updateBy = $user;
+
+        return $this;
+    }
+
+    public function getPromote(): ?bool
+    {
+        return $this->promote;
+    }
+
+    public function setPromote(bool $promote): self
+    {
+        $this->promote = $promote;
 
         return $this;
     }

@@ -3,19 +3,41 @@
 {% block title %}Accueil{% endblock %}
 {% block body %}
   <div class="col-lg-9">
-      {% for new in news %}
-          <h1>{{ new.title }}</h1>
-          <p>{{ new.content|striptags|slice(0,400) ~ '...' }}</p>
-          <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
-          <div class="mt-2">
-              <span class="badge">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
-              <div class="pull-right">
-                  <span class="badge badge-primary">{{ new.updateBy }}</span>
+      <div class="row">
+          {% for new in news|slice(0, 1) %}
+              <div class="col-lg-12 mt-4">
+                  <h2>{{ new.title }}</h2>
+                  <span class="font-italic">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
+                  <p class="text-justify">{{ new.content|striptags|slice(0,800) ~ '...' }}</p>
+                  <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
+                  <div class="mt-2">
+                      <div class="pull-right">
+                          <span class="badge badge-primary">{{ new.updateBy }}</span>
+                      </div>
+                  </div>
               </div>
-          </div>
-      {% endfor %}
+          {% endfor %}
+          {% for new in news|slice(1, 2) %}
+              <div class="col-lg-6 mt-4">
+                  <h1>{{ new.title }}</h1>
+                  <span class="font-italic">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
+                  <p class="text-justify">{{ new.content|striptags|slice(0,400) ~ '...' }}</p>
+                  <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
+              </div>
+          {% endfor %}
+          {% for new in news|slice(3, news|length) %}
+              <div class="col-lg-3 mt-4">
+                  <h3>{{ new.title }}</h3>
+                  <span class="font-italic">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
+                  <div class="pull-right">
+                      <span class="badge badge-primary">{{ new.updateBy }}</span>
+                  </div>
+                  <a href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire l'article</a>
+              </div>
+          {% endfor %}
+      </div>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-3 mt-4">
     {% if app_module_event == "TRUE" %}
       {% include 'Event/Block/calendar.html.twig' %}
     {% endif %}

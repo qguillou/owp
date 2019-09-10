@@ -2,11 +2,6 @@
 
 {% block title %}Se connecter{% endblock %}
 
-{% block breadcrumb %}
-    {{ parent() }}
-    <a href="{{ path('fos_user_security_login')}}" class="btn btn-default">Connexion au compte</a>
-{% endblock %}
-
 {% block fos_user_content %}
     {{ include('@FOSUser/Security/login_content.html.twig') }}
 {% endblock fos_user_content %}

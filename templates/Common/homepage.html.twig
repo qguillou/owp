@@ -2,44 +2,60 @@
 
 {% block title %}Accueil{% endblock %}
 {% block body %}
-  <div class="col-lg-9">
-      <div class="row">
-          {% for new in news|slice(0, 1) %}
-              <div class="col-lg-12 mt-4">
-                  <h2>{{ new.title }}</h2>
-                  <span class="font-italic">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
-                  <p class="text-justify">{{ new.content|striptags|slice(0,800) ~ '...' }}</p>
-                  <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
-                  <div class="mt-2">
-                      <div class="pull-right">
-                          <span class="badge badge-primary">{{ new.updateBy }}</span>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          {% for new in news|slice(1, 2) %}
-              <div class="col-lg-6 mt-4">
-                  <h1>{{ new.title }}</h1>
-                  <span class="font-italic">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
-                  <p class="text-justify">{{ new.content|striptags|slice(0,400) ~ '...' }}</p>
-                  <a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire la suite</a>
-              </div>
-          {% endfor %}
-          {% for new in news|slice(3, news|length) %}
-              <div class="col-lg-3 mt-4">
-                  <h3>{{ new.title }}</h3>
-                  <span class="font-italic">Publié le {{ new.createAt|date('d/m/Y') }}, mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
-                  <div class="pull-right">
-                      <span class="badge badge-primary">{{ new.updateBy }}</span>
-                  </div>
-                  <a href="{{ path('owp_common_news_show', {'id': new.id}) }}">Lire l'article</a>
-              </div>
-          {% endfor %}
-      </div>
-  </div>
-  <div class="col-lg-3 mt-4">
-    {% if app_module_event == "TRUE" %}
-      {% include 'Event/Block/calendar.html.twig' %}
+    <div id="news" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for new in news|slice(0, 6) %}
+                <li data-target="#news" data-slide-to="{{ loop.index0 }}" class="{{ loop.index0 == 0 ? 'active' }}"></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner bg-dark" role="listbox">
+            {% for new in news|slice(0, 6) %}
+                <div class="carousel-item {{ loop.index0 == 0 ? 'active' }}">
+                    <!--<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">-->
+                    <div class="container">
+                        <div class="carousel-caption d-none d-md-block text-left">
+                            <h1 class="text-primary">{{ new.title }}</h1>
+                            <span class="badge badge-primary font-italic">Publié le {{ new.createAt|date('d/m/Y') }}</span>
+                            <span class="badge badge-primary font-italic">Mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
+                            <p class="text-justify">{{ new.content|striptags|slice(0,800) ~ '...' }}</p>
+                            <p><a class="btn btn-primary" href="{{ path('owp_common_news_show', {'id': new.id}) }}" role="button">Lire la suite</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if news|length > 1 %}
+            <a class="carousel-control-prev" href="#news" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#news" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        {% endif %}
+    </div>
+    <div class="row col-lg-12">
+        <div class="col-lg-7 offset-lg-1 my-4">
+            <h2>Les prochains évènements</h3>
+        </div>
+        <div class="col-lg-3 my-4">
+            {% if app_module_event == "TRUE" %}
+                {% include 'Event/Block/calendar.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if news|length > 6 %}
+        <div class="row">
+            <div class="col-lg-12 py-4 bg-light">
+                <div class="offset-lg-1">
+                    <h2>Toutes les actualités</h2>
+                    {% for new in news|slice(7, news|length) %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     {% endif %}
-  </div>
 {% endblock %}

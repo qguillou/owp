@@ -2,8 +2,16 @@
     {{ encore_entry_link_tags('event') }}
 {% endblock %}
 
-<h3 class="text-center text-primary"><i class="fa fa-calendar"></i> Les évènements à venir</h3>
-<div id="my-calendar"></div>
+<div class="card">
+  <div class="card-body">
+    <div class="text-center ">
+      <i class="bg-primary text-white rounded-circle fa fa-calendar fa-4x p-4"></i>
+    </div>
+    <h3 class="text-center">Les évènements à venir</h3>
+    <div id="my-calendar"></div>
+  </div>
+</div>
+
 
 {% block javascripts %}
     {{ encore_entry_script_tags('event') }}

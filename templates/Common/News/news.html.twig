@@ -2,11 +2,6 @@
 
 {% block title %}News{% endblock %}
 
-{% block breadcrumb %}
-    {{ parent() }}
-    <a class="btn btn-default">{{ news.title }}</a>
-{% endblock %}
-
 {% block body %}
     <div class="container">
         {% if is_granted('ROLE_WEBMASTER') %}

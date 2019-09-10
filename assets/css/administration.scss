@@ -6,6 +6,15 @@
 .nav-side-menu .toggle-btn {
   display: none;
 }
+.nav-side-menu li.brand,
+.nav-side-menu li.brand:hover {
+  background-color: #23282e;
+  line-height: 50px;
+  display: block;
+  color: white;
+  border-right: none;
+  cursor: default;
+}
 .nav-side-menu ul,
 .nav-side-menu li {
   list-style: none;
@@ -69,6 +78,7 @@
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
+  background-color: #020203;
 }
 @media (max-width: 767px) {
   .nav-side-menu {

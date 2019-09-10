@@ -1,0 +1,42 @@
+{% extends 'Administration/base_administration.html.twig' %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <a href="{{ path('owp_administration_administration_event_type')}}" class="btn btn-default">Type d'évènements</a>
+{% endblock %}
+
+{% block title %}Administration des types d'évènements{% endblock %}
+{% block content %}
+<div class="flex">
+    <h1 class="row">Gérer les types d'évènement</h1>
+    <div class="row">
+        <a href="{{ path('owp_administration_administration_event_type_add')}}" class="btn btn-primary my-3">Ajouter un nouveau type d'évènement</a>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Date de modification</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event_type in event_types %}
+                    <tr>
+                        <td>{{ new.title }}</td>
+                        <td>{{ new.createAt|date("d/m/Y H:i") }}</td>
+                        <td>{{ new.updateAt|date("d/m/Y H:i") }}</td>
+                        <td>
+                            <a href="{{ path('owp_common_news_show', {'id': new.id}) }}" class='btn btn-success btn-xs' href=""><i class="fa fa-eye"></i></a>
+                            <a href="{{ path('owp_administration_administration_event_type_edit', {'id': new.id}) }}" class='btn btn-info btn-xs' href=""><i class="fa fa-edit"></i></a>
+                            <a href="{{ path('owp_administration_administration_event_type_delete', {'id': new.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-danger btn-xs' href=""><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

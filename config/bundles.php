@@ -13,4 +13,7 @@ return [
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
+    JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
+    FOS\RestBundle\FOSRestBundle::class => ['all' => true],
+    FOS\CommentBundle\FOSCommentBundle::class => ['all' => true],
 ];

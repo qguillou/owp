@@ -16,6 +16,7 @@
         </div>
         {% endif %}
         <h1>{{ news.title }}</h1>
-        {{ news.content|raw }}
+        <span class="badge">Publié le {{ news.createAt|date('d/m/Y') }}, mise à jour le {{ news.updateAt|date('d/m/Y')}}</span>
+        <div class="mt-2">{{ news.content|raw }}</div>
     </div>
 {% endblock %}

@@ -2,11 +2,6 @@
 
 {% block title %}Administration des types d'évènements{% endblock %}
 
-{% block breadcrumb %}
-    {{ parent() }}
-    <a href="{{ path('owp_administration_administration_event_type')}}" class="btn btn-default">Type d'évènements</a>
-{% endblock %}
-
 {% block content %}
     <h1>Modifier le type d'évènement {{ event_type.label }}</h1>
 

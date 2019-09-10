@@ -2,11 +2,6 @@
 
 {% block title %}Edit News{% endblock %}
 
-{% block breadcrumb %}
-    {{ parent() }}
-    <a href="{{ path('owp_administration_administration_content_news')}}" class="btn btn-default">Actualités</a>
-{% endblock %}
-
 {% block content %}
     <h1>Modifier l'actualité {{ news.title }}</h1>
 

@@ -10,52 +10,66 @@
     {{ encore_entry_script_tags('administration') }}
 {% endblock %}
 
-{% block breadcrumb %}
-    {{ parent() }}
-    <a href="{{ path('owp_administration_administration')}}" class="btn btn-default">Administration</a>
-{% endblock %}
-
 {% block body %}
     <div class="col-lg-3">
-        <div class="nav-side-menu">
+        <div class="h-100 nav-side-menu">
             <div class="menu-list txt-white">
                 <ul id="menu-content" class="menu-content collapse out">
-                    <li class="{{ app.request.get('_route') == 'owp_administration_administration' ? 'active' }}">
-                        <a href="{{ path('owp_administration_administration') }}">
-                            <i class="fa fa-dashboard fa-lg mr-2"></i>
-                            Tableau de bord
+                    <li class="brand">
+                        <a href="#">
+                          <i class="fa fa-file fa-lg mr-2"></i>
+                          Contenu
                         </a>
                     </li>
-
-                    <li class="{{ app.request.get('_route') starts with 'owp_administration_administration_content' ? 'active' }}">
-                        <a href="#"><i class="fa fa-database fa-lg mr-2"></i>
-                        Contenu <span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu" id="content">
+                    <ul class="sub-menu">
                         <li class="{{ app.request.get('_route') starts with 'owp_administration_administration_content_news' ? 'active' }}"><a href="{{ path('owp_administration_administration_content_news') }}">Actualités</a></li>
                     </ul>
                     {% if TRUE or is_granted('ROLE_ADMIN') %}
-                    <li data-toggle="collapse" data-target="#taxonomies" class="collapsed {{ app.request.get('_route') starts with 'owp_administration_administration_taxonomy' ? 'active' }}">
-                        <a href="#"><i class="fa fa-user fa-lg mr-2"></i>
-                        Référentiels <span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="taxonomies">
-                        <li class="{{ app.request.get('_route') == 'owp_administration_administration_taxonomy_race_type' ? 'active' }}"><a href="#">Type de course</a></li>
-                    </ul>
-
-                    <li class="{{ app.request.get('_route') == 'owp_administration_administration_users' ? 'active' }}">
-                        <a href="{{ path('owp_administration_administration_users') }}">
-                            <i class="fa fa-user fa-lg mr-2"></i>
-                            Utilisateurs
+                    <li class="brand">
+                        <a href="#">
+                          <i class="fa fa-database fa-lg mr-2"></i>
+                          Référentiels
                         </a>
                     </li>
+                    <ul class="sub-menu">
+                        <li class="{{ app.request.get('_route') == 'owp_administration_administration_taxonomy_race_type' ? 'active' }}">
+                          <a href="{{ path('owp_administration_administration_eventtype') }}">Type de course</a>
+                        </li>
+                        <li class="{{ app.request.get('_route') == 'owp_administration_administration_taxonomy_race_type' ? 'active' }}">
+                          <a href="{{ path('owp_administration_administration_eventtype') }}">Licenciés FFCO</a>
+                        </li>
+                    </ul>
+
+                    <li class="brand">
+                        <a href="#">
+                          <i class="fa fa-user fa-lg mr-2"></i>
+                          Utilisateurs
+                        </a>
+                    </li>
+                    <ul class="sub-menu">
+                        <li class="{{ app.request.get('_route') == 'owp_administration_administration_users' ? 'active' }}">
+                          <a href="{{ path('owp_administration_administration_users') }}">Utilisateurs</a>
+                        </li>
+                    </ul>
+
+                    <li class="brand">
+                        <a href="#">
+                          <i class="fa fa-cog fa-lg mr-2"></i>
+                          Paramétrages
+                        </a>
+                    </li>
+                    <ul class="sub-menu">
+                        <li class="{{ app.request.get('_route') == 'owp_administration_administration_users' ? 'active' }}">
+                          <a href="{{ path('owp_administration_administration_users') }}">Informations de base</a>
+                        </li>
+                    </ul>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-9">
+    <div class="my-4 col-lg-9">
         {% block content %}{% endblock %}
     </div>
 {% endblock %}

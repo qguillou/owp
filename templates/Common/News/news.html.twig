@@ -3,7 +3,7 @@
 {% block title %}News{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container my-4">
         {% if is_granted('ROLE_WEBMASTER') %}
         <div class="float-right">
             <a href="{{ path('owp_administration_administration_content_news_edit', {'id': news.id}) }}" class='btn btn-info btn-xs' href=""><i class="fa fa-edit"></i></a>
@@ -13,5 +13,10 @@
         <h1>{{ news.title }}</h1>
         <span class="badge">Publié le {{ news.createAt|date('d/m/Y') }}, mise à jour le {{ news.updateAt|date('d/m/Y')}}</span>
         <div class="mt-2">{{ news.content|raw }}</div>
+
+        <div class="mt-4">
+            {% include '@FOSComment/Thread/async.html.twig' with {'id': 'news:' ~ news.id} %}
+        </div>
     </div>
+
 {% endblock %}

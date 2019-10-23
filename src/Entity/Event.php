@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use App\Entity\EventType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +38,12 @@ class Event
      * @ORM\Column(type="datetime")
      */
     private $dateEnd;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="EventType")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $eventType;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -167,4 +174,17 @@ class Event
 
         return $this;
     }
+
+    public function getEventType(): ?EventType
+    {
+        return $this->eventType;
+    }
+
+    public function setEventType(EventType $eventType): self
+    {
+        $this->eventType = $eventType;
+
+        return $this;
+    }
+
 }

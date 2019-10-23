@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <ul class="sub-menu">
-                            <li class="{{ app.request.get('_route') == 'owp_administration_administration_taxonomy_race_type' ? 'active' }}">
+                            <li class="{{ app.request.get('_route') starts with 'owp_administration_administration_eventtype' ? 'active' }}">
                               <a href="{{ path('owp_administration_administration_eventtype') }}">Type de course</a>
                             </li>
                             <li class="{{ app.request.get('_route') == 'owp_administration_administration_taxonomy_race_type' ? 'active' }}">

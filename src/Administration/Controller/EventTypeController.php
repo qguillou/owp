@@ -30,7 +30,7 @@ class EventTypeController extends AbstractController
             $entityManager->persist($eventTypes);
             $entityManager->flush();
 
-            return $this->redirectToRoute('owp_administration_administration_event_type');
+            return $this->redirectToRoute('owp_administration_administration_eventtype');
         }
 
         return $this->render('Administration/EventType/add.html.twig', [
@@ -47,7 +47,7 @@ class EventTypeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('owp_administration_administration_event_type');
+            return $this->redirectToRoute('owp_administration_administration_eventtype');
         }
 
         return $this->render('Administration/EventType/edit.html.twig', [
@@ -62,6 +62,6 @@ class EventTypeController extends AbstractController
         $entityManager->remove($eventTypes);
         $entityManager->flush();
 
-        return $this->redirectToRoute('owp_administration_administration_event_type');
+        return $this->redirectToRoute('owp_administration_administration_eventtype');
     }
 }

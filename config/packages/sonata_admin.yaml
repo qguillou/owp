@@ -1,0 +1,26 @@
+sonata_admin:
+    title: 'Sonata Admin'
+    dashboard:
+        blocks:
+            - { type: sonata.admin.block.admin_list, position: left }
+        groups:
+            content:
+                label:           'Contenu'
+                icon:            '<i class="fa fa-file fa-lg mr-2"></i>'
+            referentiel:
+                label:           'Référentiels'
+                icon:            '<i class="fa fa-database fa-lg mr-2"></i>'
+            user:
+                label:           'Utilisateurs'
+                icon:            '<i class="fa fa-user fa-lg mr-2"></i>'
+            parameter:
+                label:           'Paramètrages'
+                icon:            '<i class="fa fa-cog fa-lg mr-2"></i>'
+    templates:
+        layout:             'Administration/base_administration.html.twig'
+        knp_menu_template:  'Administration/Menu/admin_menu.html.twig'
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]

@@ -11,70 +11,17 @@
 {% endblock %}
 
 {% block body %}
-    <div class="flex row">
-        <div class="col-lg-3">
+    <div class="row m-0">
+        <div class="col-lg-3 p-0">
             <div class="h-100 nav-side-menu">
-                <div class="menu-list txt-white">
-                    <ul id="menu-content" class="menu-content collapse out">
-                        <li class="brand">
-                            <a href="#">
-                              <i class="fa fa-file fa-lg mr-2"></i>
-                              Contenu
-                            </a>
-                        </li>
-                        <ul class="sub-menu">
-                            <li class="{{ app.request.get('_route') starts with 'owp_administration_administration_content_news' ? 'active' }}"><a href="{{ path('owp_administration_administration_content_news') }}">Actualités</a></li>
-                            {% if app_module_event == "TRUE" %}
-                                <li class="{{ app.request.get('_route') starts with 'owp_administration_administration_content_event' ? 'active' }}"><a href="{{ path('owp_administration_administration_content_event') }}">Evènements</a></li>
-                            {% endif %}
-                        </ul>
-                        {% if TRUE or is_granted('ROLE_ADMIN') %}
-                        <li class="brand">
-                            <a href="#">
-                              <i class="fa fa-database fa-lg mr-2"></i>
-                              Référentiels
-                            </a>
-                        </li>
-                        <ul class="sub-menu">
-                            <li class="{{ app.request.get('_route') starts with 'owp_administration_administration_eventtype' ? 'active' }}">
-                              <a href="{{ path('owp_administration_administration_eventtype') }}">Type de course</a>
-                            </li>
-                            <li class="{{ app.request.get('_route') == 'owp_administration_administration_taxonomy_race_type' ? 'active' }}">
-                              <a href="{{ path('owp_administration_administration_eventtype') }}">Licenciés FFCO</a>
-                            </li>
-                        </ul>
-
-                        <li class="brand">
-                            <a href="#">
-                              <i class="fa fa-user fa-lg mr-2"></i>
-                              Utilisateurs
-                            </a>
-                        </li>
-                        <ul class="sub-menu">
-                            <li class="{{ app.request.get('_route') == 'owp_administration_administration_users' ? 'active' }}">
-                              <a href="{{ path('owp_administration_administration_users') }}">Utilisateurs</a>
-                            </li>
-                        </ul>
-
-                        <li class="brand">
-                            <a href="#">
-                              <i class="fa fa-cog fa-lg mr-2"></i>
-                              Paramétrages
-                            </a>
-                        </li>
-                        <ul class="sub-menu">
-                            <li class="{{ app.request.get('_route') == 'owp_administration_administration_users' ? 'active' }}">
-                              <a href="{{ path('owp_administration_administration_users') }}">Informations de base</a>
-                            </li>
-                        </ul>
-                        {% endif %}
-                    </ul>
-                </div>
+                {{ knp_menu_render('sonata_admin_sidebar', {template: get_global_template('knp_menu_template')}) }}
             </div>
         </div>
 
         <div class="my-4 col-lg-9">
-            {% block content %}{% endblock %}
+            {% block content %}
+                
+            {% endblock %}
         </div>
     </div>
 {% endblock %}

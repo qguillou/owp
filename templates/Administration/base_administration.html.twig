@@ -27,10 +27,49 @@
                 {% set _list_table = block('list_table') is defined ? block('list_table')|trim : null %}
                 {% set _list_filters = block('list_filters') is defined ? block('list_filters')|trim : null %}
                 {% set _actions = block('actions') is defined ? block('actions')|trim : null %}
+                {% set _breadcrumb = block('breadcrumb') is defined ? block('breadcrumb')|trim : null %}
 
-                {% if _title is not empty %}
-                    <div class="sonata-ba-title">{{ _title|raw }}</div>
-                {% endif %}
+                {% block sonata_breadcrumb %}
+                    <div class="hidden-xs">
+                        {% if _breadcrumb is not empty or action is defined %}
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    {% if _breadcrumb is empty %}
+                                        {% if action is defined %}
+                                            {% for menu in breadcrumbs_builder.breadcrumbs(admin, action) %}
+                                                {%- set translation_domain = menu.extra('translation_domain', 'messages') -%}
+                                                {%- set label = menu.label -%}
+                                                {%- if translation_domain is not same as(false) -%}
+                                                    {%- set label = label|trans(menu.extra('translation_params', {}), translation_domain) -%}
+                                                {%- endif -%}
+
+                                                {% if not loop.last %}
+                                                    <li class="breadcrumb-item">
+                                                        {% if menu.uri is not empty %}
+                                                            <a href="{{ menu.uri }}">
+                                                                {% if menu.extra('safe_label', true) %}
+                                                                    {{- label|trans|raw -}}
+                                                                {% else %}
+                                                                    {{- label|trans|truncate(100) -}}
+                                                                {% endif %}
+                                                            </a>
+                                                        {% else %}
+                                                            <span>{{ label|trans|truncate(100) }}</span>
+                                                        {% endif %}
+                                                    </li>
+                                                {% else %}
+                                                    <li class="breadcrumb-item active" aria-current="page"><span>{{ label|trans|truncate(100) }}</span></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ _breadcrumb|raw }}
+                                    {% endif %}
+                                </ol>
+                            </nav>
+                        {% endif %}
+                    </div>
+                {% endblock sonata_breadcrumb %}
 
                 {% block notice %}
                     {% include '@SonataCore/FlashMessage/render.html.twig' %}

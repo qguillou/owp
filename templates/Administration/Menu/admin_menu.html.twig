@@ -1,18 +1,16 @@
 <div class="menu-list txt-white">
     <ul id="menu-content" class="menu-content collapse out">
-
         {% for object in item %}
-
             <li class="brand">
                 <a href="#">
                     {{ object.extra('icon')|raw }}
-                    {{ object.label }}
+                    {{ object.label|trans }}
                 </a>
             </li>
             <ul class="sub-menu">
                 {% for children in object.children %}
                 <li class="{{ app.request.get('_route') == children.uri ? 'active' }}">
-                    <a href="{{ children.uri }}">{{ children.label }}</a>
+                    <a href="{{ children.uri }}">{{ children.label|trans }}</a>
                 </li>
                 {% endfor %}
             </ul>

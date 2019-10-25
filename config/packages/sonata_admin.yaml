@@ -5,16 +5,16 @@ sonata_admin:
             - { type: sonata.admin.block.admin_list, position: left }
         groups:
             content:
-                label:           'Contenu'
+                label:           'Content'
                 icon:            '<i class="fa fa-file fa-lg mr-2"></i>'
             referentiel:
-                label:           'Référentiels'
+                label:           'Datum'
                 icon:            '<i class="fa fa-database fa-lg mr-2"></i>'
             user:
-                label:           'Utilisateurs'
+                label:           'Users'
                 icon:            '<i class="fa fa-user fa-lg mr-2"></i>'
             parameter:
-                label:           'Paramètrages'
+                label:           'Parameters'
                 icon:            '<i class="fa fa-cog fa-lg mr-2"></i>'
     templates:
         layout:             'Administration/base_administration.html.twig'

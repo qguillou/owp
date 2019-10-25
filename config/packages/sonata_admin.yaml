@@ -2,7 +2,7 @@ sonata_admin:
     title: 'Sonata Admin'
     dashboard:
         blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
+            - { type: sonata.block.admin_stat, position: top, class: col-md-12 }
         groups:
             content:
                 label:           'Content'
@@ -19,8 +19,9 @@ sonata_admin:
     templates:
         layout:             'Administration/base_administration.html.twig'
         knp_menu_template:  'Administration/Menu/admin_menu.html.twig'
+        button_create:      'Administration/Button/create_button.html.twig'
 
 sonata_block:
     blocks:
-        sonata.admin.block.admin_list:
+        sonata.block.admin_stat:
             contexts: [admin]

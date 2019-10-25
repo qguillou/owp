@@ -67,9 +67,12 @@ class EventType
         return $this->createBy;
     }
 
-    public function setCreateBy(User $user): self
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreateBy(): self
     {
-        $this->createBy = $user;
+        $this->createBy = NULL;
 
         return $this;
     }
@@ -110,9 +113,13 @@ class EventType
         return $this->updateBy;
     }
 
-    public function setUpdateBy(user $user): self
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function setUpdateBy(): self
     {
-        $this->updateBy = $user;
+        $this->updateBy = NULL;
 
         return $this;
     }

@@ -10,23 +10,32 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-final class UserAdmin extends AbstractAdmin
+abstract class AbstractOWPAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('username', TextType::class);
-        $formMapper->add('roles');
+        $formMapper->add('label', TextType::class);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('username');
-        $datagridMapper->add('roles');
+        $datagridMapper->add('label');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('username');
-        $listMapper->addIdentifier('roles');
+
+        $listMapper
+            ->add('createAt')
+            ->add('createBy.username')
+            ->add('updateAt')
+            ->add('updateBy.username')
+            ->add('_action', null, [
+                'actions' => [
+                    'show' => [],
+                    'edit' => [],
+                    'delete' => [],
+                ]
+            ]);
     }
 }

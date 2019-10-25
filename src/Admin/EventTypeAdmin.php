@@ -10,10 +10,12 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-final class EventTypeAdmin extends AbstractAdmin
+final class EventTypeAdmin extends AbstractOWPAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
+        parent::configureFormFields($formMapper);
+
         $formMapper->add('label', TextType::class);
     }
 
@@ -25,5 +27,7 @@ final class EventTypeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('label');
+
+        parent::configureListFields($listMapper);
     }
 }

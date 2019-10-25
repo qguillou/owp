@@ -4,29 +4,30 @@
 
 namespace App\Admin;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin;
+use App\Admin\AbstractOWPAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-final class UserAdmin extends AbstractAdmin
+final class EventAdmin extends AbstractOWPAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('username', TextType::class);
-        $formMapper->add('roles');
+        parent::configureFormFields($formMapper);
+
+        $formMapper->add('title', TextType::class);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('username');
-        $datagridMapper->add('roles');
+        $datagridMapper->add('title');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('username');
-        $listMapper->addIdentifier('roles');
+        $listMapper->addIdentifier('title');
+
+        parent::configureListFields($listMapper);
     }
 }

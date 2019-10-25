@@ -26,9 +26,9 @@ abstract class AbstractOWPAdmin extends AbstractAdmin
     {
 
         $listMapper
-            ->add('createAt')
+            ->add('createAt', 'datetime', array('format' => 'd/m/Y H:i'))
             ->add('createBy.username')
-            ->add('updateAt')
+            ->add('updateAt', 'datetime', array('format' => 'd/m/Y H:i'))
             ->add('updateBy.username')
             ->add('_action', null, [
                 'actions' => [

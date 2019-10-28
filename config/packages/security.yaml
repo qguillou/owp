@@ -24,6 +24,9 @@ security:
 
             logout:       true
             anonymous:    true
+            guard:
+                authenticators:
+                    - App\Security\GoogleAuthenticator
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

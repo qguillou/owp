@@ -1,2 +1,10 @@
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+login_google:
+    path: /login/google
+    defaults: { _controller: 'App\Common\Controller\GoogleController::loginAction' }
+
+login_google_check:
+    path: /login/google/check
+    defaults: { _controller: 'App\Common\Controller\GoogleController::loginCheckAction' }

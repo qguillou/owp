@@ -3,6 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('administration') }}
+    {% for stylesheet in sonata_admin.adminPool.getOption('stylesheets', []) %}
+        <link rel="stylesheet" href="{{ asset(stylesheet) }}">
+    {% endfor %}
 {% endblock %}
 
 {% block javascripts %}
@@ -32,6 +35,9 @@
                 {% set _list_filters = block('list_filters') is defined ? block('list_filters')|trim : null %}
                 {% set _actions = block('actions') is defined ? block('actions')|trim : null %}
                 {% set _breadcrumb = block('breadcrumb') is defined ? block('breadcrumb')|trim : null %}
+                {% set _navbar_title = block('navbar_title') is defined ? block('navbar_title')|trim : null %}
+                {% set _tab_menu = block('tab_menu') is defined ? block('tab_menu')|trim : null %}
+                {% set _list_filters_actions = block('list_filters_actions') is defined ? block('list_filters_actions')|trim : null -%}
 
                 {% block sonata_breadcrumb %}
                     <div class="hidden-xs">
@@ -93,6 +99,30 @@
 
                 {% if _form is not empty %}
                     <div class="sonata-ba-form">{{ _form|raw }}</div>
+                {% endif %}
+
+                {% if _navbar_title is not empty
+                  or _tab_menu is not empty
+                  or _actions is not empty
+                  or _list_filters_actions is not empty
+                 %}
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container-fluid">
+                            {% block tab_menu_navbar_header %}
+                                {% if _navbar_title is not empty %}
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="#">{{ _navbar_title|raw }}</a>
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+
+                            <div class="navbar-collapse">
+                                {% if _list_filters_actions is not empty %}
+                                    {{ _list_filters_actions|raw }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </nav>
                 {% endif %}
 
                 {% if _list_filters is not empty %}

@@ -17,7 +17,10 @@ final class UserAdmin extends AbstractAdmin
 
     protected $datagridValues = [
         '_sort_by' => 'username',
+        '_per_page' => 25,
     ];
+
+    protected $perPageOptions = [25, 50, 100, 'All'];
 
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -37,9 +40,7 @@ final class UserAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('username');
-        $datagridMapper->add('email');
-        $datagridMapper->add('roles');
+
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -51,7 +52,6 @@ final class UserAdmin extends AbstractAdmin
             ->add('lastLogin', 'datetime', array('format' => 'd/m/Y H:i'))
             ->add('_action', null, [
                 'actions' => [
-                    'show' => ['template' => 'Administration/CRUD/list__action_show.html.twig'],
                     'edit' => ['template' => 'Administration/CRUD/list__action_edit.html.twig'],
                     'delete' => ['template' => 'Administration/CRUD/list__action_delete.html.twig'],
                 ]

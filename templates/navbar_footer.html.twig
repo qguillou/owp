@@ -5,17 +5,11 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Plan du site</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="{{ path('owp_common_homepage') }}"><i class="fa fa-angle-double-right"></i>Accueil</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li><a href="{{ path('owp_administration_administration') }}"><i class="fa fa-angle-double-right"></i>Administration</a></li>
-                        {% endif %}
                     </ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Liens utiles</h5>
 					<ul class="list-unstyled quick-links">
-                        <li><a href="http://www.ffcorientation.fr/"><i class="fa fa-angle-double-right"></i>Fédération Française de Course d'Orientation (FFCO)</a></li>
-                        <li><a href="http://www.co-bretagne.com/"><i class="fa fa-angle-double-right"></i>Ligue de Bretagne de Course d'Orientation (LBRCO)</a></li>
 					</ul>
 				</div>
 			</div>

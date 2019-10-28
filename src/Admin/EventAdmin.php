@@ -13,5 +13,5 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 final class EventAdmin extends AbstractNodeAdmin
 {
-
+    protected $baseRoutePattern  = 'event';
 }

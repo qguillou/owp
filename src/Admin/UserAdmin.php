@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class UserAdmin extends AbstractAdmin
 {
+    protected $baseRoutePattern  = 'user';
 
     protected $datagridValues = [
         '_sort_by' => 'username',

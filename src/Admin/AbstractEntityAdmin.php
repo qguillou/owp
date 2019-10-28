@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 abstract class AbstractEntityAdmin extends AbstractAdmin
 {
@@ -42,5 +43,10 @@ abstract class AbstractEntityAdmin extends AbstractAdmin
                 'delete' => ['template' => 'Administration/CRUD/list__action_delete.html.twig'],
             ]
         ]);
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('show');
     }
 }

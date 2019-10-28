@@ -11,5 +11,5 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class EventTypeAdmin extends AbstractEntityAdmin
 {
-
+    protected $baseRoutePattern  = 'type';
 }

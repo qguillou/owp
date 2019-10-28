@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 final class MenuAdmin extends AbstractEntityAdmin
 {
+    protected $baseRoutePattern  = 'menu';
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         parent::configureFormFields($formMapper);

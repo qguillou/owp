@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 final class LinkAdmin extends AbstractEntityAdmin
 {
+    protected $baseRoutePattern  = 'link';
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         parent::configureFormFields($formMapper);

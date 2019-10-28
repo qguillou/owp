@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class NewsAdmin extends AbstractNodeAdmin
 {
+    protected $baseRoutePattern  = 'news';
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         parent::configureFormFields($formMapper);

@@ -8,9 +8,8 @@
 
   <div class="collapse navbar-collapse" id="navbar-header">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/"></a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="/"></a></li>
+      {{ sonata_block_render({ 'type': 'sonata.block.menu' }, {}) }}
     </ul>
       <!-- Informations sur le compte utilisateur ou connexion -->
       {% if app.user %}

@@ -29,12 +29,6 @@ class User extends BaseUser
      */
     protected $surname;
 
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
-
     public function getName(): ?string
     {
         return $this->name;

@@ -1,1 +1,20 @@
-Home: __Home
+Home:       __Home
+
+# Entity Global
+# Entity User
+Username:   Nom d'utilisateur
+Last Login: Dernière connexion
+Roles:      Rôles
+
+# Menu d'administration
+Content:    Contenu
+News:       Actualités
+Event:      Evènements
+Datum:      Référentiels
+Event type: Type d'évènements
+Link:       Liens
+Users:      Utilisateurs
+Parameters: Paramètres
+
+# Footer
+Usefull links:  Liens utiles

@@ -6,6 +6,8 @@ Username:   Nom d'utilisateur
 Last Login: Dernière connexion
 Roles:      Rôles
 
+
+# Administration
 # Menu d'administration
 Content:    Contenu
 News:       Actualités
@@ -15,6 +17,9 @@ Event type: Type d'évènements
 Link:       Liens
 Users:      Utilisateurs
 Parameters: Paramètres
+# List Administration
+User List:      Liste des utilisateurs
+
 
 # Footer
 Usefull links:  Liens utiles

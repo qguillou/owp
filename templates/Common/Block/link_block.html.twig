@@ -1,0 +1,8 @@
+<div class="col-xs-12 col-sm-4 col-md-4">
+    <h5>{{ 'Usefull links' | trans }}</h5>
+    <ul class="list-unstyled quick-links">
+        {% for link in links %}
+            <li><a href="{{ link.link }}"><i class="fa fa-angle-double-right"></i>{{ link.label }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

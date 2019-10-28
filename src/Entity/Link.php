@@ -6,10 +6,10 @@ use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EventTypeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\LinkRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class EventType
+class Link
 {
     /**
      * @ORM\Id()
@@ -22,6 +22,16 @@ class EventType
      * @ORM\Column(type="string", length=255)
      */
     private $label;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $link;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -62,17 +72,38 @@ class EventType
         return $this;
     }
 
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): self
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
     public function getCreateBy(): ?User
     {
         return $this->createBy;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreateBy(): self
+    public function setCreateBy(User $user): self
     {
-        $this->createBy = NULL;
+        $this->createBy = $user;
 
         return $this;
     }
@@ -113,13 +144,9 @@ class EventType
         return $this->updateBy;
     }
 
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function setUpdateBy(): self
+    public function setUpdateBy(user $user): self
     {
-        $this->updateBy = NULL;
+        $this->updateBy = $user;
 
         return $this;
     }

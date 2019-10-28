@@ -9,12 +9,18 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-abstract class AbstractOWPAdmin extends AbstractAdmin
+final class LinkAdmin extends AbstractOWPAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('label', TextType::class);
+        parent::configureFormFields($formMapper);
+
+        $formMapper
+            ->add('label', TextType::class)
+            ->add('link', TextType::class)
+            ->add('description', TextareaType::class, ['required' => false]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -24,17 +30,8 @@ abstract class AbstractOWPAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
-            ->add('createAt', 'datetime', array('format' => 'd/m/Y H:i'))
-            ->add('createBy.username')
-            ->add('updateAt', 'datetime', array('format' => 'd/m/Y H:i'))
-            ->add('updateBy.username')
-            ->add('_action', null, [
-                'actions' => [
-                    'show' => [],
-                    'edit' => [],
-                    'delete' => [],
-                ]
-            ]);
+        $listMapper->addIdentifier('label');
+
+        parent::configureListFields($listMapper);
     }
 }

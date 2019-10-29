@@ -162,6 +162,9 @@
     "hoa/zformat": {
         "version": "1.17.01.10"
     },
+    "imagine/imagine": {
+        "version": "v0.7.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -185,6 +188,12 @@
             "./config/packages/prod/jms_serializer.yaml"
         ]
     },
+    "knplabs/gaufrette": {
+        "version": "v0.8.3"
+    },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.7.1"
+    },
     "knplabs/knp-menu": {
         "version": "2.6.0"
     },
@@ -203,11 +212,17 @@
             "./config/packages/knpu_oauth2_client.yaml"
         ]
     },
+    "kriswallsmith/buzz": {
+        "version": "v0.16.1"
+    },
     "league/oauth2-client": {
         "version": "2.4.1"
     },
     "league/oauth2-google": {
         "version": "3.0.1"
+    },
+    "michelf/php-markdown": {
+        "version": "1.8.0"
     },
     "nikic/php-parser": {
         "version": "v4.2.4"
@@ -232,9 +247,6 @@
     },
     "psr/log": {
         "version": "1.1.0"
-    },
-    "psr/simple-cache": {
-        "version": "1.0.1"
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
@@ -292,8 +304,28 @@
     "sonata-project/doctrine-orm-admin-bundle": {
         "version": "3.10.0"
     },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.5.0"
+    },
     "sonata-project/exporter": {
         "version": "2.0.1"
+    },
+    "sonata-project/formatter-bundle": {
+        "version": "4.1.3"
+    },
+    "sonata-project/media-bundle": {
+        "version": "3.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.13",
+            "ref": "e25412e53b20827db07abb6f2aa0b8e4d26c284c"
+        },
+        "files": [
+            "./config/packages/sonata_media.yaml",
+            "./config/routes/sonata_media.yaml",
+            "./public/upload/media/.gitignore"
+        ]
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
@@ -303,6 +335,9 @@
     },
     "symfony/cache": {
         "version": "v3.4.31"
+    },
+    "symfony/cache-contracts": {
+        "version": "v1.1.7"
     },
     "symfony/class-loader": {
         "version": "v3.4.31"
@@ -323,6 +358,9 @@
             "config/bootstrap.php"
         ]
     },
+    "symfony/contracts": {
+        "version": "v1.1.0"
+    },
     "symfony/debug": {
         "version": "v3.4.31"
     },
@@ -337,6 +375,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v3.4.31"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.7"
     },
     "symfony/expression-language": {
         "version": "v3.4.31"
@@ -402,14 +443,14 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/mime": {
+        "version": "v4.3.5"
+    },
     "symfony/options-resolver": {
         "version": "v3.4.31"
     },
     "symfony/orm-pack": {
         "version": "v1.0.6"
-    },
-    "symfony/polyfill-apcu": {
-        "version": "v1.12.0"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.12.0"
@@ -421,6 +462,9 @@
         "version": "v1.12.0"
     },
     "symfony/polyfill-php72": {
+        "version": "v1.12.0"
+    },
+    "symfony/polyfill-php73": {
         "version": "v1.12.0"
     },
     "symfony/property-access": {
@@ -495,6 +539,9 @@
             "./translations/.gitignore"
         ]
     },
+    "symfony/translation-contracts": {
+        "version": "v1.1.7"
+    },
     "symfony/twig-bridge": {
         "version": "v3.4.31"
     },
@@ -514,6 +561,9 @@
     },
     "symfony/validator": {
         "version": "v3.4.31"
+    },
+    "symfony/var-exporter": {
+        "version": "v4.3.5"
     },
     "symfony/webpack-encore-bundle": {
         "version": "1.0",

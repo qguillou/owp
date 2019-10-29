@@ -7,3 +7,4 @@ twig:
         app_module_event: '%env(resolve:APP_MODULE_EVENT)%'
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+        - '@SonataFormatter/Form/formatter.html.twig'

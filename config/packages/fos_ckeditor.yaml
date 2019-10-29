@@ -1,14 +1,29 @@
 # Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
 fos_ck_editor:
+    base_path: "build/ckeditor"
+    js_path:   "build/ckeditor/ckeditor.js"
+    default_config: default
     configs:
         default:
-            toolbar:    [
-                    ["Styles", "Format"],
-                    "/",
-                    ["Bold", "Italic", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock", "-", "Link", "Unlink", "Anchor", "-", "NumberedList", 'BulletedList', '-', 'Outdent', 'Indent'],
-                    "/",
-                    ["Image", 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley']
-                ]
+            toolbar:
+            - ["Styles", "Format"]
+            - ["Bold", "Italic", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock", "-", "Link", "Unlink", "Anchor", "-", "NumberedList", 'BulletedList', '-', 'Outdent', 'Indent']
+            - ["Image", 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley']
+            filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
+            filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
+            # Display images by default when clicking the image dialog browse button
+            filebrowserImageBrowseRouteParameters:
+                provider: sonata.media.provider.image
+            filebrowserUploadMethod: form
+            filebrowserUploadRoute: admin_sonata_media_media_ckeditor_upload
+            filebrowserUploadRouteParameters:
+                provider: sonata.media.provider.file
+            # Upload file as image when sending a file from the image dialog
+            filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
+            filebrowserImageUploadRouteParameters:
+                provider: sonata.media.provider.image
+                context: my-context # Optional, to upload in a custom context
+                format: my-big # Optional, media format or original size returned to editor
 twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

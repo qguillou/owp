@@ -85,20 +85,12 @@
                     {% include '@SonataCore/FlashMessage/render.html.twig' %}
                 {% endblock notice %}
 
-                {% if _actions is not empty %}
-                    <div class="sonata-ba-preview">{{ _actions|raw }}</div>
-                {% endif %}
-
                 {% if _preview is not empty %}
                     <div class="sonata-ba-preview">{{ _preview|raw }}</div>
                 {% endif %}
 
                 {% if _show is not empty %}
                     <div class="sonata-ba-show">{{ _show|raw }}</div>
-                {% endif %}
-
-                {% if _form is not empty %}
-                    <div class="sonata-ba-form">{{ _form|raw }}</div>
                 {% endif %}
 
                 {% if _navbar_title is not empty
@@ -110,28 +102,28 @@
                         <div class="container-fluid">
                             {% block tab_menu_navbar_header %}
                                 {% if _navbar_title is not empty %}
-                                    <div class="navbar-header">
-                                        <a class="navbar-brand" href="#">{{ _navbar_title|raw }}</a>
-                                    </div>
+                                    <h1>{{ _navbar_title|raw }}</h1>
                                 {% endif %}
                             {% endblock %}
-
-                            <div class="navbar-collapse">
-                                {% if _list_filters_actions is not empty %}
-                                    {{ _list_filters_actions|raw }}
-                                {% endif %}
-                            </div>
                         </div>
                     </nav>
                 {% endif %}
 
-                {% if _list_filters is not empty %}
-                    <div class="row">
-                        {{ _list_filters|raw }}
-                    </div>
+                {% if _form is not empty %}
+                    <div class="sonata-ba-form">{{ _form|raw }}</div>
                 {% endif %}
 
                 {% if _list_table is not empty %}
+                    {% if _actions is not empty %}
+                        <div class="sonata-ba-preview">{{ _actions|raw }}</div>
+                    {% endif %}
+
+                    {% if _list_filters is not empty %}
+                        <div class="row">
+                            {{ _list_filters|raw }}
+                        </div>
+                    {% endif %}
+
                     <div class="row">
                         {{ _list_table|raw }}
                     </div>

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 abstract class AbstractNodeAdmin extends AbstractAdmin
 {
@@ -20,7 +21,11 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add(self::LABEL, TextType::class);
+        $formMapper
+            ->with('Meta data', ['class' => 'col-md-3'])
+                ->add('createAt', DateTimeType::class, ['disabled' => true])
+                ->add('updateAt', DateTimeType::class, ['disabled' => true])
+            ->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

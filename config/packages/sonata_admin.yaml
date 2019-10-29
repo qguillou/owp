@@ -37,7 +37,7 @@ sonata_admin:
             - bundles/sonataadmin/css/layout.css
             - bundles/sonataadmin/css/tree.css
             - bundles/sonataadmin/css/colors.css
-            
+
 sonata_block:
     blocks:
         sonata.block.admin_stat:

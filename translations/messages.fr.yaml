@@ -1,10 +1,16 @@
 Home:       __Home
 
+
 # Entity Global
+Title: Titre
+Create At: Créé le
+Update At: Mis à jour le
 # Entity User
 Username:   Nom d'utilisateur
 Last Login: Dernière connexion
 Roles:      Rôles
+#Entity News
+Promote: Promu en page d'accueil
 
 
 # Administration
@@ -21,6 +27,10 @@ Parameters: Paramètres
 Dashboard: Tableau de bord
 # List Administration
 User List:      Liste des utilisateurs
+News List:      Liste des actualités
+# Edit Administration
+Main information: Informations générales
+Meta data: Méta-données
 
 
 # Footer

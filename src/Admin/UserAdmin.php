@@ -17,10 +17,7 @@ final class UserAdmin extends AbstractAdmin
 
     protected $datagridValues = [
         '_sort_by' => 'username',
-        '_per_page' => 25,
     ];
-
-    protected $perPageOptions = [25, 50, 100, 'All'];
 
     protected function configureFormFields(FormMapper $formMapper)
     {

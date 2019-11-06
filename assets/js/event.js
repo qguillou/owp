@@ -8,9 +8,7 @@ require('../css/event.scss');
  * - Twitter Bootstrap (3.0.2)
  */
 
-if (typeof jQuery == 'undefined') {
-    throw new Error('jQuery is not loaded');
-}
+const $ = require('jquery');
 
 /**
  * Create calendar

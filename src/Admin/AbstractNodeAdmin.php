@@ -10,6 +10,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 
 abstract class AbstractNodeAdmin extends AbstractAdmin
 {
@@ -23,8 +25,8 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Meta data', ['class' => 'col-md-3'])
-                ->add('createAt', DateTimeType::class, ['disabled' => true])
-                ->add('updateAt', DateTimeType::class, ['disabled' => true])
+                ->add('createAt', DateTimePickerType::class, ['disabled' => false])
+                ->add('updateAt', DateTimePickerType::class, ['disabled' => true])
             ->end();
     }
 
@@ -48,5 +50,10 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
                 'delete' => ['template' => 'Administration/CRUD/list__action_delete.html.twig'],
             ]
         ]);
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('show',  $this->getRouterIdParameter());
     }
 }

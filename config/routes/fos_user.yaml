@@ -3,8 +3,8 @@ fos_user:
 
 login_google:
     path: /login/google
-    defaults: { _controller: 'App\Common\Controller\GoogleController::loginAction' }
+    defaults: { _controller: 'App\Controller\GoogleController::loginAction' }
 
 login_google_check:
     path: /login/google/check
-    defaults: { _controller: 'App\Common\Controller\GoogleController::loginCheckAction' }
+    defaults: { _controller: 'App\Controller\GoogleController::loginCheckAction' }

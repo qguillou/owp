@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Security\GoogleAuthenticator;
 
 class GoogleController extends AbstractController
 {
@@ -33,7 +32,7 @@ class GoogleController extends AbstractController
      */
     public function loginCheckAction(Request $request)
     {
-        if (!$this->container->get('@google.authenticator')->getUser()) {
+        if (!$this->getUser()) {
             return new JsonResponse(array('status' => false, 'message' => "User not found!"));
         } else {
             return $this->redirectToRoute('default');

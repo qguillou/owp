@@ -32,7 +32,7 @@ class GoogleController extends AbstractController
      */
     public function loginCheckAction(Request $request)
     {
-        if (!$this->getUser()) {
+        if (!$this->container->get('google.authenticator')->getUser()) {
             return new JsonResponse(array('status' => false, 'message' => "User not found!"));
         } else {
             return $this->redirectToRoute('default');

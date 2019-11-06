@@ -13,12 +13,6 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 
-/**
- * Created by IntelliJ IDEA.
- * User: mert
- * Date: 12/18/17
- * Time: 12:00 PM
- */
 class GoogleAuthenticator extends SocialAuthenticator
 {
     private $clientRegistry;

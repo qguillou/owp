@@ -17,7 +17,7 @@
                             <h1 class="text-primary">{{ new.title }}</h1>
                             <span class="badge badge-primary font-italic">Publié le {{ new.createAt|date('d/m/Y') }}</span>
                             <span class="badge badge-primary font-italic">Mise à jour le {{ new.updateAt|date('d/m/Y')}}</span>
-                            <p class="text-justify">{{ new.content|striptags|slice(0,800) ~ '...' }}</p>
+                            <p class="text-justify">{{ new.content|escape('html')|slice(0,800) ~ '...' }}</p>
                             <p><a class="btn btn-primary" href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">Lire la suite</a></p>
                         </div>
                     </div>

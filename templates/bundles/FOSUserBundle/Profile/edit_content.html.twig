@@ -21,7 +21,7 @@
             </div>
             <div>
                 <input class="btn btn-primary" type="submit" value="Enregistrer" />
-                <a onclick="return confirm('Êtes vous sûr de vouloir supprimer votre compte ?');" href="{{ path('owp_common_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a>
+                <a onclick="return confirm('Êtes vous sûr de vouloir supprimer votre compte ?');" href="{{ path('owp_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a>
             </div>
         {{ form_end(form) }}
 

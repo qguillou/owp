@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use App\Entity\EventType;
+use App\Entity\Event;
 
 final class EventAdmin extends AbstractNodeAdmin
 {
@@ -21,7 +22,7 @@ final class EventAdmin extends AbstractNodeAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Main information', ['class' => 'col-md-9'])
+            ->with('Main informations', ['class' => 'col-md-9'])
                 ->add(self::LABEL, TextType::class)
                 ->add('content', CKEditorType::class, ['config_name' => 'default', 'required' => false])
                 ->add('dateBegin', DateTimeType::class)
@@ -34,5 +35,22 @@ final class EventAdmin extends AbstractNodeAdmin
         ;
 
         parent::configureFormFields($formMapper);
+
+        $formMapper
+            ->with('location', ['class' => 'col-md-9'])
+                ->add('locationTitle', TextType::class, ['required' => false])
+                ->add('locationInformation', CKEditorType::class, ['config_name' => 'default', 'required' => false])
+            ->end()
+        ;
+
+        /*$formMapper
+            ->with('link events', ['class' => 'col-md-9'])
+                ->add('linkEvents', EntityType::class, [
+                    'class' => Event::class,
+                    'choice_label' => 'title',
+                    'multiple' => true,
+                ])
+            ->end()
+        ;*/
     }
 }

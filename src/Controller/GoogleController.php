@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Controller;
+namespace App\Controller;
 
 
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;

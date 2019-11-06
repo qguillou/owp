@@ -46,6 +46,16 @@ class Event
     private $eventType;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $locationTitle;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $locationInformation;
+
+    /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -92,6 +102,42 @@ class Event
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getLocationTitle(): ?string
+    {
+        return $this->locationTitle;
+    }
+
+    public function setLocationTitle(string $locationTitle): self
+    {
+        $this->locationTitle = $locationTitle;
+
+        return $this;
+    }
+
+    public function getLocationInformation(): ?string
+    {
+        return $this->locationInformation;
+    }
+
+    public function setLocationInformation(string $locationInformation): self
+    {
+        $this->locationInformation = $locationInformation;
+
+        return $this;
+    }
+
+    public function getLinkEvents()
+    {
+        return $this->linkEvents;
+    }
+
+    public function setLinkEvents($linkEvents): self
+    {
+        $this->linkEvents = $linkEvents;
 
         return $this;
     }

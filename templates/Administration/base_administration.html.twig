@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
     {{ encore_entry_link_tags('administration') }}
     {% for stylesheet in sonata_admin.adminPool.getOption('stylesheets', []) %}
         <link rel="stylesheet" href="{{ asset(stylesheet) }}">
     {% endfor %}
+    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}

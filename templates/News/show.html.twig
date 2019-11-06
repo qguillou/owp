@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}News{% endblock %}
+{% block title %}{{ news.title }}{% endblock %}
 
 {% block body %}
     <div class="container my-4">
         {% if is_granted('ROLE_WEBMASTER') %}
         <div class="float-right">
-            <a href="{{ path('owp_administration_administration_content_news_edit', {'id': news.id}) }}" class='btn btn-info btn-xs' href=""><i class="fa fa-edit"></i></a>
-            <a href="{{ path('owp_administration_administration_content_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-danger btn-xs' href=""><i class="fa fa-trash"></i></a>
+            <a href="{{ path('admin_app_news_edit', {'id': news.id}) }}" class='btn btn-link btn-xs' href=""><i class="fa fa-edit fa-2x"></i></a>
+            <a href="{{ path('admin_app_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-link btn-xs' href=""><i class="fa fa-trash fa-2x"></i></a>
         </div>
         {% endif %}
         <h1>{{ news.title }}</h1>
@@ -15,6 +15,8 @@
         <div class="mt-2">{{ news.content|raw }}</div>
 
         <div class="mt-4">
+            <h2>{{ 'comment' | trans | capitalize }}</h2>
+
             {% include '@FOSComment/Thread/async.html.twig' with {'id': 'news:' ~ news.id} %}
         </div>
     </div>

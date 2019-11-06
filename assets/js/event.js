@@ -597,11 +597,22 @@ $.fn.zabuto_calendar_language = function (lang) {
 };
 
 
-   $(document).ready(function () {
+$(document).ready(function () {
     $("#my-calendar").zabuto_calendar({
-      legend: [],
-      ajax: {
-        url: "show_data.php?grade=1"
-      }
+        legend: [],
+        ajax: {
+            url: "show_data.php?grade=1"
+        }
     });
-  });
+
+    var lat = $('#map').attr('lat');
+    var lon = $('#map').attr('lon');
+
+    var map = L.map('map').setView([lat, lon], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(map);
+
+    L.marker([lat, lon], { icon: L.icon({iconUrl: '/images/balise.jpg'})}).addTo(map);
+});

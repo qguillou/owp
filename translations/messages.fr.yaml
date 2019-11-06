@@ -1,5 +1,7 @@
 Home:       __Home
 
+# FOSCommentBundle
+comment: commentaire
 
 # Entity Global
 Title: Titre
@@ -11,27 +13,32 @@ Last Login: Dernière connexion
 Roles:      Rôles
 #Entity News
 Promote: Promu en page d'accueil
+# Entity Event
+organizer: organisateur
+circuit: circuit
+entries: inscriptions
 
 
 # Administration
 # Menu d'administration
-Content:    Contenu
-News:       Actualités
-Event:      Evènements
-Datum:      Référentiels
-Event type: Type d'évènements
-Link:       Liens
-Users:      Utilisateurs
-Parameters: Paramètres
+content:    Contenu
+news:       Actualités
+event:      Evènements
+datum:      Référentiels
+event type: Type d'évènement
+link:       Liens
+users:      Utilisateurs
+parameters: Paramètres
 # Dashboard
-Dashboard: Tableau de bord
+dashboard: Tableau de bord
 # List Administration
-User List:      Liste des utilisateurs
-News List:      Liste des actualités
+user List:      Liste des utilisateurs
+news List:      Liste des actualités
 # Edit Administration
-Main information: Informations générales
-Meta data: Méta-données
+main informations: Informations générales
+meta data: Méta-données
+location: Localisation
 
 
 # Footer
-Usefull links:  Liens utiles
+usefull links:  Liens utiles

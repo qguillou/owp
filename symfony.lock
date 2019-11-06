@@ -215,6 +215,9 @@
     "kriswallsmith/buzz": {
         "version": "v0.16.1"
     },
+    "leaflet/leaflet": {
+        "version": "v1.4.0"
+    },
     "league/oauth2-client": {
         "version": "2.4.1"
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +10,7 @@ use App\Repository\NewsRepository;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="owp_common_homepage")
+     * @Route("/", name="owp_homepage")
      */
     public function index(NewsRepository $newsRepository): Response
     {
@@ -19,6 +19,9 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/about", name="owp_about")
+     */
     public function about(): Response
     {
         return $this->render('Common/about.html.twig', [

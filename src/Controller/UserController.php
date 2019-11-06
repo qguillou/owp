@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends AbstractController
 {
+    /**
+     * @Route("/profile/delete/{id}", name="owp_user_delete")
+     */
     public function delete(User $user): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');

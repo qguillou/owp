@@ -4,6 +4,16 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
+h1 {
+    color: $primary;
+}
+
+h2 {
+    border-left: 4px solid $primary;
+    padding-left: 0.5em;
+    margin-top: 2em;
+}
+
 section {
     padding: 60px 0;
 }

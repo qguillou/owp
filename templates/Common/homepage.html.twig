@@ -35,16 +35,19 @@
             </a>
         {% endif %}
     </div>
-    <div class="row col-lg-12">
-        <div class="col-lg-7 offset-lg-1 my-4">
-            <h2>Les prochains évènements</h3>
-        </div>
-        <div class="col-lg-3 my-4">
-            {% if app_module_event == "TRUE" %}
+    {% if events|length > 0 %}
+        <div class="row col-lg-12">
+            <div class="col-lg-7 offset-lg-1 my-4">
+                <h2>Les prochains évènements</h2>
+                {% for event in events %}
+
+                {% endfor %}
+            </div>
+            <div class="col-lg-3 my-4">
                 {% include 'Event/Block/calendar.html.twig' %}
-            {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     {% if news|length > 6 %}
         <div class="row">
@@ -52,7 +55,10 @@
                 <div class="offset-lg-1">
                     <h2>Toutes les actualités</h2>
                     {% for new in news|slice(7, news|length) %}
-
+                        <div class="col-lg-3">
+                            <h5>{{ new.title }}</h5>
+                            <a href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">Lire la suite</a>
+                        </div>
                     {% endfor %}
                 </div>
             </div>

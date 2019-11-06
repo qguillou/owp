@@ -25,7 +25,7 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Meta data', ['class' => 'col-md-3'])
-                ->add('createAt', DateTimePickerType::class, ['disabled' => false])
+                ->add('createAt', DateTimePickerType::class, ['disabled' => true])
                 ->add('updateAt', DateTimePickerType::class, ['disabled' => true])
             ->end();
     }

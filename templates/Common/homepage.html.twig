@@ -55,9 +55,9 @@
                 <div class="offset-lg-1">
                     <h2>Toutes les actualités</h2>
                     {% for new in news|slice(6, news|length) %}
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 my-2">
                             <h5>{{ new.title }}</h5>
-                            <a href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">Lire la suite</a>
+                            <a href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">Lire l'actualité</a>
                         </div>
                     {% endfor %}
                 </div>

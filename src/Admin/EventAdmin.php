@@ -15,6 +15,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use App\Entity\EventType;
 use App\Entity\Event;
+use App\Form\Type\CircuitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 final class EventAdmin extends AbstractNodeAdmin
 {
@@ -61,14 +63,5 @@ final class EventAdmin extends AbstractNodeAdmin
             ->end()
         ;
 
-        /*$formMapper
-            ->with('link events', ['class' => 'col-md-9'])
-                ->add('linkEvents', EntityType::class, [
-                    'class' => Event::class,
-                    'choice_label' => 'title',
-                    'multiple' => true,
-                ])
-            ->end()
-        ;*/
     }
 }

@@ -71,6 +71,11 @@ class Event
     private $longitude;
 
     /**
+     * @ORM\OneToMany(targetEntity="Circuit", cascade={"persist", "remove"}, mappedBy="event")
+     */
+    private $circuits;
+
+    /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -280,6 +285,18 @@ class Event
     public function setEventType(EventType $eventType): self
     {
         $this->eventType = $eventType;
+
+        return $this;
+    }
+
+    public function getCircuits()
+    {
+        return $this->circuits;
+    }
+
+    public function setCircuits($circuits): self
+    {
+        $this->circuits = $circuits;
 
         return $this;
     }

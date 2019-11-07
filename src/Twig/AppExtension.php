@@ -15,9 +15,9 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function formatPeriod($start, $end)
+    public function formatPeriod($start, $end = NULL)
     {
-        if ($start->getTimestamp() === $end->getTimestamp() || empty($end)) {
+        if (empty($end) || $start->getTimestamp() === $end->getTimestamp()) {
             $date = strftime('%A %d %B %Y at %H:%M', $start->getTimestamp());
         } elseif ($start->format('d') === $end->format('d')) {
             $date = strftime('%A %d %B %Y from %H:%M', $start->getTimestamp()) . ' to ' . strftime('%H:%M', $start->getTimestamp());

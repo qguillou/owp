@@ -23,7 +23,8 @@
         </div>
         {% endif %}
         <h1>{{ event.title }}</h1>
-        <span class="badge">Publié le {{ event.createAt|date('d/m/Y') }}, mise à jour le {{ event.updateAt|date('d/m/Y')}}</span>
+        <div>Publié le {{ period(event.createAt) }}</div>
+        <div>Mis à jour le {{ period(event.updateAt)}}</div>
         <div class="mt-2">{{ event.content|raw }}</div>
 
         <div class="row">

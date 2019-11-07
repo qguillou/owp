@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51296d85b8c422b15864753e268608c5",
+    "content-hash": "41e0e6976fdf745eaa310570f29da8f6",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -6425,7 +6425,7 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v4.3.5",
+            "version": "v4.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",

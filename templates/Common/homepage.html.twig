@@ -50,16 +50,26 @@
     {% endif %}
 
     {% if news|length > 6 %}
-        <div class="row">
+        <div class="row m-0">
             <div class="col-lg-12 py-4 bg-light">
-                <div class="offset-lg-1">
+                <div class="offset-lg-1 col-lg-10">
                     <h2>Toutes les actualités</h2>
-                    {% for new in news|slice(6, news|length) %}
-                        <div class="col-lg-3 my-2">
-                            <h5>{{ new.title }}</h5>
-                            <a href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">Lire l'actualité</a>
-                        </div>
-                    {% endfor %}
+                    <div class="row">
+                        {% for new in news|slice(6, news|length) %}
+                            <div class="col-xs-10 col-sm-4 col-md-3">
+                                <div class="card m-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ new.title }}</h5>
+                                        <p>
+                                            Publié le {{ new.createAt|date('d/m/Y') }}
+                                            Mise à jour le {{ new.updateAt|date('d/m/Y')}}
+                                        </p>
+                                        <a href="{{ path('owp_news_show', {'id': new.id}) }}" class="btn btn-primary">Lire l'actualité</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

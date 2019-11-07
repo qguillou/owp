@@ -25,7 +25,7 @@ class Event
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -114,7 +114,7 @@ class Event
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent($content): self
     {
         $this->content = $content;
 
@@ -150,7 +150,7 @@ class Event
         return $this->locationInformation;
     }
 
-    public function setLocationInformation(string $locationInformation): self
+    public function setLocationInformation($locationInformation): self
     {
         $this->locationInformation = $locationInformation;
 

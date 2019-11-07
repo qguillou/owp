@@ -29,4 +29,22 @@ class EventController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/api/event", name="owp_api_event")
+     */
+    public function api(EventRepository $eventRepository): Response
+    {
+        $results = [];
+        $events = $eventRepository->findAll();
+
+        foreach ($events as $event) {
+            $results[] = ['date' => $event->getDateBegin()->format('Y-m-d'), 'title' => $event->getTitle()];
+        }
+
+        $events = new Response(json_encode($results));
+        $events->headers->set('Content-Type', 'application/json');
+
+        return $events;
+    }
+
 }

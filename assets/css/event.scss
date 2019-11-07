@@ -63,7 +63,8 @@ div.zabuto_calendar .table tr td div.day {
 /* actions and events */
 div.zabuto_calendar .table tr td.event div.day,
 div.zabuto_calendar ul.legend li.event {
-    background-color: #fff0c3;
+    background-color: $primary;
+    color: white;
 }
 
 div.zabuto_calendar .table tr td.dow-clickable,

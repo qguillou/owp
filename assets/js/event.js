@@ -601,7 +601,7 @@ $(document).ready(function () {
     $("#my-calendar").zabuto_calendar({
         legend: [],
         ajax: {
-            url: "show_data.php?grade=1"
+            url: "/api/event"
         }
     });
 

@@ -1,5 +1,10 @@
 @import "variables.scss";
 
+
+.box.box-primary {
+    border-top-color: $primary;
+}
+
 .nav-side-menu {
   background-color: #2e353d;
 }

@@ -24,7 +24,7 @@ final class EventAdmin extends AbstractNodeAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Main informations', ['class' => 'col-md-9'])
+            ->with('Main informations', ['class' => 'text-bold col-md-9'])
                 ->add(self::LABEL, TextType::class)
                 ->add('content', CKEditorType::class, ['config_name' => 'default', 'required' => false])
                 ->add('dateBegin', DateTimePickerType::class)

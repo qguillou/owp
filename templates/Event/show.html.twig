@@ -28,14 +28,14 @@
 
         <div class="row">
             <div class="col-md-7">
-                <h2>{{ 'main informations'| trans }}</h2>
+                <h2 class="my-4">{{ 'main informations'| trans }}</h2>
                 <table>
-                    <tr><td class="font-weight-bold">{{ "date" | trans | capitalize }}</td><td></td></tr>
-                    <tr><td class="font-weight-bold">{{ "event type" | trans | capitalize }}</td><td></td></tr>
-                    <tr><td class="font-weight-bold">{{ "organizer" | trans | capitalize  }}</td><td></td></tr>
+                    <tr><td class="font-weight-bold">{{ "date" | trans | capitalize }}</td><td>{{ period(event.dateBegin, event.dateEnd) }}</td></tr>
+                    <tr><td class="font-weight-bold">{{ "event type" | trans | capitalize }}</td><td>{{ event.eventType.label }}</td></tr>
+                    <tr><td class="font-weight-bold">{{ "organizer" | trans | capitalize  }}</td><td>{{ event.organizer }}</td></tr>
                 </table>
 
-                <h2>{{ 'location'| trans }}</h2>
+                <h2 class="my-4">{{ 'location'| trans }}</h2>
                 <b>{{ event.locationTitle | capitalize }}</b>
                 {{ event.locationInformation | raw }}
                 {# if event.latitude is not empty and event.longitude is not empty #}
@@ -46,14 +46,14 @@
             </div>
 
             <div class="col-md-4 col-offset-lg-1">
-                <h2>{{ 'circuit'| trans | capitalize }}</h2>
+                <h2 class="my-4">{{ 'circuit'| trans | capitalize }}</h2>
                 <table>
                     <tr><td class="font-weight-bold"></td><td></td></tr>
                     <tr><td class="font-weight-bold"></td><td></td></tr>
                     <tr><td class="font-weight-bold"></td><td></td></tr>
                 </table>
 
-                <h2>{{ 'entries'| trans | capitalize }}</h2>
+                <h2 class="my-4">{{ 'entries'| trans | capitalize }}</h2>
                 <table>
                     <tr><td class="font-weight-bold"></td><td></td></tr>
                     <tr><td class="font-weight-bold"></td><td></td></tr>
@@ -62,11 +62,8 @@
             </div>
         </div>
 
-        <div class="mt-4">
-            <h2>{{ 'comment' | trans | capitalize }}</h2>
-
-            {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
-        </div>
+        <h2 class="my-4">{{ 'comment' | trans | capitalize }}</h2>
+        {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
     </div>
 
 {% endblock %}

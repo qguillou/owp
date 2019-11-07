@@ -48,6 +48,11 @@ class Event
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $organizer;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $locationTitle;
 
     /**
@@ -102,6 +107,18 @@ class Event
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getOrganizer(): ?string
+    {
+        return $this->organizer;
+    }
+
+    public function setOrganizer(string $organizer): self
+    {
+        $this->organizer = $organizer;
 
         return $this;
     }
@@ -219,7 +236,7 @@ class Event
         if (empty($dateEnd)) {
             $dateEnd = $this->dateBegin;
         }
-        
+
         $this->dateEnd = $dateEnd;
 
         return $this;

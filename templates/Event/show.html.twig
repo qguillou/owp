@@ -38,11 +38,11 @@
                 <h2 class="my-4">{{ 'location'| trans }}</h2>
                 <b>{{ event.locationTitle | capitalize }}</b>
                 {{ event.locationInformation | raw }}
-                {# if event.latitude is not empty and event.longitude is not empty #}
+                {% if event.latitude is not empty and event.longitude is not empty %}
                     <div class="mt-4">
-                        <div id="map" lat="48.9291776" lon="2.2265856"></div>
+                        <div id="map" lat="{{ event.latitude }}" lon="{{ event.longitude }}"></div>
                     </div>
-                {# endif #}
+                {% endif %}
             </div>
 
             <div class="col-md-4 col-offset-lg-1">

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -41,6 +42,8 @@ final class EventAdmin extends AbstractNodeAdmin
             ->with('location', ['class' => 'col-md-9'])
                 ->add('locationTitle', TextType::class, ['required' => false])
                 ->add('locationInformation', CKEditorType::class, ['config_name' => 'default', 'required' => false])
+                ->add('latitude', NumberType::class, ['required' => false])
+                ->add('longitude', NumberType::class, ['required' => false])
             ->end()
         ;
 

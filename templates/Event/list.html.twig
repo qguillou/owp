@@ -3,9 +3,30 @@
 {% block title %}{{ 'event list' | trans | capitalize }}{% endblock %}
 
 {% block body %}
-    <div class="container my-4">
-        {% for event in events %}
-            
-        {% endfor %}
+    <div class="row">
+        <div class="col-7 offset-lg-1 my-4">
+            <h2>Les prochains évènements</h2>
+            {% for event in events %}
+                <div class="row my-4">
+            		<div class="col-3 text-right">
+            			<h1 class="display-4"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
+            			<h3>{{ event.dateBegin|date('F')|trans }}</h3>
+            			<h3 class="text-primary">{{ event.dateBegin|date('Y') }}</h3>
+            		</div>
+            		<div class="col-9">
+            			<h3 class="text-uppercase"><strong>{{ event.title }}</strong></h3>
+            			<ul class="list-inline">
+            				<li class="list-inline-item"><i class="fa fa-info" aria-hidden="true"></i> {{ event.eventType.label }}</li>
+            				<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ event.locationTitle }}</li>
+            			</ul>
+            			<p>{{ event.content|raw|striptags|slice(0,400) ~ '...' }}</p>
+                        <a href="{{ path('owp_event_show', {'id': event.id}) }}" class="btn btn-primary stretched-link">Plus d'information</a>
+            		</div>
+            	</div>
+            {% endfor %}
+        </div>
+        <div class="col-3 my-4">
+            {% include 'Event/Block/calendar.html.twig' %}
+        </div>
     </div>
 {% endblock %}

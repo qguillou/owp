@@ -265,12 +265,8 @@ class Event
         return $this->dateEnd;
     }
 
-    public function setDateEnd(\DateTimeInterface $dateEnd): self
+    public function setDateEnd($dateEnd): self
     {
-        if (empty($dateEnd)) {
-            $dateEnd = $this->dateBegin;
-        }
-
         $this->dateEnd = $dateEnd;
 
         return $this;

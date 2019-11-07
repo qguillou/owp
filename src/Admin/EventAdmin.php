@@ -11,7 +11,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use App\Entity\EventType;
@@ -27,8 +26,23 @@ final class EventAdmin extends AbstractNodeAdmin
             ->with('Main informations', ['class' => 'text-bold col-md-9'])
                 ->add(self::LABEL, TextType::class)
                 ->add('content', CKEditorType::class, ['config_name' => 'default', 'required' => false])
-                ->add('dateBegin', DateTimePickerType::class)
-                ->add('dateEnd', DateTimePickerType::class, ['required' => false])
+                ->add('dateBegin', DateTimeType::class, array(
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control input-inline datetimepicker',
+                        'data-provide' => 'datetimepicker',
+                        'html5' => false,
+                    ],
+                ))
+                ->add('dateEnd', DateTimeType::class, array(
+                    'required' => false,
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control input-inline datetimepicker',
+                        'data-provide' => 'datetimepicker',
+                        'html5' => false,
+                    ],
+                ))
                 ->add('eventType', EntityType::class, [
                     'class' => EventType::class,
                     'choice_label' => 'label',

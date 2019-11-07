@@ -11,7 +11,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 
 abstract class AbstractNodeAdmin extends AbstractAdmin
 {
@@ -25,8 +24,26 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Meta data', ['class' => 'col-md-3'])
-                ->add('createAt', DateTimePickerType::class, ['disabled' => true])
-                ->add('updateAt', DateTimePickerType::class, ['disabled' => true])
+                ->add('createAt', DateTimeType::class, array(
+                    'required' => false,
+                    'disabled' => true,
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control input-inline datetimepicker',
+                        'data-provide' => 'datetimepicker',
+                        'html5' => false,
+                    ],
+                ))
+                ->add('updateAt', DateTimeType::class, array(
+                    'required' => false,
+                    'disabled' => true,
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control input-inline datetimepicker',
+                        'data-provide' => 'datetimepicker',
+                        'html5' => false,
+                    ],
+                ))
             ->end();
     }
 

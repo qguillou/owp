@@ -38,6 +38,9 @@
     {% if events|length > 0 %}
         <div class="row col-lg-12">
             <div class="col-7 offset-lg-1 my-4">
+                <a href="{{ path('owp_event_list') }}" class="text-body text-decoration-none float-right border-bottom border-primary pl-4">
+                    <strong>Tous les évènements</strong>
+                </a>
                 <h2>Les prochains évènements</h2>
                 {% for event in events %}
                     <div class="row my-4">

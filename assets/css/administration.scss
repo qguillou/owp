@@ -1,5 +1,9 @@
 @import "variables.scss";
 
+.checkbox label, .radio label {
+    font-weight: 400;
+    margin-left: 0;
+}
 
 .box.box-primary {
     border-top-color: $primary;

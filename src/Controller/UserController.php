@@ -18,7 +18,7 @@ class UserController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_USER');
         $current_user = $this->getUser();
 
-        if($user->getId() === $current_user->getId() || $current_user->isGranted('ROLE_ADMIN')) {
+        if ($user->getId() === $current_user->getId() || $current_user->isGranted('ROLE_ADMIN')) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();

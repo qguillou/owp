@@ -62,6 +62,5 @@ final class EventAdmin extends AbstractNodeAdmin
                 ->add('longitude', NumberType::class, ['required' => false])
             ->end()
         ;
-
     }
 }

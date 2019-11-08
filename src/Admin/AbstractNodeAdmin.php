@@ -34,6 +34,10 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
                         'html5' => false,
                     ],
                 ))
+                ->add('createBy', TextType::class, array(
+                    'required' => false,
+                    'disabled' => true
+                ))
                 ->add('updateAt', DateTimeType::class, array(
                     'required' => false,
                     'disabled' => true,
@@ -43,6 +47,10 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
                         'data-provide' => 'datetimepicker',
                         'html5' => false,
                     ],
+                ))
+                ->add('updateBy', TextType::class, array(
+                    'required' => false,
+                    'disabled' => true
                 ))
             ->end();
     }
@@ -71,6 +79,6 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('show',  $this->getRouterIdParameter());
+        $collection->add('show', $this->getRouterIdParameter());
     }
 }

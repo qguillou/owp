@@ -15,7 +15,7 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function formatPeriod($start, $end = NULL)
+    public function formatPeriod($start, $end = null)
     {
         if (empty($end) || $start->getTimestamp() === $end->getTimestamp()) {
             $date = strftime('%A %d %B %Y at %H:%M', $start->getTimestamp());

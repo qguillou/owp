@@ -37,7 +37,6 @@ final class UserAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-
     }
 
     protected function configureListFields(ListMapper $listMapper)

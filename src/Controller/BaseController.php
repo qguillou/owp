@@ -10,11 +10,11 @@ use App\Entity\Base;
 
 class BaseController extends AbstractController
 {
-    CONST COLUMN_BASE_ID = 3;
-    CONST COLUMN_SURNAME = 4;
-    CONST COLUMN_FIRST_NAME = 5;
-    CONST COLUMN_SI_NUMBER = 1;
-    CONST COLUMN_CLUB = 9;
+    const COLUMN_BASE_ID = 3;
+    const COLUMN_SURNAME = 4;
+    const COLUMN_FIRST_NAME = 5;
+    const COLUMN_SI_NUMBER = 1;
+    const COLUMN_CLUB = 9;
 
     /**
      * @Route("/admin/base/update", name="owp_admin_base_update")
@@ -28,10 +28,10 @@ class BaseController extends AbstractController
         fgetcsv($file, 0, ";");
 
         //Loop through the CSV rows.
-        while (($row = fgetcsv($file, 0, ";")) !== FALSE) {
+        while (($row = fgetcsv($file, 0, ";")) !== false) {
             $entity = $baseRepository->find($row[self::COLUMN_BASE_ID]);
 
-            if( empty($entity)) {
+            if (empty($entity)) {
                 $entity = new Base();
                 $entity->setId($row[self::COLUMN_BASE_ID]);
             }

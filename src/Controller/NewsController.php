@@ -18,5 +18,4 @@ class NewsController extends AbstractController
             'news' => $newsRepository->find($id),
         ]);
     }
-
 }

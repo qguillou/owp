@@ -21,6 +21,7 @@ Encore
     .addEntry('user', './assets/js/user.js')
     .addEntry('event', './assets/js/event.js')
     .addEntry('administration', './assets/js/administration.js')
+    .addEntry('map', './assets/js/map.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -36,7 +37,7 @@ Encore
         {from: './node_modules/ckeditor/plugins', to: 'ckeditor/plugins/[path][name].[ext]'},
         {from: './node_modules/ckeditor/skins', to: 'ckeditor/skins/[path][name].[ext]'}
     ])
-    
+
     /*
      * FEATURE CONFIG
      *

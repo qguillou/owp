@@ -16,7 +16,7 @@ class News extends AbstractEntity
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -35,7 +35,7 @@ class News extends AbstractEntity
 
     public function __construct()
     {
-        $this->setPromote(TRUE);
+        $this->setPromote(true);
     }
 
     public function getId(): ?int

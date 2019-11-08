@@ -34,7 +34,6 @@ final class MenuBlock extends AbstractBlockService
 
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-
     }
 
     public function validateBlock(ErrorElement $errorElement, BlockInterface $block)

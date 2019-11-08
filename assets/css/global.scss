@@ -24,6 +24,12 @@ section .section-title {
     text-transform: uppercase;
 }
 
+.dropdown-menu {
+    top: 46px;
+    border-radius: 0;
+    margin: 0;
+}
+
 #footer {
     background: black !important;
 }

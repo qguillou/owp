@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-
 class GoogleAuthenticator extends SocialAuthenticator
 {
     private $clientRegistry;
@@ -106,7 +105,6 @@ class GoogleAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationFailure(Request $request, \Symfony\Component\Security\Core\Exception\AuthenticationException $exception)
     {
-
     }
 
     /**
@@ -126,6 +124,5 @@ class GoogleAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token, $providerKey)
     {
-
     }
 }

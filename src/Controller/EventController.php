@@ -46,5 +46,4 @@ class EventController extends AbstractController
 
         return $events;
     }
-
 }

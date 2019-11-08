@@ -24,6 +24,12 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    App\EventListener\:
+        resource: '../src/EventListener'
+        arguments: ['@security.token_storage']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
 
     App\Twig\:
         resource: '../src/Twig'

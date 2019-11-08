@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class News
+class News extends AbstractEntity
 {
     /**
      * @ORM\Id()
@@ -27,28 +27,6 @@ class News
      * @ORM\Column(type="text")
      */
     private $content;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $createBy;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $updateBy;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createAt;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $updateAt;
 
     /**
      * @ORM\Column(name="promote", type="boolean")
@@ -85,61 +63,6 @@ class News
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getCreateBy(): ?User
-    {
-        return $this->createBy;
-    }
-
-    public function setCreateBy(User $user): self
-    {
-        $this->createBy = $user;
-
-        return $this;
-    }
-
-    public function getCreateAt(): ?\DateTimeInterface
-    {
-        return $this->createAt;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreateAt(): self
-    {
-        $this->createAt = new \DateTime();
-
-        return $this;
-    }
-
-    public function getUpdateAt(): ?\DateTimeInterface
-    {
-        return $this->updateAt;
-    }
-
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function setUpdateAt(): self
-    {
-        $this->updateAt = new \DateTime();
-
-        return $this;
-    }
-
-    public function getUpdateBy(): ?User
-    {
-        return $this->updateBy;
-    }
-
-    public function setUpdateBy(user $user): self
-    {
-        $this->updateBy = $user;
 
         return $this;
     }

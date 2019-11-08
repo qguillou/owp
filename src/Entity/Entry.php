@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Circuit extends AbstractEntity
+class Entry extends AbstractEntity
 {
     /**
      * @ORM\Id
@@ -18,12 +18,13 @@ class Circuit extends AbstractEntity
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Base")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $label;
+    private $base;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Event", inversedBy="circuits")
+    * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
     */
     protected $event;
 
@@ -47,6 +48,18 @@ class Circuit extends AbstractEntity
     public function setEvent(Event $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    public function getBase(): ?Base
+    {
+        return $this->base;
+    }
+
+    public function setBase(Base $base): self
+    {
+        $this->base = $base;
 
         return $this;
     }

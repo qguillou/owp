@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Event
+class Event extends AbstractEntity
 {
     /**
      * @ORM\Id()
@@ -76,31 +76,9 @@ class Event
     private $circuits;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="Entry", cascade={"persist", "remove"}, mappedBy="event")
      */
-    private $createBy;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $updateBy;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createAt;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $updateAt;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    private $entries;
 
     public function getTitle(): ?string
     {
@@ -198,61 +176,6 @@ class Event
         return $this;
     }
 
-    public function getCreateBy(): ?User
-    {
-        return $this->createBy;
-    }
-
-    public function setCreateBy(User $user): self
-    {
-        $this->createBy = $user;
-
-        return $this;
-    }
-
-    public function getCreateAt(): ?\DateTimeInterface
-    {
-        return $this->createAt;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreateAt(): self
-    {
-        $this->createAt = new \DateTime();
-
-        return $this;
-    }
-
-    public function getUpdateAt(): ?\DateTimeInterface
-    {
-        return $this->updateAt;
-    }
-
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function setUpdateAt(): self
-    {
-        $this->updateAt = new \DateTime();
-
-        return $this;
-    }
-
-    public function getUpdateBy(): ?User
-    {
-        return $this->updateBy;
-    }
-
-    public function setUpdateBy(user $user): self
-    {
-        $this->updateBy = $user;
-
-        return $this;
-    }
-
     public function getDateBegin(): ?\DateTimeInterface
     {
         return $this->dateBegin;
@@ -292,6 +215,11 @@ class Event
     public function getCircuits()
     {
         return $this->circuits;
+    }
+
+    public function getEntries()
+    {
+        return $this->entries;
     }
 
     public function setCircuits($circuits): self

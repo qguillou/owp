@@ -604,4 +604,32 @@ $(document).ready(function () {
             url: "/api/event"
         }
     });
+
+    if ($('#events-list').length) {
+        $('#events-list').DataTable({
+            'searching': true,
+            'ordering': false,
+            'paging': false,
+            'info': false,
+            'lengthChange': false,
+            'language': {
+                'search': 'Filtrer'
+            }
+        });
+    }
+
+    if ($('#event-entries').length) {
+        $('#event-entries').DataTable({
+            'searching': false,
+            'pageLength': 25,
+            'info': false,
+            'lengthChange': false,
+            'language': {
+                'paginate': {
+                  'previous': '<',
+                  'next': '>'
+                }
+            }
+        });
+    }
 });

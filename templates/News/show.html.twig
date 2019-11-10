@@ -3,22 +3,34 @@
 {% block title %}{{ news.title }}{% endblock %}
 
 {% block body %}
-    <div class="container my-4">
-        {% if is_granted('ROLE_WEBMASTER') %}
-        <div class="float-right">
-            <a href="{{ path('admin_app_news_edit', {'id': news.id}) }}" class='btn btn-link btn-xs' href=""><i class="fa fa-edit fa-2x"></i></a>
-            <a href="{{ path('admin_app_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-link btn-xs' href=""><i class="fa fa-trash fa-2x"></i></a>
-        </div>
-        {% endif %}
-        <h1>{{ news.title }}</h1>
-        <span class="badge">Publié le {{ news.createAt|date('d/m/Y') }}, mise à jour le {{ news.updateAt|date('d/m/Y')}}</span>
-        <div class="mt-2">{{ news.content|raw }}</div>
+    <div id="content-header" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner bg-dark" role="listbox">
+            <div class="carousel-item active">
+                <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption d-none d-md-block text-left">
+                        <h1>{{ news.title }}</h1>
+                        <div class="text-white font-italic">
+                            {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ news.createAt|date('d/m/Y H:i:s') }}
+                            {{ 'owp_event_show_field_updated_at'|trans ~ ' ' ~ news.updateAt|date('d/m/Y H:i:s') }}
+                        </div>
 
-        <div class="mt-4">
-            <h2>{{ 'comment' | trans | capitalize }}</h2>
-
-            {% include '@FOSComment/Thread/async.html.twig' with {'id': 'news:' ~ news.id} %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    {% if is_granted('ROLE_WEBMASTER') %}
+    <div class="admin-quick-edit">
+        <a href="{{ path('admin_app_news_edit', {'id': news.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> {{ 'owp_button_update'|trans }}</a>
+        <a href="{{ path('admin_app_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-outline-light' href=""><i class="fa fa-trash"></i> {{ 'owp_button_delete'|trans }}</a>
+    </div>
+    {% endif %}
 
+    <div class="container my-4">
+        <div class="mt-2">{{ news.content|raw }}</div>
+
+        <h2 class="my-4">{{ 'owp_news_show_title_comment' | trans }}</h2>
+        {% include '@FOSComment/Thread/async.html.twig' with {'id': 'news:' ~ news.id} %}
+    </div>
 {% endblock %}

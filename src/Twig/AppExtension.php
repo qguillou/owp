@@ -17,12 +17,14 @@ class AppExtension extends AbstractExtension
 
     public function formatPeriod($start, $end = null)
     {
+        setlocale(LC_TIME, 'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
+
         if (empty($end) || $start->getTimestamp() === $end->getTimestamp()) {
-            $date = strftime('%A %d %B %Y at %H:%M', $start->getTimestamp());
+            $date = strftime('%A %d %B %Y %H:%M', $start->getTimestamp());
         } elseif ($start->format('d') === $end->format('d')) {
-            $date = strftime('%A %d %B %Y from %H:%M', $start->getTimestamp()) . ' to ' . strftime('%H:%M', $start->getTimestamp());
+            $date = strftime('%A %d %B %Y %H:%M', $start->getTimestamp()) . ' - ' . strftime('%H:%M', $start->getTimestamp());
         } else {
-            $date = strftime('From %A %d %B %Y at %H:%M', $start->getTimestamp()) . ' to ' . strftime('%A %d %B %Y at %H:%M', $end->getTimestamp());
+            $date = strftime('%A %d %B %Y %H:%M', $start->getTimestamp()) . ' - ' . strftime('%A %d %B %Y %H:%M', $end->getTimestamp());
         }
 
         return $date;

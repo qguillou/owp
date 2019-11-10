@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 final class CircuitAdmin extends AbstractEntityAdmin
 {
-    protected $baseRoutePattern  = 'link';
+    protected $baseRoutePattern  = 'circuit';
 
     protected function configureFormFields(FormMapper $formMapper)
     {

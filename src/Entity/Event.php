@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\User;
 use App\Entity\EventType;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -76,9 +77,24 @@ class Event extends AbstractEntity
     private $circuits;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $allowEntries;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateEntries;
+
+    /**
      * @ORM\OneToMany(targetEntity="Entry", cascade={"persist", "remove"}, mappedBy="event")
      */
     private $entries;
+
+    public function __construct()
+    {
+        $this->circuits = new ArrayCollection();
+    }
 
     public function getTitle(): ?string
     {
@@ -217,6 +233,30 @@ class Event extends AbstractEntity
         return $this->circuits;
     }
 
+    public function getAllowEntries(): ?bool
+    {
+        return $this->allowEntries;
+    }
+
+    public function setAllowEntries(bool $allowEntries): self
+    {
+        $this->allowEntries = $allowEntries;
+
+        return $this;
+    }
+
+    public function getDateEntries(): ?\DateTimeInterface
+    {
+        return $this->dateEntries;
+    }
+
+    public function setDateEntries($dateEntries): self
+    {
+        $this->dateEntries = $dateEntries;
+
+        return $this;
+    }
+
     public function getEntries()
     {
         return $this->entries;
@@ -225,6 +265,14 @@ class Event extends AbstractEntity
     public function setCircuits($circuits): self
     {
         $this->circuits = $circuits;
+
+        return $this;
+    }
+
+    public function addCircuits($circuit)
+    {
+        $circuit->setEvent($this);
+        $this->circuits->add($circuit);
 
         return $this;
     }

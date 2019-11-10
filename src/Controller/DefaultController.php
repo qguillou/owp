@@ -20,14 +20,4 @@ class DefaultController extends AbstractController
             'events' => $eventRepository->findFutureEvent(3),
         ]);
     }
-
-    /**
-     * @Route("/about", name="owp_about")
-     */
-    public function about(): Response
-    {
-        return $this->render('Common/about.html.twig', [
-
-        ]);
-    }
 }

@@ -24,6 +24,7 @@ class Circuit extends AbstractEntity
 
     /**
     * @ORM\ManyToOne(targetEntity="Event", inversedBy="circuits")
+    * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
     */
     protected $event;
 

@@ -19,13 +19,13 @@
 
 {% block body %}
     <div class="row m-0">
-        <div class="col-lg-3 p-0">
+        <div class="col-2 p-0">
             <div class="h-100 nav-side-menu">
                 {{ knp_menu_render('sonata_admin_sidebar', {template: get_global_template('knp_menu_template')}) }}
             </div>
         </div>
 
-        <div class="my-4 col-lg-9">
+        <div class="my-4 col-10">
             {% block content %}
                 {% set _title = block('title') is defined ? block('title')|trim : null %}
                 {% set _preview = block('preview') is defined ? block('preview')|trim : null %}

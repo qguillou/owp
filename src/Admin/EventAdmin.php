@@ -11,12 +11,14 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use App\Entity\EventType;
 use App\Entity\Event;
+use App\Entity\Circuit;
 use App\Form\Type\CircuitType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Sonata\AdminBundle\Form\Type\CollectionType;
 
 final class EventAdmin extends AbstractNodeAdmin
 {
@@ -60,6 +62,21 @@ final class EventAdmin extends AbstractNodeAdmin
                 ->add('locationInformation', CKEditorType::class, ['config_name' => 'default', 'required' => false])
                 ->add('latitude', NumberType::class, ['required' => false])
                 ->add('longitude', NumberType::class, ['required' => false])
+            ->end()
+        ;
+
+        $formMapper
+            ->with('entries', ['class' => 'col-md-9'])
+                ->add('allowEntries', CheckboxType::class, ['required' => false])
+                ->add('dateEntries', DateTimeType::class, array(
+                    'required' => false,
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control input-inline datetimepicker',
+                        'data-provide' => 'datetimepicker',
+                        'html5' => false,
+                    ],
+                ))
             ->end()
         ;
     }

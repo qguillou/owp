@@ -5,8 +5,11 @@ comment: commentaire
 
 # Entity Global
 Title: Titre
+Content: Contenu
 Create At: Créé le
 Update At: Mis à jour le
+Create By: Créé par
+Update By: Mis à jour par
 # Entity User
 Username:   Nom d'utilisateur
 Last Login: Dernière connexion
@@ -17,6 +20,8 @@ Promote: Promu en page d'accueil
 organizer: organisateur
 circuit: circuit
 entries: inscriptions
+Date Begin: Date de début
+Date End: Date de fin
 
 
 # Administration
@@ -55,3 +60,30 @@ September: Septembre
 October: Octobre
 November: Novembre
 December: Décembre
+
+owp_event_entries_not_allowed: Les inscriptions sont désactivées pour cet évènement.
+owp_event_show_title_main_information: Informations générales
+owp_event_show_title_circuit: Circuit
+owp_event_show_title_entries: Inscription
+owp_event_show_title_comment: Commentaire
+owp_event_show_title_location: Emplacement
+owp_event_show_title_modal_entries: Inscription
+owp_event_show_field_date: Date
+owp_event_show_field_event_type: Type d'évènement
+owp_event_show_field_organizer: Organisateur
+owp_event_show_field_published_at: Publié le
+owp_event_show_field_updated_at: Modifié le
+owp_event_show_field_circuit_name: Nom
+owp_event_show_field_entries_first_name: Prénom
+owp_event_show_field_entries_last_name: Nom
+owp_event_show_field_entries_circuit: Circuit
+owp_event_show_field_entries_comment: Commentaire
+owp_event_show_button_update: Modifier
+owp_event_show_button_delete: Supprimer
+owp_event_show_button_register: S'inscrire
+owp_event_show_button_cancel: Annuler
+
+owp_news_show_title_comment: Commentaire
+
+owp_button_update: Modifier
+owp_button_delete: Supprimer

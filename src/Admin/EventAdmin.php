@@ -19,6 +19,8 @@ use App\Entity\Event;
 use App\Entity\Circuit;
 use App\Form\Type\CircuitType;
 use Sonata\AdminBundle\Form\Type\CollectionType;
+use Sonata\AdminBundle\Form\Type\AdminType;
+use Sonata\AdminBundle\Form\Type\ModelType;
 
 final class EventAdmin extends AbstractNodeAdmin
 {
@@ -51,6 +53,8 @@ final class EventAdmin extends AbstractNodeAdmin
                     'class' => EventType::class,
                     'choice_label' => 'label',
                 ])
+                ->add('organizer', TextType::class, ['required' => false])
+                ->add('website', TextType::class, ['required' => false])
             ->end()
         ;
 
@@ -77,6 +81,17 @@ final class EventAdmin extends AbstractNodeAdmin
                         'html5' => false,
                     ],
                 ))
+            ->end()
+        ;
+
+        $formMapper
+            ->with('sections', ['class' => 'col-md-9'])
+            ->add('sections', ModelType::class, [
+                'property' => 'title',
+                'required' => false,
+                'multiple' => true,
+                'class' => 'App\Entity\News',
+            ])
             ->end()
         ;
     }

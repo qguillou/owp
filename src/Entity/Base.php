@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BaseRepository")
- * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Base
 {
@@ -94,5 +94,10 @@ class Base
         $this->club = $club;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getId() . ' - ' . $this->getSurname() . ' ' . $this->getFirstName();
     }
 }

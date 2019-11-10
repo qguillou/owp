@@ -1,7 +1,7 @@
 const $ = require('jquery');
 
 $(document).ready(function () {
-    if ($('#map')) {
+    if ($('#map').length) {
         var lat = $('#map').attr('lat');
         var lon = $('#map').attr('lon');
 

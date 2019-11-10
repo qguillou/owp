@@ -3,10 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Entry extends AbstractEntity
 {
@@ -18,26 +19,19 @@ class Entry extends AbstractEntity
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Base")
+     * @ORM\OneToMany(targetEntity="People", mappedBy="entry", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
-    private $base;
+    protected $peoples;
 
     /**
     * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
     */
     protected $event;
 
-    public function getLabel(): ?string
+    public function __construct()
     {
-        return $this->label;
-    }
-
-    public function setLabel(string $label): self
-    {
-        $this->label = $label;
-
-        return $this;
+        $this->peoples = new ArrayCollection();
     }
 
     public function getEvent(): ?Event
@@ -52,14 +46,28 @@ class Entry extends AbstractEntity
         return $this;
     }
 
-    public function getBase(): ?Base
+    public function getPeoples()
     {
-        return $this->base;
+        return $this->peoples;
     }
 
-    public function setBase(Base $base): self
+    public function setPeoples(ArrayCollection $peoples): self
     {
-        $this->base = $base;
+        $this->peoples = $peoples;
+
+        return $this;
+    }
+
+    public function addPeople(People $people): self
+    {
+        $this->peoples->add($people);
+
+        return $this;
+    }
+
+    public function removePeople(People $people): self
+    {
+        $this->peoples->remove($people);
 
         return $this;
     }

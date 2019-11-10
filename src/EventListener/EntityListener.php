@@ -28,8 +28,13 @@ class EntityListener implements EventSubscriber
     public function prePersist(LifecycleEventArgs $event)
     {
         $entity = $event->getEntity();
-        if ($entity instanceof AbstractEntity) {
+
+        $class = $event->getEntityManager()->getClassMetadata(get_class($entity));
+
+        if ($class->hasField('createBy')) {
             $entity->setCreateBy($this->tokenStorage->getToken()->getUser());
+        }
+        if ($class->hasField('updateBy')) {
             $entity->setUpdateBy($this->tokenStorage->getToken()->getUser());
         }
     }
@@ -37,7 +42,10 @@ class EntityListener implements EventSubscriber
     public function preUpdate(LifecycleEventArgs $event)
     {
         $entity = $event->getEntity();
-        if ($entity instanceof AbstractEntity) {
+
+        $class = $event->getEntityManager()->getClassMetadata(get_class($entity));
+
+        if ($class->hasField('updateBy')) {
             $entity->setUpdateBy($this->tokenStorage->getToken()->getUser());
         }
     }

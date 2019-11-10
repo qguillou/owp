@@ -20,6 +20,12 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Base")
+     * @ORM\JoinColumn(name="base_id", referencedColumnName="id", nullable=true)
+     */
+    private $base;
+
+    /**
      * @ORM\Column(type="string", nullable=true)
      */
     protected $name;
@@ -49,6 +55,18 @@ class User extends BaseUser
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getBase(): ?Base
+    {
+        return $this->base;
+    }
+
+    public function setBase(Base $base): self
+    {
+        $this->base = $base;
 
         return $this;
     }

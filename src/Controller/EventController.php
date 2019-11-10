@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventRepository;
+use App\Entity\Entry;
+use App\Entity\People;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\EntryType;
 
 class EventController extends AbstractController
 {
@@ -22,10 +26,31 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{id}", name="owp_event_show")
      */
-    public function show($id, EventRepository $eventRepository): Response
+    public function show(Request $request, $id, EventRepository $eventRepository): Response
     {
+        $event = $eventRepository->find($id);
+
+        $entry = new Entry();
+        $entry->setEvent($event);
+
+        $people = new People();
+        $people->setEntry($entry);
+        $entry->addPeople($people);
+
+        $form = $this->createForm(EntryType::class, $entry);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entry = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($entry);
+            $entityManager->flush();
+        }
+
         return $this->render('Event/show.html.twig', [
-            'event' => $eventRepository->find($id),
+            'event' => $event,
+            'form' => $form->createView()
         ]);
     }
 

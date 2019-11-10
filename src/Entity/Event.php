@@ -54,6 +54,11 @@ class Event extends AbstractEntity
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $website;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $locationTitle;
 
     /**
@@ -91,9 +96,19 @@ class Event extends AbstractEntity
      */
     private $entries;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="News")
+     * @ORM\JoinTable(name="event_news",
+     *      joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="news_id", referencedColumnName="id")}
+     * )
+     */
+    private $sections;
+
     public function __construct()
     {
         $this->circuits = new ArrayCollection();
+        $this->sections = new ArrayCollection();
     }
 
     public function getTitle(): ?string
@@ -128,6 +143,18 @@ class Event extends AbstractEntity
     public function setOrganizer(string $organizer): self
     {
         $this->organizer = $organizer;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(string $website): self
+    {
+        $this->website = $website;
 
         return $this;
     }
@@ -228,10 +255,6 @@ class Event extends AbstractEntity
         return $this;
     }
 
-    public function getCircuits()
-    {
-        return $this->circuits;
-    }
 
     public function getAllowEntries(): ?bool
     {
@@ -262,6 +285,11 @@ class Event extends AbstractEntity
         return $this->entries;
     }
 
+    public function getCircuits()
+    {
+        return $this->circuits;
+    }
+
     public function setCircuits($circuits): self
     {
         $this->circuits = $circuits;
@@ -272,6 +300,25 @@ class Event extends AbstractEntity
     public function addCircuits($circuit)
     {
         $circuit->setEvent($this);
+        $this->circuits->add($circuit);
+
+        return $this;
+    }
+
+    public function getSections()
+    {
+        return $this->sections;
+    }
+
+    public function setSections($sections): self
+    {
+        $this->sections = $sections;
+
+        return $this;
+    }
+
+    public function addSections($sections)
+    {
         $this->circuits->add($circuit);
 
         return $this;

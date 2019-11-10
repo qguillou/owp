@@ -4,3 +4,6 @@ fos_comment:
         model:
             comment: App\Entity\Comment
             thread: App\Entity\Thread
+    service:
+        sorting:
+            default: date_asc

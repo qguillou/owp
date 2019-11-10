@@ -62,6 +62,7 @@ November: Novembre
 December: Décembre
 
 owp_event_entries_not_allowed: Les inscriptions sont désactivées pour cet évènement.
+owp_event_entries_closed: Les inscriptions à cet évènement sont terminées.
 owp_event_show_title_main_information: Informations générales
 owp_event_show_title_circuit: Circuit
 owp_event_show_title_entries: Inscription
@@ -78,10 +79,17 @@ owp_event_show_field_entries_first_name: Prénom
 owp_event_show_field_entries_last_name: Nom
 owp_event_show_field_entries_circuit: Circuit
 owp_event_show_field_entries_comment: Commentaire
+owp_event_show_field_entries_actions: Actions
+owp_event_show_field_website: Site web
 owp_event_show_button_update: Modifier
 owp_event_show_button_delete: Supprimer
 owp_event_show_button_register: S'inscrire
 owp_event_show_button_cancel: Annuler
+owp_event_show_button_website: Accéder au site de l'évènement
+owp_event_show_button_go_back_event: Retourner sur l'évènement
+owp_event_show_confirm_delete: Êtes vous sûr de vouloir supprimer cet évènement ?
+
+owp_event_register_title: Inscription
 
 owp_news_show_title_comment: Commentaire
 

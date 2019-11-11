@@ -1,0 +1,39 @@
+<div id="news" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        {% for new in news|slice(0, 6) %}
+            <li data-target="#news" data-slide-to="{{ loop.index0 }}" class="{{ loop.index0 == 0 ? 'active' }}"></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner bg-dark" role="listbox">
+        {% for new in news|slice(0, 6) %}
+            <div class="carousel-item {{ loop.index0 == 0 ? 'active' }}">
+                <!--<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">-->
+                <div class="container">
+                    <div class="carousel-caption d-none d-md-block text-left">
+                        <h1 class="text-primary">{{ new.title }}</h1>
+                        <div class="text-white font-italic">
+                            {{ 'owp_homepage_field_published_at'|trans ~ ' ' ~ new.createAt|date('d/m/Y H:i:s') }}
+                            {{ 'owp_homepage_field_updated_at'|trans ~ ' ' ~ new.updateAt|date('d/m/Y H:i:s') }}
+                        </div>
+                        <p class="text-justify">{{ new.content|raw|striptags|slice(0,800) ~ '...' }}</p>
+                        <p>
+                            <a class="btn btn-primary" href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">
+                                {{ 'owp_homepage_button_read_more'|trans }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if news|length > 1 %}
+        <a class="carousel-control-prev" href="#news" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#news" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    {% endif %}
+</div>

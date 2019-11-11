@@ -61,6 +61,16 @@ October: Octobre
 November: Novembre
 December: Décembre
 
+owp_hompage_title_events: Les prochains évènements
+owp_hompage_title_news: Les anciennes actualités
+owp_hompage_link_events: Voir tous les évènements
+owp_homepage_button_read_more: Lire la suite
+owp_homepage_button_more_informations: Plus d'informations
+owp_homepage_button_read_news: Lire l'actualité
+
+owp_event_list_title: Tous les évènements à venir
+owp_event_list_input_search_placeholder: Rechercher...
+
 owp_event_entries_not_allowed: Les inscriptions sont désactivées pour cet évènement.
 owp_event_entries_closed: Les inscriptions à cet évènement sont terminées.
 owp_event_show_title_main_information: Informations générales

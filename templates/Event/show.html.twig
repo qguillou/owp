@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'content.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
     {{ encore_entry_link_tags('map') }}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
-
-
 {% endblock %}
 
 {% block javascripts %}
@@ -20,172 +18,166 @@
 
 {% block title %}{{ event.title }}{% endblock %}
 
-{% block body %}
-    <div id="content-header" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner bg-dark" role="listbox">
-            <div class="carousel-item active">
-                <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
-                <div class="container">
-                    <div class="carousel-caption d-none d-md-block text-left">
-                        <h1 class="display-2 d-inline-block"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
-            			<h3 class="display-4 d-inline-block"><span class="badge">{{ event.dateBegin|date('F')|trans|upper }}</span></h3>
-                        <h1>{{ event.title }}</h1>
-                        <div class="text-white font-italic">
-                            {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ event.createAt|date('d/m/Y H:i:s') }}
-                            {{ 'owp_event_show_field_updated_at'|trans ~ ' ' ~ event.updateAt|date('d/m/Y H:i:s') }}
-                        </div>
-                        {% if event.website %}
-                            <div class="my-4">
-                                <a href="{{ event.website }}" class="btn btn-primary">{{ 'owp_event_show_button_website'|trans }}</a>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+{% block content_header %}
+    <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
+    <div class="container">
+        <div class="carousel-caption d-none d-md-block text-left">
+            <h1 class="display-2 d-inline-block"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
+            <h3 class="display-4 d-inline-block"><span class="badge">{{ event.dateBegin|date('F')|trans|upper }}</span></h3>
+            <h1>{{ event.title }}</h1>
+            <div class="text-white font-italic">
+                {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ event.createAt|date('d/m/Y H:i:s') }}
+                {{ 'owp_event_show_field_updated_at'|trans ~ ' ' ~ event.updateAt|date('d/m/Y H:i:s') }}
             </div>
+            {% if event.website %}
+                <div class="my-4">
+                    <a href="{{ event.website }}" class="btn btn-primary">{{ 'owp_event_show_button_website'|trans }}</a>
+                </div>
+            {% endif %}
         </div>
     </div>
-    {% if is_granted('ROLE_WEBMASTER') %}
-    <div class="admin-quick-edit">
-        <a href="{{ path('admin_app_event_edit', {'id': event.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> {{ 'owp_event_show_button_update'|trans }}</a>
-        <a href="{{ path('admin_app_event_delete', {'id': event.id}) }}" onclick="return confirm('{{ 'owp_event_show_confirm_delete'|trans }}');" class='btn btn-outline-light' href=""><i class="fa fa-trash"></i> {{ 'owp_event_show_button_delete'|trans }}</a>
-    </div>
-    {% endif %}
+{% endblock %}
 
-    <div class="container my-4">
-        <div class="mt-2">{{ event.content|raw }}</div>
+{% block content_admin_actions %}
+    <a href="{{ path('admin_app_event_edit', {'id': event.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> {{ 'owp_event_show_button_update'|trans }}</a>
+    <a href="{{ path('admin_app_event_delete', {'id': event.id}) }}" onclick="return confirm('{{ 'owp_event_show_confirm_delete'|trans }}');" class='btn btn-outline-light' href=""><i class="fa fa-trash"></i> {{ 'owp_event_show_button_delete'|trans }}</a>
+{% endblock %}
 
-        <div class="row">
-            <div class="col-6">
-                <h2 class="my-4">{{ 'owp_event_show_title_main_information'| trans }}</h2>
-                <table>
-                    <tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_date'|trans }}</td><td>{{ period(event.dateBegin, event.dateEnd)|capitalize }}</td></tr>
-                    <tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_event_type'|trans }}</td><td>{{ event.eventType.label|capitalize }}</td></tr>
-                    {% if event.organizer %}<tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_organizer'|trans  }}</td><td>{{ event.organizer|capitalize }}</td></tr>{% endif %}
-                    {% if event.website %}<tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_website'|trans  }}</td><td><a href="{{ event.website }}">{{ event.website }}</a></td></tr>{% endif %}
-                </table>
+{% block content_body %}
 
-                <h2 class="my-4">{{ 'owp_event_show_title_location'| trans }}</h2>
-                <b>{{ event.locationTitle | capitalize }}</b>
-                {{ event.locationInformation | raw }}
-                {% if event.latitude is not empty and event.longitude is not empty %}
-                    <div class="mt-4">
-                        <div id="map" lat="{{ event.latitude }}" lon="{{ event.longitude }}"></div>
-                    </div>
-                {% endif %}
-            </div>
+    <div class="mt-2">{{ event.content|raw }}</div>
 
-            <div class="col-6">
-                {% if event.circuits|length > 0 %}
-                    <h2 class="my-4">{{ 'owp_event_show_title_circuit'| trans }}</h2>
-                    <table id="event-entries" class="table table-striped">
-                        <thead class="bg-primary text-white">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="my-4">{{ 'owp_event_show_title_main_information'| trans }}</h2>
+            <table>
+                <tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_date'|trans }}</td><td>{{ period(event.dateBegin, event.dateEnd)|capitalize }}</td></tr>
+                <tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_event_type'|trans }}</td><td>{{ event.eventType.label|capitalize }}</td></tr>
+                {% if event.organizer %}<tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_organizer'|trans  }}</td><td>{{ event.organizer|capitalize }}</td></tr>{% endif %}
+                {% if event.website %}<tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_website'|trans  }}</td><td><a href="{{ event.website }}">{{ event.website }}</a></td></tr>{% endif %}
+            </table>
+
+            <h2 class="my-4">{{ 'owp_event_show_title_location'| trans }}</h2>
+            <b>{{ event.locationTitle | capitalize }}</b>
+            {{ event.locationInformation | raw }}
+            {% if event.latitude is not empty and event.longitude is not empty %}
+                <div class="mt-4">
+                    <div id="map" lat="{{ event.latitude }}" lon="{{ event.longitude }}"></div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-6">
+            {% if event.circuits|length > 0 %}
+                <h2 class="my-4">{{ 'owp_event_show_title_circuit'| trans }}</h2>
+                <table id="event-entries" class="table table-striped">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">{{ 'owp_event_show_field_circuit_name'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for circuit in event.circuits %}
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">{{ 'owp_event_show_field_circuit_name'|trans }}</th>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ circuit.label }}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {% for circuit in event.circuits %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+            <h2 class="my-4">{{ 'owp_event_show_title_entries'| trans }}</h2>
+            {% if not event.allowEntries %}
+                {{ 'owp_event_entries_not_allowed'|trans }}
+            {% else %}
+                {% if not event.dateEntries or event.dateEntries|date('U') > 'now'|date('U') %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-entries">
+                        {{ 'owp_event_show_button_register'|trans }}
+                    </button>
+
+                    <div class="modal fade" id="modal-entries" tabindex="-1" role="dialog" aria-labelledby="modal-entries-label" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                {{ form_start(form) }}
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal-entries-label">{{ 'owp_event_show_title_modal_entries'|trans }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                        <div class="my-custom-class-for-errors">
+                                            {{ form_errors(form) }}
+                                        </div>
+                                        <ul class="tags" data-prototype="{{ form_widget(form.peoples.vars.prototype)|e('html_attr') }}">
+                                            {% for people in form.peoples %}
+                                                <li>{{ form_row(people.base) }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {{ form_row(form.peoples) }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-link" data-dismiss="modal">{{ 'owp_event_show_button_cancel'|trans }}</button>
+                                    {{ form_row(form.save) }}
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {{ 'owp_event_entries_closed'|trans}}
+                {% endif %}
+
+                <table id="event-entries" class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">{{ 'owp_event_show_field_entries_first_name'|trans }}</th>
+                            <th scope="col">{{ 'owp_event_show_field_entries_last_name'|trans }}</th>
+                            {% if event.circuits|length > 0 %}<th scope="col">{{ 'owp_event_show_field_entries_circuit'|trans }}</th>{% endif %}
+                            <th scope="col">{{ 'owp_event_show_field_entries_comment'|trans }}</th>
+                            <th scope="col">{{ 'owp_event_show_field_entries_actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in event.entries %}
+                            {% for people in entry.peoples %}
                                 <tr>
-                                    <th scope="row">{{ loop.index }}</th>
-                                    <td>{{ circuit.label }}</td>
+                                    <th scope="row">{{ loop.parent.loop.index }}{% if entry.peoples|length > 1 %}{{ '.' ~ loop.index }}{% endif %}</th>
+                                    {% if people.base %}
+                                        <td>{{ people.base.firstName }}</td>
+                                        <td>{{ people.base.surname }}</td>
+                                    {% else %}
+                                        <td>{{ people.firstName }}</td>
+                                        <td>{{ people.lastName }}</td>
+                                    {% endif %}
+                                    <td></td>
+                                    <td>
+                                        {{ entry.createBy}}
+                                        {% if app.user.id is same as(entry.createBy) or (app.user.base is not empty and app.user.base is same as(people.base)) %}
+                                            Ok
+                                        {% endif %}
+                                    </td>
                                 </tr>
                             {% endfor %}
-                        </tbody>
-                    </table>
-                {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
 
-                <h2 class="my-4">{{ 'owp_event_show_title_entries'| trans }}</h2>
-                {% if not event.allowEntries %}
-                    {{ 'owp_event_entries_not_allowed'|trans }}
-                {% else %}
-                    {% if not event.dateEntries or event.dateEntries|date('U') > 'now'|date('U') %}
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-entries">
-                            {{ 'owp_event_show_button_register'|trans }}
-                        </button>
-
-                        <div class="modal fade" id="modal-entries" tabindex="-1" role="dialog" aria-labelledby="modal-entries-label" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    {{ form_start(form) }}
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modal-entries-label">{{ 'owp_event_show_title_modal_entries'|trans }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                            <div class="my-custom-class-for-errors">
-                                                {{ form_errors(form) }}
-                                            </div>
-                                            <ul class="tags" data-prototype="{{ form_widget(form.peoples.vars.prototype)|e('html_attr') }}">
-                                                {% for people in form.peoples %}
-                                                    <li>{{ form_row(people.base) }}</li>
-                                                {% endfor %}
-                                            </ul>
-                                            {{ form_row(form.peoples) }}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-link" data-dismiss="modal">{{ 'owp_event_show_button_cancel'|trans }}</button>
-                                        {{ form_row(form.save) }}
-                                    </div>
-                                    {{ form_end(form) }}
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        {{ 'owp_event_entries_closed'|trans}}
-                    {% endif %}
-
-                    <table id="event-entries" class="table">
-                        <thead class="bg-primary text-white">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">{{ 'owp_event_show_field_entries_first_name'|trans }}</th>
-                                <th scope="col">{{ 'owp_event_show_field_entries_last_name'|trans }}</th>
-                                {% if event.circuits|length > 0 %}<th scope="col">{{ 'owp_event_show_field_entries_circuit'|trans }}</th>{% endif %}
-                                <th scope="col">{{ 'owp_event_show_field_entries_comment'|trans }}</th>
-                                <th scope="col">{{ 'owp_event_show_field_entries_actions'|trans }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for entry in event.entries %}
-                                {% for people in entry.peoples %}
-                                    <tr>
-                                        <th scope="row">{{ loop.parent.loop.index }}{% if entry.peoples|length > 1 %}{{ '.' ~ loop.index }}{% endif %}</th>
-                                        {% if people.base %}
-                                            <td>{{ people.base.firstName }}</td>
-                                            <td>{{ people.base.surname }}</td>
-                                        {% else %}
-                                            <td>{{ people.firstName }}</td>
-                                            <td>{{ people.lastName }}</td>
-                                        {% endif %}
-                                        <td></td>
-                                        <td>
-                                            {{ entry.createBy}}
-                                            {% if app.user.id is same as(entry.createBy) or (app.user.base is not empty and app.user.base is same as(people.base)) %}
-                                                Ok
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% endif %}
+    {% for section in event.sections %}
+        <div class="row">
+            <div class="col-12">
+                <h2 class="my-4">{{ section.title }}</h2>
+                {{ section.content|raw }}
             </div>
         </div>
+    {% endfor %}
 
-        {% for section in event.sections %}
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="my-4">{{ section.title }}</h2>
-                    {{ section.content|raw }}
-                </div>
-            </div>
-        {% endfor %}
-
-        <h2 class="my-4">{{ 'owp_event_show_title_comment' | trans }}</h2>
-        {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
-    </div>
+    <h2 class="my-4">{{ 'owp_event_show_title_comment' | trans }}</h2>
+    {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
 {% endblock %}

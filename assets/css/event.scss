@@ -4,6 +4,10 @@
     height: 400px;
 }
 
+#events-list_wrapper .row:first-child {
+    display: none;
+}
+
 div.zabuto_calendar {
     margin: 0;
     padding: 0;

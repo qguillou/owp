@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Home{% endtrans %}{% endblock %}
+{% block body %}
+    {% include 'Homepage/homepage_news.html.twig' %}
+
+    {% include 'Homepage/homepage_events.html.twig' %}
+
+    {% include 'Homepage/homepage_older_news.html.twig' %}
+{% endblock %}

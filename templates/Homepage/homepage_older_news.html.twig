@@ -1,0 +1,26 @@
+{% if news|length > 6 %}
+    <div class="bg-light">
+        <div class="py-4">
+            <div class="row col-10 offset-1">
+                <h2 class="col-9">{{ 'owp_hompage_title_news'|trans }}</h2>
+            </div>
+
+            <div class="row col-10 offset-1">
+                {% for new in news|slice(6, news|length) %}
+                    <div class="col-xs-10 col-sm-4 col-md-3">
+                        <div class="card m-2 bg-transparent">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ new.title }}</h5>
+                                <p>
+                                    Publié le {{ new.createAt|date('d/m/Y') }}
+                                    Mise à jour le {{ new.updateAt|date('d/m/Y')}}
+                                </p>
+                                <a href="{{ path('owp_news_show', {'id': new.id}) }}" class="btn btn-primary stretched-link">{{ 'owp_homepage_button_read_news'|trans}}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -15,7 +15,7 @@ class DefaultController extends AbstractController
      */
     public function index(NewsRepository $newsRepository, EventRepository $eventRepository): Response
     {
-        return $this->render('Common/homepage.html.twig', [
+        return $this->render('Homepage/homepage.html.twig', [
             'news' => $newsRepository->findBy(array('promote' => true), array('updateAt' => 'DESC')),
             'events' => $eventRepository->findFutureEvent(3),
         ]);

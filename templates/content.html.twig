@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('content') }}
+{% endblock %}
+
+{% block body %}
+    <div id="content-header" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner bg-dark" role="listbox">
+            <div class="carousel-item active" height="25rem">
+                {% block content_header %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {% if is_granted('ROLE_WEBMASTER') %}
+    <div class="admin-quick-edit">
+        {% block content_admin_actions %}{% endblock %}
+    </div>
+    {% endif %}
+
+    <div class="container my-4">
+        {% block content_body %}{% endblock %}
+    </div>
+
+    {% block content_footer %}{% endblock %}
+{% endblock %}

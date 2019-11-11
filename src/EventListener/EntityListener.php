@@ -29,12 +29,8 @@ class EntityListener implements EventSubscriber
     {
         $entity = $event->getEntity();
 
-        $class = $event->getEntityManager()->getClassMetadata(get_class($entity));
-
-        if ($class->hasField('createBy')) {
+        if ($entity instanceof AbstractEntity) {
             $entity->setCreateBy($this->tokenStorage->getToken()->getUser());
-        }
-        if ($class->hasField('updateBy')) {
             $entity->setUpdateBy($this->tokenStorage->getToken()->getUser());
         }
     }
@@ -43,9 +39,7 @@ class EntityListener implements EventSubscriber
     {
         $entity = $event->getEntity();
 
-        $class = $event->getEntityManager()->getClassMetadata(get_class($entity));
-
-        if ($class->hasField('updateBy')) {
+        if ($entity instanceof AbstractEntity) {
             $entity->setUpdateBy($this->tokenStorage->getToken()->getUser());
         }
     }

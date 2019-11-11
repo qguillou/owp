@@ -606,14 +606,15 @@ $(document).ready(function () {
     });
 
     if ($('#events-list').length) {
-        $('#events-list').DataTable({
+        var eventListTable = $('#events-list').DataTable({
             'searching': true,
             'ordering': false,
             'paging': false,
             'info': false,
             'lengthChange': false,
             'language': {
-                'search': 'Filtrer'
+                'search': 'Filtrer',
+                'zeroRecords': ''
             }
         });
     }
@@ -630,6 +631,12 @@ $(document).ready(function () {
                   'next': '>'
                 }
             }
+        });
+    }
+
+    if($('#search-event').length) {
+        $('#search-event').on('input', function() {
+            eventListTable.search($('#search-event').val()).draw();
         });
     }
 });

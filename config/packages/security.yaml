@@ -24,10 +24,6 @@ security:
 
             logout:       true
             anonymous:    true
-            guard:
-                provider: fos_userbundle
-                authenticators:
-                    - App\Security\GoogleAuthenticator
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -36,12 +32,3 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_WEBMASTER }
-
-knpu_oauth2_client:
-    clients:
-        google:
-            type: google
-            client_id: '%env(resolve:GOOGLE_CLIENT_ID)%'
-            client_secret: '%env(resolve:GOOGLE_CLIENT_SECRET)%'
-            redirect_route: connect_google_check
-            redirect_params: {}

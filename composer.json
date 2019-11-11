@@ -8,8 +8,6 @@
         "friendsofsymfony/ckeditor-bundle": "^1.2",
         "friendsofsymfony/comment-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "~2.0",
-        "knpuniversity/oauth2-client-bundle": "^1.29",
-        "league/oauth2-google": "^3.0",
         "sensio/framework-extra-bundle": "^5.4",
         "sonata-project/admin-bundle": "^3.54",
         "sonata-project/doctrine-orm-admin-bundle": "^3.10",

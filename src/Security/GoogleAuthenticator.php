@@ -64,48 +64,6 @@ class GoogleAuthenticator extends SocialAuthenticator
     }
 
     /**
-     * @param mixed $credentials
-     * @param UserProviderInterface $userProvider
-     * @return User|null|object|\Symfony\Component\Security\Core\User\UserInterface
-     */
-    public function getUser($credentials, UserProviderInterface $userProvider)
-    {
-        /** @var GoogleUser $googleUser */
-        $googleUser = $this->getGoogleClient()
-            ->fetchUserFromToken($credentials);
-
-        $email = $googleUser->getEmail();
-
-        // 1) have they logged in with Google before? Easy!
-        $existingUser = $this->em->getRepository(User::class)
-            ->findOneBy(['googleId' => $googleUser->getId()]);
-
-        if ($existingUser) {
-            $user = $existingUser;
-        } else {
-            // 2) do we have a matching user by email?
-            $user = $this->em->getRepository(User::class)
-                ->findOneBy(['email' => $email]);
-
-            if (!$user) {
-                /** @var User $user */
-                $user = $this->userManager->createUser();
-                $user->setEnabled(true);
-                $user->setEmail($email);
-                $user->setUsername("your chosen username");
-                $user->setPlainPassword("your chosen password");
-            }
-        }
-
-        // 3) Maybe you just want to "register" them by creating
-        // a User object
-        $user->setGoogleId($googleUser->getId());
-        $this->userManager->updateUser($user);
-
-        return $userProvider->loadUserByUsername($user->getUsername());
-    }
-
-    /**
      * @return GoogleClient
      */
     private function getGoogleClient()

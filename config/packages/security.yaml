@@ -25,6 +25,7 @@ security:
             logout:       true
             anonymous:    true
             guard:
+                provider: fos_userbundle
                 authenticators:
                     - App\Security\GoogleAuthenticator
 

@@ -11,11 +11,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class GoogleController extends AbstractController
 {
     /**
-     * Link to this controller to start the "connect" process
-     *
-     * @param ClientRegistry $clientRegistry
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
+    * Link to this controller to start the "connect" process
+    * @param ClientRegistry $clientRegistry
+    *
+    * @Route("/login/google", name="connect_google_start")
+    *
+    * @return \Symfony\Component\HttpFoundation\RedirectResponse
+    */
     public function loginAction(ClientRegistry $clientRegistry)
     {
         return $clientRegistry
@@ -23,18 +25,19 @@ class GoogleController extends AbstractController
             ->redirect();
     }
 
-    /**
-     * Google redirects to back here afterwards
+     /**
+     * After going to Google, you're redirected back here
+     * because this is the "redirect_route" you configured
+     * in config/packages/knpu_oauth2_client.yaml
      *
      * @param Request $request
-     * @return JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse
+     * @param ClientRegistry $clientRegistry
+     *
+     * @Route("/login/google/check", name="connect_google_check")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function loginCheckAction(Request $request)
     {
-        if (!$this->getUser()) {
-            return new JsonResponse(array('status' => false, 'message' => "User not found!"));
-        } else {
-            return $this->redirectToRoute('default');
-        }
+        return $this->redirectToRoute('owp_homepage');
     }
 }

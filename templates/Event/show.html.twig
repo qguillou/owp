@@ -24,6 +24,7 @@
         <div class="carousel-caption d-none d-md-block text-left">
             <h1 class="display-2 d-inline-block"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
             <h3 class="display-4 d-inline-block"><span class="badge">{{ event.dateBegin|date('F')|trans|upper }}</span></h3>
+            <h3 class="display-4 d-inline-block"><span class="badge text-primary">{{ event.dateBegin|date('Y') }}</span></h3>
             <h1>{{ event.title }}</h1>
             <div class="text-white font-italic">
                 {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ event.createAt|date('d/m/Y H:i:s') }}
@@ -155,9 +156,8 @@
                                     {% endif %}
                                     <td></td>
                                     <td>
-                                        {{ entry.createBy}}
-                                        {% if app.user.id is same as(entry.createBy) or (app.user.base is not empty and app.user.base is same as(people.base)) %}
-                                            Ok
+                                        {% if app.user is same as(entry.createBy) or (app.user.base is not empty and app.user.base is same as(people.base)) %}
+                                            
                                         {% endif %}
                                     </td>
                                 </tr>

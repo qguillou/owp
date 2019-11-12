@@ -34,7 +34,6 @@ class EventController extends AbstractController
         $entry->setEvent($event);
 
         $people = new People();
-        $people->setEntry($entry);
         $entry->addPeople($people);
 
         $form = $this->createForm(EntryType::class, $entry);

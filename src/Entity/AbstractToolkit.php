@@ -16,7 +16,7 @@ abstract class AbstractToolkit extends AbstractEntity
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $label;
+    protected $label;
 
     public function getLabel(): ?string
     {

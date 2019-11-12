@@ -1,0 +1,17 @@
+<h2 class="my-4">{{ 'owp_event_show_title_circuit'| trans }}</h2>
+<table id="event-entries" class="table table-striped">
+    <thead class="bg-primary text-white">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{ 'owp_event_show_field_circuit_name'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for circuit in event.circuits %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ circuit.label }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

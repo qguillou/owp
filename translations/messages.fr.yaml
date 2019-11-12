@@ -101,7 +101,16 @@ owp_event_show_confirm_delete: Êtes vous sûr de vouloir supprimer cet évènem
 
 owp_event_register_title: Inscription
 
+owp_event_show_button_register_quick: Inscription rapide
+
 owp_news_show_title_comment: Commentaire
 
 owp_button_update: Modifier
 owp_button_delete: Supprimer
+
+Delete: Supprimer
+Update: Modifier
+Save: Enregistrer
+Add: Ajouter
+Cancel: Annuler
+Register: S'inscrire

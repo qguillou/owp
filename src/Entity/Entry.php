@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\EntryRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Entry extends AbstractEntity
@@ -19,7 +19,7 @@ class Entry extends AbstractEntity
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="People", mappedBy="entry", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="People", mappedBy="entry", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     protected $peoples;
@@ -61,6 +61,7 @@ class Entry extends AbstractEntity
     public function addPeople(People $people): self
     {
         $this->peoples->add($people);
+        $people->setEntry($this);
 
         return $this;
     }
@@ -70,6 +71,25 @@ class Entry extends AbstractEntity
         $this->peoples->remove($people);
 
         return $this;
+    }
+
+    public function contains(Base $base)
+    {
+        if (!empty($base)) {
+            return false;
+        }
+
+        $this->peoples->rewind();
+
+        while ($this->peoples->valid()) {
+            if($this->peoples->current()->getBase() === $base) {
+                return true;
+            }
+
+            $this->peoples->next();
+        }
+
+        return false;
     }
 
     /**

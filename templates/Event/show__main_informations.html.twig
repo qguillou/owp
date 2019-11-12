@@ -1,0 +1,7 @@
+<h2 class="my-4">{{ 'owp_event_show_title_main_information'| trans }}</h2>
+<table>
+    <tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_date'|trans }}</td><td>{{ period(event.dateBegin, event.dateEnd)|capitalize }}</td></tr>
+    <tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_event_type'|trans }}</td><td>{{ event.eventType.label|capitalize }}</td></tr>
+    {% if event.organizer %}<tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_organizer'|trans  }}</td><td>{{ event.organizer|capitalize }}</td></tr>{% endif %}
+    {% if event.website %}<tr><td class="font-weight-bold pr-4">{{ 'owp_event_show_field_website'|trans  }}</td><td><a href="{{ event.website }}">{{ event.website }}</a></td></tr>{% endif %}
+</table>

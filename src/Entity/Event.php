@@ -50,12 +50,12 @@ class Event extends AbstractContent
     protected $locationInformation;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
      */
     protected $latitude;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
      */
     protected $longitude;
 
@@ -142,24 +142,24 @@ class Event extends AbstractContent
         return $this;
     }
 
-    public function getLatitude(): ?float
+    public function getLatitude()
     {
         return $this->latitude;
     }
 
-    public function setLatitude(float $latitude): self
+    public function setLatitude($latitude): self
     {
         $this->latitude = $latitude;
 
         return $this;
     }
 
-    public function getLongitude(): ?float
+    public function getLongitude()
     {
         return $this->longitude;
     }
 
-    public function setLongitude(float $longitude): self
+    public function setLongitude($longitude): self
     {
         $this->longitude = $longitude;
 

@@ -75,6 +75,6 @@ class People extends AbstractEntity
      */
     public function __toString()
     {
-        return (string) 'ok';
+        return (string) (!empty($this->getBase())) ? $this->getBase()->__toString() : 'TODO';
     }
 }

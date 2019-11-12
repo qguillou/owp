@@ -1,0 +1,26 @@
+<h2 class="my-4">{{ 'owp_event_show_title_entries'| trans }}</h2>
+{% if not event.allowEntries %}
+    {{ 'owp_event_entries_not_allowed'|trans }}
+{% else %}
+    {% if is_granted('register', event) %}
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ 'Register'|trans }}
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ path('owp_entry_quick', {'id': event.id}) }}">{{ 'owp_event_show_button_register_quick'|trans }}</a>
+            </div>
+        </div>
+        {% include 'Event/show__entries_help.html.twig' %}
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ 'Export'|trans }}
+            </button>
+        </div>
+    {% else %}
+        {{ 'owp_event_entries_closed'|trans}}
+    {% endif %}
+
+    {% include 'Event/show__entries_list.html.twig' %}
+{% endif %}

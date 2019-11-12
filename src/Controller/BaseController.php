@@ -11,7 +11,7 @@ use App\Entity\Base;
 class BaseController extends AbstractController
 {
     const COLUMN_BASE_ID = 3;
-    const COLUMN_SURNAME = 4;
+    const COLUMN_LAST_NAME = 4;
     const COLUMN_FIRST_NAME = 5;
     const COLUMN_SI_NUMBER = 1;
     const COLUMN_CLUB = 9;
@@ -38,7 +38,7 @@ class BaseController extends AbstractController
 
             $entity
                 ->setFirstName(utf8_encode($row[self::COLUMN_FIRST_NAME]))
-                ->setSurname(utf8_encode($row[self::COLUMN_SURNAME]))
+                ->setLastName(utf8_encode($row[self::COLUMN_LAST_NAME]))
                 ->setSI($row[self::COLUMN_SI_NUMBER])
                 ->setClub($row[self::COLUMN_CLUB])
             ;

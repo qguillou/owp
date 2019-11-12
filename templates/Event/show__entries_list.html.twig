@@ -1,0 +1,61 @@
+{% if event.entries|length > 0 %}
+    <table id="event-entries" class="table">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{ 'owp_event_show_field_entries_first_name'|trans }}</th>
+                <th scope="col">{{ 'owp_event_show_field_entries_last_name'|trans }}</th>
+                {% if event.circuits|length > 0 %}<th scope="col">{{ 'owp_event_show_field_entries_circuit'|trans }}</th>{% endif %}
+                <th scope="col">{{ 'owp_event_show_field_entries_comment'|trans }}</th>
+                <th scope="col">{{ 'owp_event_show_field_entries_actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in event.entries %}
+                {% for people in entry.peoples %}
+                    <tr>
+                        <th scope="row">{{ loop.parent.loop.index }}{% if entry.peoples|length > 1 %}{{ '.' ~ loop.index }}{% endif %}</th>
+                        {% if people.base %}
+                            <td>{{ people.base.firstName }}</td>
+                            <td>{{ people.base.lastName }}</td>
+                        {% else %}
+                            <td>{{ people.firstName }}</td>
+                            <td>{{ people.lastName }}</td>
+                        {% endif %}
+                        <td></td>
+                        <td>
+                            {% if is_granted('update', entry) %}
+                                <a href="{{ path('owp_entry_update', {'id': entry.id}) }}" class="btn btn-outline-secondary">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </a>
+                            {% endif %}
+                            {% if is_granted('delete', entry) %}
+                                <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('owp_entry_delete', {'id': entry.id}) }}" type="button" class="btn btn-outline-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {{ 'owp_entry_message_delete_confirmation'|trans }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-link text-dark" data-dismiss="modal">{{ 'Cancel'|trans }}</button>
+                    <a class="btn btn-danger">{{ 'Delete'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p class="my-4">
+        {{ 'owp_entry_message_no_entry'|trans }}
+    </p>
+{% endif %}

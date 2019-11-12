@@ -639,4 +639,10 @@ $(document).ready(function () {
             eventListTable.search($('#search-event').val()).draw();
         });
     }
+
+    if($('#confirm-delete').length) {
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-danger').attr('href', $(e.relatedTarget).data('href'));
+        });
+    }
 });

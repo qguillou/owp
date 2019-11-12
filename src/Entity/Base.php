@@ -24,7 +24,7 @@ class Base
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $surname;
+    protected $lastName;
 
     /**
      * @ORM\Column(type="integer", length=255, nullable=true)
@@ -60,14 +60,14 @@ class Base
         return $this;
     }
 
-    public function getSurname(): ?string
+    public function getLastName(): ?string
     {
-        return $this->surname;
+        return $this->lastName;
     }
 
-    public function setSurname(string $surname): ?self
+    public function setLastName(string $lastName): ?self
     {
-        $this->surname = $surname;
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -98,6 +98,6 @@ class Base
 
     public function __toString()
     {
-        return $this->getId() . ' - ' . $this->getSurname() . ' ' . $this->getFirstName();
+        return $this->getId() . ' - ' . $this->getLastName() . ' ' . $this->getFirstName();
     }
 }

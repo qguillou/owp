@@ -16,7 +16,7 @@
         {% block fos_comment_comment_metas %}
             {% block fos_comment_comment_metas_authorline %}
                 Posté par
-                <span class="fos_comment_comment_authorname">
+                <span class="fos_comment_comment_authorname text-primary">
                     {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
                 {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
                     {% else %}

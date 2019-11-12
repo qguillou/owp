@@ -19,7 +19,7 @@ abstract class AbstractContent extends AbstractEntity
     protected $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
 
@@ -35,12 +35,12 @@ abstract class AbstractContent extends AbstractEntity
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent()
     {
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent($content): self
     {
         $this->content = $content;
 

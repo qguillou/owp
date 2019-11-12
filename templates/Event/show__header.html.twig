@@ -1,0 +1,18 @@
+<img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
+<div class="container">
+    <div class="carousel-caption d-none d-md-block text-left">
+        <h1 class="display-2 d-inline-block"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
+        <h3 class="display-4 d-inline-block"><span class="badge">{{ event.dateBegin|date('F')|trans|upper }}</span></h3>
+        <h3 class="display-4 d-inline-block"><span class="badge text-primary">{{ event.dateBegin|date('Y') }}</span></h3>
+        <h1>{{ event.title }}</h1>
+        <div class="text-white font-italic">
+            {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ event.createAt|date('d/m/Y H:i:s') }}
+            {{ 'owp_event_show_field_updated_at'|trans ~ ' ' ~ event.updateAt|date('d/m/Y H:i:s') }}
+        </div>
+        {% if event.website %}
+            <div class="my-4">
+                <a href="{{ event.website }}" class="btn btn-primary">{{ 'owp_event_show_button_website'|trans }}</a>
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -9,36 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Menu extends AbstractEntity
+class Menu extends AbstractToolkit
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $label;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $link;
-
-    public function getLabel(): ?string
-    {
-        return $this->label;
-    }
-
-    public function setLabel(string $label): self
-    {
-        $this->label = $label;
-
-        return $this;
-    }
+    protected $link;
 
     public function getLink(): ?string
     {
@@ -50,13 +26,5 @@ class Menu extends AbstractEntity
         $this->link = $link;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getLabel();
     }
 }

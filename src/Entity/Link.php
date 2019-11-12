@@ -9,41 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\LinkRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Link extends AbstractEntity
+class Link extends AbstractToolkit
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $label;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $link;
+    protected $link;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
-
-    public function getLabel(): ?string
-    {
-        return $this->label;
-    }
-
-    public function setLabel(string $label): self
-    {
-        $this->label = $label;
-
-        return $this;
-    }
 
     public function getLink(): ?string
     {
@@ -67,13 +43,5 @@ class Link extends AbstractEntity
         $this->description = $description;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getLabel();
     }
 }

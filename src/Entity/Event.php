@@ -11,90 +11,73 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Event extends AbstractEntity
+class Event extends AbstractContent
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $content;
-
     /**
      * @ORM\Column(type="datetime")
      */
-    private $dateBegin;
+    protected $dateBegin;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $dateEnd;
+    protected $dateEnd;
 
     /**
      * @ORM\ManyToOne(targetEntity="EventType")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $eventType;
+    protected $eventType;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $organizer;
+    protected $organizer;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $website;
+    protected $website;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $locationTitle;
+    protected $locationTitle;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $locationInformation;
+    protected $locationInformation;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $latitude;
+    protected $latitude;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $longitude;
+    protected $longitude;
 
     /**
      * @ORM\OneToMany(targetEntity="Circuit", cascade={"persist", "remove"}, mappedBy="event")
      */
-    private $circuits;
+    protected $circuits;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $allowEntries;
+    protected $allowEntries;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $dateEntries;
+    protected $dateEntries;
 
     /**
      * @ORM\OneToMany(targetEntity="Entry", cascade={"persist", "remove"}, mappedBy="event")
      */
-    private $entries;
+    protected $entries;
 
     /**
      * @ORM\ManyToMany(targetEntity="News")
@@ -103,36 +86,12 @@ class Event extends AbstractEntity
      *      inverseJoinColumns={@ORM\JoinColumn(name="news_id", referencedColumnName="id")}
      * )
      */
-    private $sections;
+    protected $sections;
 
     public function __construct()
     {
         $this->circuits = new ArrayCollection();
         $this->sections = new ArrayCollection();
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent($content): self
-    {
-        $this->content = $content;
-
-        return $this;
     }
 
     public function getOrganizer(): ?string
@@ -322,13 +281,5 @@ class Event extends AbstractEntity
         $this->circuits->add($circuit);
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getTitle();
     }
 }

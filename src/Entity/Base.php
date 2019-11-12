@@ -19,22 +19,22 @@ class Base
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $surname;
+    protected $surname;
 
     /**
      * @ORM\Column(type="integer", length=255, nullable=true)
      */
-    private $si;
+    protected $si;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $club;
+    protected $club;
 
     public function getId(): ?int
     {

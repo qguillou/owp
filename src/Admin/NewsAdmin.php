@@ -18,7 +18,7 @@ final class NewsAdmin extends AbstractNodeAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Informations générales', ['class' => 'col-md-9'])
+            ->with('Informations générales', ['class' => 'text-bold col-12 col-lg-9'])
                 ->add(self::LABEL, TextType::class)
                 ->add('content', CKEditorType::class, array('config_name' => 'default'))
                 ->add('promote', CheckboxType::class, ['required' => false])

@@ -23,7 +23,7 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Méta-données', ['class' => 'col-md-3'])
+            ->with('Méta-données', ['class' => 'col-12 col-lg-3'])
                 ->add('createAt', DateTimeType::class, array(
                     'required' => false,
                     'disabled' => true,

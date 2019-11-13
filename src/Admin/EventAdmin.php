@@ -29,7 +29,7 @@ final class EventAdmin extends AbstractNodeAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Informations générales', ['class' => 'text-bold col-md-9'])
+            ->with('Informations générales', ['class' => 'text-bold col-12 col-lg-9'])
                 ->add(self::LABEL, TextType::class)
                 ->add('content', CKEditorType::class, ['config_name' => 'default', 'required' => false])
                 ->add('dateBegin', DateTimeType::class, array(
@@ -61,7 +61,7 @@ final class EventAdmin extends AbstractNodeAdmin
         parent::configureFormFields($formMapper);
 
         $formMapper
-            ->with('Emplacement', ['class' => 'col-md-9'])
+            ->with('Emplacement', ['class' => 'text-bold col-12 col-lg-9'])
                 ->add('locationTitle', TextType::class, ['required' => false])
                 ->add('locationInformation', CKEditorType::class, ['config_name' => 'default', 'required' => false])
                 ->add('latitude', NumberType::class, ['required' => false])
@@ -70,7 +70,7 @@ final class EventAdmin extends AbstractNodeAdmin
         ;
 
         $formMapper
-            ->with('Inscriptions', ['class' => 'col-md-9'])
+            ->with('Inscriptions', ['class' => 'text-bold col-12 col-lg-9'])
                 ->add('allowEntries', CheckboxType::class, ['required' => false])
                 ->add('dateEntries', DateTimeType::class, array(
                     'required' => false,
@@ -85,7 +85,7 @@ final class EventAdmin extends AbstractNodeAdmin
         ;
 
         $formMapper
-            ->with('Sections', ['class' => 'col-md-9'])
+            ->with('Sections', ['class' => 'text-bold col-12 col-lg-9'])
             ->add('sections', ModelType::class, [
                 'property' => 'title',
                 'required' => false,

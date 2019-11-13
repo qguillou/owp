@@ -12,8 +12,8 @@
                     <div class="carousel-caption d-none d-md-block text-left">
                         <h1 class="text-primary">{{ new.title }}</h1>
                         <div class="text-white font-italic">
-                            Publié le {{ new.createAt|date('d/m/Y H:i:s') }}
-                            Modifié le {{ new.updateAt|date('d/m/Y H:i:s') }}
+                            Publié le {{ period(new.createAt) }}
+                            Modifié le {{ period(new.updateAt) }}
                         </div>
                         <p class="text-justify">{{ new.content|striptags|truncate(500)|raw }}</p>
                         <p>

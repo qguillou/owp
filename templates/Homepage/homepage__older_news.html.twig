@@ -13,8 +13,8 @@
                             <div class="card-body">
                                 <h5 class="card-title text-primary">{{ new.title }}</h5>
                                 <p>
-                                    Publié le {{ new.createAt|date('d/m/Y') }}
-                                    Mise à jour le {{ new.updateAt|date('d/m/Y')}}
+                                    Publié le {{ period(new.createAt) }}
+                                    Modifié le {{ period(new.updateAt) }}
                                 </p>
                                 <a href="{{ path('owp_news_show', {'id': new.id}) }}" class="btn btn-primary stretched-link">Lire l'actualité</a>
                             </div>

@@ -7,7 +7,7 @@
     <div class="carousel-inner bg-dark" role="listbox">
         {% for new in news|slice(0, 6) %}
             <div class="carousel-item {{ loop.index0 == 0 ? 'active' }}">
-                <!--<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">-->
+                <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
                 <div class="container">
                     <div class="carousel-caption d-none d-md-block text-left">
                         <h1 class="text-primary">{{ new.title }}</h1>
@@ -15,7 +15,7 @@
                             Publié le {{ new.createAt|date('d/m/Y H:i:s') }}
                             Modifié le {{ new.updateAt|date('d/m/Y H:i:s') }}
                         </div>
-                        <p class="text-justify">{{ new.content|raw|striptags|slice(0,500) ~ '...' }}</p>
+                        <p class="text-justify">{{ new.content|striptags|truncate(500)|raw }}</p>
                         <p>
                             <a class="btn btn-primary" href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">
                                 Lire la suite

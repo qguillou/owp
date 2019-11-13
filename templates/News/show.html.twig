@@ -8,8 +8,8 @@
         <div class="carousel-caption d-none d-md-block text-left">
             <h1>{{ news.title }}</h1>
             <div class="text-white font-italic">
-                Publié à {{ news.createAt|date('d/m/Y H:i:s') }}
-                Modifié à {{ news.updateAt|date('d/m/Y H:i:s') }}
+                Publié le {{ period(news.createAt) }}
+                <br/>Modifié le {{ period(news.updateAt) }}
             </div>
         </div>
     </div>

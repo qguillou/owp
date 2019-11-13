@@ -6,8 +6,8 @@
         <h3 class="display-4 d-inline-block"><span class="badge text-primary">{{ event.dateBegin|date('Y') }}</span></h3>
         <h1>{{ event.title }}</h1>
         <div class="text-white font-italic">
-            Publié le {{ event.createAt|date('d/m/Y H:i:s') }}
-            Modifié le {{ event.updateAt|date('d/m/Y H:i:s') }}
+            Publié le {{ period(event.createAt) }}
+            <br/>Modifié le {{ period(event.updateAt) }}
         </div>
         {% if event.website %}
             <div class="my-4">

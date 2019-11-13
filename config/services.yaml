@@ -42,37 +42,37 @@ services:
         class: App\Admin\NewsAdmin
         arguments: [~, App\Entity\News, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: content, label: "News" }
+            - { name: sonata.admin, manager_type: orm, group: content, label: "Actualités" }
 
     admin.event:
         class: App\Admin\EventAdmin
         arguments: [~, App\Entity\Event, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: content, label: "Event" }
+            - { name: sonata.admin, manager_type: orm, group: content, label: "Evénements" }
 
     admin.event_type:
         class: App\Admin\EventTypeAdmin
         arguments: [~, App\Entity\EventType, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Event type" }
+            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Type d'événements" }
 
     admin.link:
         class: App\Admin\LinkAdmin
         arguments: [~, App\Entity\Link, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Link" }
+            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Liens utiles" }
 
     admin.menu:
         class: App\Admin\MenuAdmin
         arguments: [~, App\Entity\Menu, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Menu" }
+            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Items du menu" }
 
     admin.user:
         class: App\Admin\UserAdmin
         arguments: [~, App\Entity\User, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: user, label: "Users" }
+            - { name: sonata.admin, manager_type: orm, group: user, label: "Utilisateurs" }
 
     admin.circuit:
         class: App\Admin\CircuitAdmin

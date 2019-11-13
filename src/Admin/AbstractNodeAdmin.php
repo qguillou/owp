@@ -23,7 +23,7 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Meta data', ['class' => 'col-md-3'])
+            ->with('Méta-données', ['class' => 'col-md-3'])
                 ->add('createAt', DateTimeType::class, array(
                     'required' => false,
                     'disabled' => true,
@@ -75,10 +75,5 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
                 'delete' => ['template' => 'Administration/CRUD/list__action_delete.html.twig'],
             ]
         ]);
-    }
-
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('show', $this->getRouterIdParameter());
     }
 }

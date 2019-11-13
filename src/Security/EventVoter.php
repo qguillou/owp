@@ -37,10 +37,6 @@ class EventVoter extends Voter
     {
         $user = $token->getUser();
 
-        if (!$user instanceof User) {
-            return false;
-        }
-
         switch ($attribute) {
             case self::REGISTER:
                 return $this->canRegister($event, $user);
@@ -49,13 +45,13 @@ class EventVoter extends Voter
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canRegister(Event $event, User $user)
+    private function canRegister(Event $event, $user)
     {
         if($this->security->isGranted('ROLE_ADMIN')) {
             return true;
         }
 
-        if($event->getAllowEntries() && $event->getDateEntries() > date('Y-m-d')) {
+        if($event->getAllowEntries() && $event->getDateEntries()->format('U') > date('U')) {
             return true;
         }
 

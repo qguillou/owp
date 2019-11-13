@@ -1,25 +1,27 @@
-<h2 class="my-4">{{ 'owp_event_show_title_entries'| trans }}</h2>
+<h2>Inscriptions</h2>
 {% if not event.allowEntries %}
-    {{ 'owp_event_entries_not_allowed'|trans }}
+    Les inscriptions sont désactivées pour cet évènement.
 {% else %}
     {% if is_granted('register', event) %}
         <div class="btn-group">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ 'Register'|trans }}
+                S'inscrire
             </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ path('owp_entry_quick', {'id': event.id}) }}">{{ 'owp_event_show_button_register_quick'|trans }}</a>
-            </div>
+            {% if is_granted('ROLE_USER') %}
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ path('owp_entry_quick', {'id': event.id}) }}">Inscription rapide</a>
+                </div>
+            {% endif %}
         </div>
         {% include 'Event/show__entries_help.html.twig' %}
 
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ 'Export'|trans }}
+                Export
             </button>
         </div>
     {% else %}
-        {{ 'owp_event_entries_closed'|trans}}
+        Les inscriptions à cet évènement sont terminées. Veuillez contacter l'organisateur de la course pour modifier ou supprimer votre inscription.
     {% endif %}
 
     {% include 'Event/show__entries_list.html.twig' %}

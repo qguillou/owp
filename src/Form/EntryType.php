@@ -21,7 +21,7 @@ class EntryType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary'],
-                'label' => 'owp_event_show_button_register'
+                'label' => 'S\'inscrire'
             ])
         ;
     }

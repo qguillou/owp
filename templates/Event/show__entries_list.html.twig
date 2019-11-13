@@ -3,11 +3,11 @@
         <thead class="bg-primary text-white">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">{{ 'owp_event_show_field_entries_first_name'|trans }}</th>
-                <th scope="col">{{ 'owp_event_show_field_entries_last_name'|trans }}</th>
-                {% if event.circuits|length > 0 %}<th scope="col">{{ 'owp_event_show_field_entries_circuit'|trans }}</th>{% endif %}
-                <th scope="col">{{ 'owp_event_show_field_entries_comment'|trans }}</th>
-                <th scope="col">{{ 'owp_event_show_field_entries_actions'|trans }}</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                {% if event.circuits|length > 0 %}<th scope="col">Circuit</th>{% endif %}
+                <th scope="col">Commentaire</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -45,17 +45,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    {{ 'owp_entry_message_delete_confirmation'|trans }}
+                    Êtes vous sur de vouloir supprimer ?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-link text-dark" data-dismiss="modal">{{ 'Cancel'|trans }}</button>
-                    <a class="btn btn-danger">{{ 'Delete'|trans }}</a>
+                    <button class="btn btn-link text-dark" data-dismiss="modal">Annuler</button>
+                    <a class="btn btn-danger">Supprimer</a>
                 </div>
             </div>
         </div>
     </div>
 {% else %}
     <p class="my-4">
-        {{ 'owp_entry_message_no_entry'|trans }}
+        Aucun inscrit à cet événement
     </p>
 {% endif %}

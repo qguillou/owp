@@ -8,22 +8,27 @@
         <div class="carousel-caption d-none d-md-block text-left">
             <h1>{{ news.title }}</h1>
             <div class="text-white font-italic">
-                {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ news.createAt|date('d/m/Y H:i:s') }}
-                {{ 'owp_event_show_field_updated_at'|trans ~ ' ' ~ news.updateAt|date('d/m/Y H:i:s') }}
+                Publié à {{ news.createAt|date('d/m/Y H:i:s') }}
+                Modifié à {{ news.updateAt|date('d/m/Y H:i:s') }}
             </div>
-
         </div>
     </div>
 {% endblock %}
 
 {% block content_admin_actions %}
-    <a href="{{ path('admin_app_news_edit', {'id': news.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> {{ 'owp_button_update'|trans }}</a>
-    <a href="{{ path('admin_app_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette actualité ?');" class='btn btn-outline-light' href=""><i class="fa fa-trash"></i> {{ 'owp_button_delete'|trans }}</a>
+    <a href="{{ path('admin_app_news_edit', {'id': news.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> Modifier</a>
+    <a href="{{ path('admin_app_news_delete', {'id': news.id}) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ?');" class='btn btn-outline-light' href=""><i class="fa fa-trash"></i> Supprimer</a>
 {% endblock %}
 
 {% block content_body %}
-    <div class="mt-2">{{ news.content|raw }}</div>
+    <div class="row">
+        <div class="col-12 col-lg-10 offset-lg-1">
+            {{ news.content|raw }}
+        </div>
 
-    <h2 class="my-4">{{ 'owp_news_show_title_comment' | trans }}</h2>
-    {% include '@FOSComment/Thread/async.html.twig' with {'id': 'news:' ~ news.id} %}
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <h2 class="my-4">Commentaires</h2>
+            {% include '@FOSComment/Thread/async.html.twig' with {'id': 'news:' ~ news.id} %}
+        </div>
+    </div>
 {% endblock %}

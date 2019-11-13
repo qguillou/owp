@@ -28,30 +28,18 @@ final class AdminStatBlock extends AbstractBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'title' => 'Dashboard',
             'template' => 'Administration/Block/admin_stat_block.html.twig',
         ]);
     }
 
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper
-            ->add('settings', 'sonata_type_immutable_array', [
-                'keys' => [
-                    ['title', 'text', ['required' => false]],
-                ]
-            ])
-        ;
+
     }
 
     public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
     {
-        $errorElement
-            ->with('settings.title')
-                ->assertNotNull([])
-                ->assertNotBlank()
-            ->end()
-        ;
+        
     }
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)

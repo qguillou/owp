@@ -38,9 +38,7 @@ final class MenuBlock extends AbstractBlockService
 
     public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
     {
-        $errorElement
-            ->end()
-        ;
+        
     }
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)

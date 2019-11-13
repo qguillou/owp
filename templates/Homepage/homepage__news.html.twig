@@ -12,13 +12,13 @@
                     <div class="carousel-caption d-none d-md-block text-left">
                         <h1 class="text-primary">{{ new.title }}</h1>
                         <div class="text-white font-italic">
-                            {{ 'owp_homepage_field_published_at'|trans ~ ' ' ~ new.createAt|date('d/m/Y H:i:s') }}
-                            {{ 'owp_homepage_field_updated_at'|trans ~ ' ' ~ new.updateAt|date('d/m/Y H:i:s') }}
+                            Publié le {{ new.createAt|date('d/m/Y H:i:s') }}
+                            Modifié le {{ new.updateAt|date('d/m/Y H:i:s') }}
                         </div>
-                        <p class="text-justify">{{ new.content|raw|striptags|slice(0,800) ~ '...' }}</p>
+                        <p class="text-justify">{{ new.content|raw|striptags|slice(0,500) ~ '...' }}</p>
                         <p>
                             <a class="btn btn-primary" href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">
-                                {{ 'owp_homepage_button_read_more'|trans }}
+                                Lire la suite
                             </a>
                         </p>
                     </div>

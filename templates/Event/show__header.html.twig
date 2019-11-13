@@ -6,12 +6,12 @@
         <h3 class="display-4 d-inline-block"><span class="badge text-primary">{{ event.dateBegin|date('Y') }}</span></h3>
         <h1>{{ event.title }}</h1>
         <div class="text-white font-italic">
-            {{ 'owp_event_show_field_published_at'|trans ~ ' ' ~ event.createAt|date('d/m/Y H:i:s') }}
-            {{ 'owp_event_show_field_updated_at'|trans ~ ' ' ~ event.updateAt|date('d/m/Y H:i:s') }}
+            Publié le {{ event.createAt|date('d/m/Y H:i:s') }}
+            Modifié le {{ event.updateAt|date('d/m/Y H:i:s') }}
         </div>
         {% if event.website %}
             <div class="my-4">
-                <a href="{{ event.website }}" class="btn btn-primary">{{ 'owp_event_show_button_website'|trans }}</a>
+                <a href="{{ event.website }}" class="btn btn-primary">Accéder au site de l'évènement</a>
             </div>
         {% endif %}
     </div>

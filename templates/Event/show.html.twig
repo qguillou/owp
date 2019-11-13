@@ -23,31 +23,40 @@
 {% endblock %}
 
 {% block content_admin_actions %}
-    <a href="{{ path('admin_app_event_edit', {'id': event.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> {{ 'owp_event_show_button_update'|trans }}</a>
-    <a href="{{ path('admin_app_event_delete', {'id': event.id}) }}" onclick="return confirm('{{ 'owp_event_show_confirm_delete'|trans }}');" class='btn btn-outline-light'><i class="fa fa-trash"></i> {{ 'owp_event_show_button_delete'|trans }}</a>
+    <a href="{{ path('admin_app_event_edit', {'id': event.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> Modifier</a>
+    <a href="{{ path('admin_app_event_delete', {'id': event.id}) }}" onclick="return confirm('Êtes vous sur de vouloir supprimer ?}');" class='btn btn-outline-light'><i class="fa fa-trash"></i> Supprimer</a>
 {% endblock %}
 
 {% block content_body %}
 
-    <div class="mt-2">{{ event.content|raw }}</div>
-
     <div class="row">
-        <div class="col-6">
-            {% include 'Event/show__main_informations.html.twig' %}
-            {% include 'Event/show__localisation.html.twig' %}
+        {% if event.content %}
+            <div class="col-12 offset-lg-1">{{ event.content|raw }}</div>
+        {% endif %}
+
+        <div class="col-12 col-lg-5 offset-lg-1">
+            <div class="mb-4">
+                {% include 'Event/show__main_informations.html.twig' %}
+            </div>
+            {% if event.locationTitle or event.locationInformation or (event.latitude and event.localisation) %}
+                <div class="mb-4">
+                    {% include 'Event/show__localisation.html.twig' %}
+                </div>
+            {% endif %}
         </div>
 
-        <div class="col-6">
+        <div class="col-12 col-lg-5 mb-4">
             {% if event.circuits|length > 0 %}
-            {% include 'Event/show__circuits.html.twig' %}
+                {% include 'Event/show__circuits.html.twig' %}
             {% endif %}
-
             {% include 'Event/show__entries.html.twig' %}
         </div>
+
+        {% include 'Event/show__sections.html.twig' %}
+
+        <div class="col-10 offset-lg-1">
+            <h2>Comentaires</h2>
+            {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
+        </div>
     </div>
-
-    {% include 'Event/show__sections.html.twig' %}
-
-    <h2 class="my-4">{{ 'owp_event_show_title_comment' | trans }}</h2>
-    {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
 {% endblock %}

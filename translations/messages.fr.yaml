@@ -1,116 +1,40 @@
-Home:       __Home
-
-# FOSCommentBundle
-comment: commentaire
-
-# Entity Global
 Title: Titre
+Label: Libellé
 Content: Contenu
 Create At: Créé le
-Update At: Mis à jour le
+Create By Username: Créé par
 Create By: Créé par
-Update By: Mis à jour par
-# Entity User
-Username:   Nom d'utilisateur
-Last Login: Dernière connexion
-Roles:      Rôles
-#Entity News
-Promote: Promu en page d'accueil
-# Entity Event
-organizer: organisateur
-circuit: circuit
-entries: inscriptions
+Update At: Modifié le
+Update By Username: Modifié par
+Update By: Modifié par
+
+News List: Liste des actualités
+News Create: Création d'une nouvelle actualité
+Promote: Afficher dans la liste des actualités sur la page d'accueil
+
+Event List: Liste des événements
+Event Create: Création d'un événement
 Date Begin: Date de début
 Date End: Date de fin
+Event Type: Type d'événement
+Organizer: Organisateur
+Website: Site web
+Location Title: Titre de l'emplacement
+Location Information: Informations sur l'emplacement
+Allow Entries: Activer le système d'inscription pour cet événement
+Date Entries: Date limite des inscriptions
 
+Event Type List: Liste des types d'événements
+Event Type Create: Création d'un nouveau type d'événement
 
-# Administration
-# Menu d'administration
-content:    Contenu
-news:       Actualités
-event:      Evènements
-datum:      Référentiels
-event type: Type d'évènement
-link:       Liens
-users:      Utilisateurs
-parameters: Paramètres
-# Dashboard
-dashboard: Tableau de bord
-# List Administration
-user List:      Liste des utilisateurs
-news List:      Liste des actualités
-# Edit Administration
-main informations: Informations générales
-meta data: Méta-données
-location: Localisation
+Link List: Liste des liens utiles
+Link Create: Création d'un nouveau lien utile
+Link: Lien
 
+Menu List: Liste des items du menu
+Menu Create: Création d'un nouveau item du menu
 
-# Footer
-usefull links:  Liens utiles
-
-# Month
-January: Janvier
-February: Février
-March: Mars
-April: Avril
-June: Juin
-July: Juillet
-August: Août
-September: Septembre
-October: Octobre
-November: Novembre
-December: Décembre
-
-owp_hompage_title_events: Les prochains évènements
-owp_hompage_title_news: Les anciennes actualités
-owp_hompage_link_events: Voir tous les évènements
-owp_homepage_button_read_more: Lire la suite
-owp_homepage_button_more_informations: Plus d'informations
-owp_homepage_button_read_news: Lire l'actualité
-
-owp_event_list_title: Tous les évènements à venir
-owp_event_list_input_search_placeholder: Rechercher...
-
-owp_event_entries_not_allowed: Les inscriptions sont désactivées pour cet évènement.
-owp_event_entries_closed: Les inscriptions à cet évènement sont terminées.
-owp_event_show_title_main_information: Informations générales
-owp_event_show_title_circuit: Circuit
-owp_event_show_title_entries: Inscription
-owp_event_show_title_comment: Commentaire
-owp_event_show_title_location: Emplacement
-owp_event_show_title_modal_entries: Inscription
-owp_event_show_field_date: Date
-owp_event_show_field_event_type: Type d'évènement
-owp_event_show_field_organizer: Organisateur
-owp_event_show_field_published_at: Publié le
-owp_event_show_field_updated_at: Modifié le
-owp_event_show_field_circuit_name: Nom
-owp_event_show_field_entries_first_name: Prénom
-owp_event_show_field_entries_last_name: Nom
-owp_event_show_field_entries_circuit: Circuit
-owp_event_show_field_entries_comment: Commentaire
-owp_event_show_field_entries_actions: Actions
-owp_event_show_field_website: Site web
-owp_event_show_button_update: Modifier
-owp_event_show_button_delete: Supprimer
-owp_event_show_button_register: S'inscrire
-owp_event_show_button_cancel: Annuler
-owp_event_show_button_website: Accéder au site de l'évènement
-owp_event_show_button_go_back_event: Retourner sur l'évènement
-owp_event_show_confirm_delete: Êtes vous sûr de vouloir supprimer cet évènement ?
-
-owp_event_register_title: Inscription
-
-owp_event_show_button_register_quick: Inscription rapide
-
-owp_news_show_title_comment: Commentaire
-
-owp_button_update: Modifier
-owp_button_delete: Supprimer
-
-Delete: Supprimer
-Update: Modifier
-Save: Enregistrer
-Add: Ajouter
-Cancel: Annuler
-Register: S'inscrire
+User List: Liste des utilisateurs
+User Create: Création d'un nouvel utilisateur
+Username: Nom d'utilisateur
+Roles: Rôles

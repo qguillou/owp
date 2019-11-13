@@ -47,15 +47,15 @@ class EntryController extends AbstractController
             else {
                 $people->setFirstName($user->getFirstName());
                 $people->setLastName($user->getLastName());
-                $this->addFlash('warning', $this->translator->trans('owp_entry_message_base_not_informed'));
+                $this->addFlash('warning', 'Vous vous êtes inscrit en tant que non licencié. Si vous êtes licencié, veuillez renseigner votre n° de licence dans votre compte et modifier votre inscription.');
             }
 
             $this->getDoctrine()->getManager()->persist($entry);
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('primary', $this->translator->trans('owp_entry_message_add_success'));
+            $this->addFlash('primary', 'Vous êtes maintenant inscrit à cet événement.');
         }
         else {
-            $this->addFlash('danger', $this->translator->trans('owp_entry_message_entries_not_allow'));
+            $this->addFlash('danger', 'Vous n\'êtes pas autorisé à vous inscrire à cet événement.');
         }
 
         return $this->redirectToRoute('owp_event_show', array(
@@ -75,7 +75,7 @@ class EntryController extends AbstractController
 
         }
         else {
-            $this->addFlash('danger', $this->translator->trans('owp_entry_message_update_not_allowed'));
+            $this->addFlash('danger', 'Vous n\'êtes pas autorisé à modifier cette inscription.');
         }
 
         return $this->redirectToRoute('owp_event_show', array(
@@ -95,10 +95,10 @@ class EntryController extends AbstractController
             $this->getDoctrine()->getManager()->remove($entry);
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('primary', $this->translator->trans('owp_entry_message_delete_success'));
+            $this->addFlash('primary', 'L\'inscription a bien été supprimée.');
         }
         else {
-            $this->addFlash('danger', $this->translator->trans('owp_entry_message_delete_not_allowed'));
+            $this->addFlash('danger', 'Vous n\'êtes pas autorisé à supprimer cette inscription.');
         }
 
         return $this->redirectToRoute('owp_event_show', array(

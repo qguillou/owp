@@ -1,5 +1,24 @@
 {% extends 'base.html.twig' %}
 
+{% macro breadcrumb(items) %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent">
+            <li class="breadcrumb-item fs-20"><a href="{{ path('owp_homepage') }}"><i class="fa fa-home"></i></a></li>
+            {% for item in items %}
+                {% if item.class %}
+                    <li class="breadcrumb-item active text-dark-50" aria-current="page">
+                        {{ item.label}}
+                    </li>
+                {% else %}
+                    <li class="breadcrumb-item">
+                        <a href="{{ path(item.url) }}">{{ item.label}}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+{% endmacro %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('content') }}

@@ -3,13 +3,11 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('event') }}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('event') }}
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
 {% endblock %}
 
 {% block title %}Liste des événements{% endblock %}
@@ -18,10 +16,7 @@
     <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
     <div class="container">
         <div class="carousel-caption d-none d-md-block text-left">
-            <h1 class="display-3">Liste des événements</h1>
-            <div class="my-4">
-                <input class="w-100 display-4 text-white bg-transparent border-top-0 border-left-0 border-right-0 border-primary" id="search-event" type="text" placeholder="Rechercher"/>
-            </div>
+            <h1>Liste des événements</h1>
         </div>
 
     </div>
@@ -29,35 +24,19 @@
 
 {% block content_body %}
     <div class="row">
-        <div class="col-12">
-            <table id="events-list" class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for event in events %}
-                        <tr>
-                            <th scope="col-2">
-                                <h1 class="display-4 text-right"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
-                    			<h3 class="text-right">{{ event.dateBegin|date('F')|trans }}</h3>
-                    			<h3 class="text-primary text-right">{{ event.dateBegin|date('Y') }}</h3>
-                            </th>
-                            <td scope="col-10">
-                                <h3 class="text-uppercase"><strong>{{ event.title }}</strong></h3>
-                    			<ul class="list-inline">
-                    				<li class="list-inline-item"><i class="fa fa-tag" aria-hidden="true"></i> {{ event.eventType.label }}</li>
-                    				{% if event.locationTitle is not empty %}<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ event.locationTitle }}</li>{% endif %}
-                    				{% if event.organizer is not empty %}<li class="list-inline-item"><i class="fa fa-user" aria-hidden="true"></i> {{ event.organizer }}</li>{% endif %}
-                    			</ul>
-                    			<a href="{{ path('owp_event_show', {'id': event.id}) }}" class="btn btn-primary stretched-link">Plus d'information</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="row">
+                {{ _self.breadcrumb([{'label':'Liste des événements', 'url':'#', 'class': 'active'}])}}
+            </div>
+        </div>
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="row">
+                {% for event in events %}
+                    <div class="col-12 col-lg-4 mb-4">
+                        {% include 'Event/item.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

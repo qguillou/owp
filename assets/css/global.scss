@@ -4,6 +4,10 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
+.breadcrumb-item {
+    font-size: 1.5rem;
+}
+
 h1 {
     color: $primary;
 }

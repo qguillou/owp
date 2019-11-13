@@ -17,6 +17,9 @@
                 <th scope="row">Prénom</th><td>{{ user.firstName }}</td>
             </tr>
             <tr>
+                <th scope="row">Numéro de licence FFCO</th><td>{{ user.base }}</td>
+            </tr>
+            <tr>
                 <th scope="row">Rôles</th>
                 <td>
                     {% for role in user.roles %}

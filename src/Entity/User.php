@@ -67,6 +67,8 @@ class User extends BaseUser
     public function setBase(Base $base): self
     {
         $this->base = $base;
+        $this->setFirstName($base->getFirstName());
+        $this->setLastName($base->getLastName());
 
         return $this;
     }

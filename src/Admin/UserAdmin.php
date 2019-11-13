@@ -10,6 +10,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Base;
 
 final class UserAdmin extends AbstractAdmin
 {
@@ -24,6 +26,11 @@ final class UserAdmin extends AbstractAdmin
         $formMapper->add('username', TextType::class, [
                 'disabled' => true
             ])
+            ->add('base', EntityType::class, [
+                'class' => Base::class,
+                'choice_label' => 'id',
+                'required' => false
+            ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Super administrateur' => 'ROLE_SUPER_ADMIN',
@@ -32,7 +39,8 @@ final class UserAdmin extends AbstractAdmin
                     'Utilisateur' => 'ROLE_USER',
                 ],
                 'multiple' => true,
-            ]);
+            ])
+        ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

@@ -106,6 +106,3 @@ services:
             - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }
-
-    google.authenticator:
-        class: App\Security\GoogleAuthenticator

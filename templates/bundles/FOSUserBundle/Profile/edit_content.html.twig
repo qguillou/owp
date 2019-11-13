@@ -3,19 +3,31 @@
 <div class="col-12 col-lg-10 offset-lg-1">
     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
         <div class="form-group">
-            <label for="fos_user_registration_form_username">Nom d'utilisateur</label>
-            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.username, {'attr': {'class': 'form-control'}}) }}
         </div>
 
         <div class="form-group">
-            <label for="fos_user_registration_form_email">Adresse mail</label>
-            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
         </div>
 
         <div class="form-group">
-            <label for="fos_user_registration_form_current_password">Mot de passe</label>
-            {{ form_widget(form.current_password, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.current_password, {'attr': {'class': 'form-control'}}) }}
+            <a href="{{ path('fos_user_change_password') }}" class="btn btn-link text-info">Modifier mon mot de passe</a>
         </div>
+
+        <div class="form-group">
+            {{ form_row(form.firstName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_row(form.lastName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            <label>Numéro de licence FFCO</label>
+            {{ form_widget(form.base, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
         <div>
             <input class="btn btn-primary" type="submit" value="Enregistrer les modifications" />
             <a class="btn btn-link text-danger" onclick="return confirm('Êtes vous sûr de vouloir supprimer votre compte ?');" href="{{ path('owp_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a>

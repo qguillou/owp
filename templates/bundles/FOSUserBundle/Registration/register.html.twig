@@ -1,0 +1,18 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_title %}S'inscrire{% endblock %}
+
+{% block fos_user_header %}
+    <div class="my-4">
+        <h3>Vous avez déjà un compte ?</h3>
+        <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">Connectez-vous à votre compte</a>
+    </div>
+{% endblock %}
+
+{% block fos_user_breadcrumb %}
+    {{ _self.breadcrumb([{'label': 'Formulaire d\'inscription', 'class': 'active'}])}}
+{% endblock %}
+
+{% block fos_user_content %}
+    {{ include('@FOSUser/Registration/register_content.html.twig') }}
+{% endblock fos_user_content %}

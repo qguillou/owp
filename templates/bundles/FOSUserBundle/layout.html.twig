@@ -1,18 +1,36 @@
 {% extends 'content.html.twig' %}
 
-{% block content_body %}
-    {% if app.request.hasPreviousSession %}
-        {% for type, messages in app.session.flashBag.all %}
-            {% for message in messages %}
-                <div class="{{ type }}">
-                    {{ message|trans({}, 'FOSUserBundle') }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-    {% endif %}
+{% block title %}{{ block('fos_user_title') }}{% endblock %}
 
-    <div>
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
+{% block content_header %}
+    <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
+    <div class="container">
+        <div class="carousel-caption d-none d-md-block text-left">
+            <h1>{% block fos_user_title %}{% endblock %}</h1>
+            {% block fos_user_header %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_body %}
+    <div class="row">
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="row">
+                {% block fos_user_breadcrumb %}
+                    {{ _self.breadcrumb([])}}
+                {% endblock %}
+            </div>
+        </div>
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        {{ message|trans({}, 'FOSUserBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {% block fos_user_content %}{% endblock fos_user_content %}
     </div>
 {% endblock %}

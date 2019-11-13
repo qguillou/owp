@@ -1,0 +1,14 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_title %}Mon espace personnel{% endblock %}
+
+{% block fos_user_header %}
+{% endblock %}
+
+{% block fos_user_breadcrumb %}
+    {{ _self.breadcrumb([{'label': 'Mon espace personnel', 'class': 'active'}])}}
+{% endblock %}
+
+{% block fos_user_content %}
+    {% include "@FOSUser/Profile/show_content.html.twig" %}
+{% endblock fos_user_content %}

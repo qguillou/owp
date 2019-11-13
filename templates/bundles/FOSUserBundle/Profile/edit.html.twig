@@ -1,0 +1,14 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_title %}Modifier mes informations{% endblock %}
+
+{% block fos_user_header %}
+{% endblock %}
+
+{% block fos_user_breadcrumb %}
+    {{ _self.breadcrumb([{'label': 'Formulaire de modification de mes informations', 'class': 'active'}])}}
+{% endblock %}
+
+{% block fos_user_content %}
+    {% include "@FOSUser/Profile/edit_content.html.twig" %}
+{% endblock fos_user_content %}

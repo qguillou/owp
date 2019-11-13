@@ -1,0 +1,18 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_title %}Se connecter{% endblock %}
+
+{% block fos_user_header %}
+    <div class="my-4">
+        <h3>Vous n'avez pas de compte ?</h3>
+        <a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">Créez votre compte</a>
+    </div>
+{% endblock %}
+
+{% block fos_user_breadcrumb %}
+    {{ _self.breadcrumb([{'label': 'Formulaire de connexion', 'class': 'active'}])}}
+{% endblock %}
+
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}

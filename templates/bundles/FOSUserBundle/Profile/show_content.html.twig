@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="col-12 col-lg-5 offset-1">
+    <h3>Mes informations</h3>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Nom d'utilisateur</th><td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Adresse mail</th><td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nom</th><td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Prénom</th><td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Rôles</th>
+                <td>
+                    {% for role in user.roles %}
+                        <span class="badge badge-primary">{{ role }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a class='btn btn-info btn-xs' href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-edit"></i> Modifier</a>
+    <a onclick="return confirm('Êtes vous sûr de vouloir supprimer votre compte ?');" class='btn btn-link text-danger btn-xs' href="{{ path('owp_user_delete', {'id': user.id}) }}"><i class="fa fa-trash"></i> Supprimer mon compte</a>
+</div>

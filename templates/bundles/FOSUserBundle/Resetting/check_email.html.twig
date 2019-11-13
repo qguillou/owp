@@ -1,0 +1,18 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_title %}Réinitialisation du mot de passe{% endblock %}
+
+{% block fos_user_header %}
+{% endblock %}
+
+{% block fos_user_breadcrumb %}
+    {{ _self.breadcrumb([{'label': 'Validation de la demande de modification du mot de passe', 'class': 'active'}])}}
+{% endblock %}
+
+{% block fos_user_content %}
+<div class="col-12 col-lg-10 offset-lg-1">
+    <p>{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}</p>
+</div>
+{% endblock fos_user_content %}

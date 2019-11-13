@@ -15,15 +15,13 @@ class UserController extends AbstractController
      */
     public function delete(User $user): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->isGranted('delete', $user);
         $current_user = $this->getUser();
 
-        if ($user->getId() === $current_user->getId() || $current_user->isGranted('ROLE_ADMIN')) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
 
-        return $this->redirectToRoute('owp_common_homepage');
+        return $this->redirectToRoute('owp_homepage');
     }
 }

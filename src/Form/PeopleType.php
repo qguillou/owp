@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Repository\BaseRepository;
 
 class PeopleType extends AbstractType
@@ -23,6 +24,15 @@ class PeopleType extends AbstractType
                         ->orderBy('u.club', 'ASC');
                 },
                 'group_by' => 'club'
+            ])
+            ->add('firstName', TextType::class, [
+                'required' => false,
+            ])
+            ->add('lastName', TextType::class, [
+                'required' => false,
+            ])
+            ->add('comment', TextType::class, [
+                'required' => false,
             ])
         ;
 

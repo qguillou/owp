@@ -75,6 +75,11 @@ class Event extends AbstractContent
     protected $dateEntries;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $numberPeopleByEntries;
+
+    /**
      * @ORM\OneToMany(targetEntity="Entry", cascade={"persist", "remove"}, mappedBy="event")
      */
     protected $entries;
@@ -92,6 +97,7 @@ class Event extends AbstractContent
     {
         $this->circuits = new ArrayCollection();
         $this->sections = new ArrayCollection();
+        $this->numberPeopleByEntries = 1;
     }
 
     public function getOrganizer(): ?string
@@ -235,6 +241,18 @@ class Event extends AbstractContent
     public function setDateEntries($dateEntries): self
     {
         $this->dateEntries = $dateEntries;
+
+        return $this;
+    }
+
+    public function getNumberPeopleByEntries(): ?int
+    {
+        return $this->numberPeopleByEntries;
+    }
+
+    public function setNumberPeopleByEntries($numberPeopleByEntries): self
+    {
+        $this->numberPeopleByEntries = $numberPeopleByEntries;
 
         return $this;
     }

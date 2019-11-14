@@ -19,6 +19,11 @@ class Entry extends AbstractEntity
     protected $id;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $label;
+
+    /**
      * @ORM\OneToMany(targetEntity="People", mappedBy="entry", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -32,6 +37,18 @@ class Entry extends AbstractEntity
     public function __construct()
     {
         $this->peoples = new ArrayCollection();
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label): self
+    {
+        $this->label = $label;
+
+        return $this;
     }
 
     public function getEvent(): ?Event

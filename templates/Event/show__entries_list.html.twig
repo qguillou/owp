@@ -12,31 +12,44 @@
         </thead>
         <tbody>
             {% for entry in event.entries %}
-                {% for people in entry.peoples %}
-                    <tr>
-                        <th scope="row">{{ loop.parent.loop.index }}{% if entry.peoples|length > 1 %}{{ '.' ~ loop.index }}{% endif %}</th>
-                        {% if people.base %}
-                            <td>{{ people.base.firstName }}</td>
-                            <td>{{ people.base.lastName }}</td>
-                        {% else %}
-                            <td>{{ people.firstName }}</td>
-                            <td>{{ people.lastName }}</td>
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>
+                        {% for people in entry.peoples %}
+                            {% if people.base %}
+                            <div>{{ people.base.firstName }}</div>
+                            {% else %}
+                            <div>{{ people.firstName ? people.firstName : '-' }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for people in entry.peoples %}
+                            {% if people.base %}
+                            <div>{{ people.base.lastName }}</div>
+                            {% else %}
+                            <div>{{ people.lastName ? people.lastName : '-' }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for people in entry.peoples %}
+                            <div class="text-center">{{ people.comment ? people.comment : '-' }}</div>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if is_granted('update', entry) %}
+                            <a href="{{ path('owp_entry_update', {'id': entry.id}) }}" class="btn btn-outline-secondary">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </a>
                         {% endif %}
-                        <td></td>
-                        <td>
-                            {% if is_granted('update', entry) %}
-                                <a href="{{ path('owp_entry_update', {'id': entry.id}) }}" class="btn btn-outline-secondary">
-                                    <i class="fa fa-edit" aria-hidden="true"></i>
-                                </a>
-                            {% endif %}
-                            {% if is_granted('delete', entry) %}
-                                <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('owp_entry_delete', {'id': entry.id}) }}" type="button" class="btn btn-outline-danger">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
+                        {% if is_granted('delete', entry) %}
+                            <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('owp_entry_delete', {'id': entry.id}) }}" type="button" class="btn btn-outline-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>

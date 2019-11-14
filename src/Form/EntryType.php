@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class EntryType extends AbstractType
 {
@@ -19,9 +19,8 @@ class EntryType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
             ])
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary'],
-                'label' => 'S\'inscrire'
+            ->add('label', TextType::class, [
+                'required' => false,
             ])
         ;
     }

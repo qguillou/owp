@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventRepository;
@@ -10,6 +11,8 @@ use App\Entity\Entry;
 use App\Entity\People;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EntryType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use App\Service\EntryService;
 
 class EventController extends AbstractController
 {
@@ -26,37 +29,24 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{id}", name="owp_event_show")
      */
-    public function show(Request $request, $id, EventRepository $eventRepository): Response
+    public function show(Request $request, $id, EventRepository $eventRepository, EntryService $entryService): Response
     {
         $event = $eventRepository->find($id);
 
-        $entry = new Entry();
-        $entry->setEvent($event);
-
-        $people = new People();
-        $entry->addPeople($people);
-
-        $form = $this->createForm(EntryType::class, $entry);
+        $form = $entryService->getForm($event);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entry = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($entry);
-            $entityManager->flush();
-        }
+        $entryService->entries($form);
 
         return $this->render('Event/show.html.twig', [
-            'event' => $event,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'event' => $event
         ]);
     }
 
     /**
      * @Route("/api/event", name="owp_api_event")
      */
-    public function api(EventRepository $eventRepository): Response
+    public function api(EventRepository $eventRepository): JsonResponse
     {
         $results = [];
         $events = $eventRepository->findAll();
@@ -65,9 +55,6 @@ class EventController extends AbstractController
             $results[] = ['date' => $event->getDateBegin()->format('Y-m-d'), 'title' => $event->getTitle()];
         }
 
-        $events = new Response(json_encode($results));
-        $events->headers->set('Content-Type', 'application/json');
-
-        return $events;
+        return new JsonResponse($results);
     }
 }

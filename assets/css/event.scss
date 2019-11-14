@@ -8,6 +8,10 @@
     display: none;
 }
 
+#event-entries tr td div {
+    min-height: 24px;
+}
+
 div.zabuto_calendar {
     margin: 0;
     padding: 0;

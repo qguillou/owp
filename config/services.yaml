@@ -112,3 +112,7 @@ services:
             - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }
+
+    service.entry:
+        class: App\Service\EntryService
+        arguments: []

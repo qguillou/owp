@@ -24,10 +24,25 @@ class People extends AbstractEntity
     protected $base;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Entry")
+     * @ORM\ManyToOne(targetEntity="Entry", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     protected $entry;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $lastName;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $comment;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -58,6 +73,42 @@ class People extends AbstractEntity
         return $this;
     }
 
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName($firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName($lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment($comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
     public function getPosition(): ?int
     {
         return $this->position;
@@ -75,6 +126,6 @@ class People extends AbstractEntity
      */
     public function __toString()
     {
-        return (string) (!empty($this->getBase())) ? $this->getBase()->__toString() : 'TODO';
+        return (string) (!empty($this->getBase())) ? $this->getBase()->__toString() : $this->getFirstName() . ' ' . $this->getLastName();
     }
 }

@@ -36,6 +36,7 @@ Location Title: Titre de l'emplacement
 Location Information: Informations sur l'emplacement
 Allow Entries: Activer le système d'inscription pour cet événement
 Date Entries: Date limite des inscriptions
+Number People By Entries: Nombre de personne par équipe (renseigner 1 pour les courses individuelles)
 
 Event Type List: Liste des types d'événements
 Event Type Create: Création d'un nouveau type d'événement

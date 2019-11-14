@@ -80,6 +80,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm }
 
+    admin.configuration:
+        class: App\Admin\ConfigAdmin
+        arguments: [~, ~, App\Controller\AdministrationController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: parameter, label: "Configuration du site" }
+
     sonata.block.admin_stat:
         class: App\Block\AdminStatBlock
         arguments:

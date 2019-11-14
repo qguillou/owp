@@ -21,6 +21,7 @@ use App\Form\Type\CircuitType;
 use Sonata\AdminBundle\Form\Type\CollectionType;
 use Sonata\AdminBundle\Form\Type\AdminType;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class EventAdmin extends AbstractNodeAdmin
 {
@@ -94,5 +95,13 @@ final class EventAdmin extends AbstractNodeAdmin
             ])
             ->end()
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('show', $this->getRouterIdParameter(), [
+                '_controller' => 'App\Controller\EventController::show',
+            ]
+        );
     }
 }

@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class NewsAdmin extends AbstractNodeAdmin
 {
@@ -26,5 +27,13 @@ final class NewsAdmin extends AbstractNodeAdmin
         ;
 
         parent::configureFormFields($formMapper);
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('show', $this->getRouterIdParameter(), [
+                '_controller' => 'App\Controller\NewsController::show',
+            ]
+        );
     }
 }

@@ -2,7 +2,7 @@
 {% if not event.allowEntries %}
     Les inscriptions sont désactivées pour cet évènement.
 {% else %}
-    {% if is_granted('register', event) %}
+    {% if form is not empty %}
         <div class="btn-group">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 S'inscrire
@@ -16,15 +16,17 @@
         </div>
         {% include 'Event/show__entries_form.html.twig' %}
         {% include 'Event/show__entries_help.html.twig' %}
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Export
-            </button>
-        </div>
     {% else %}
-        Les inscriptions à cet évènement sont terminées. Veuillez contacter l'organisateur de la course pour modifier ou supprimer votre inscription.
+        <p>
+            Les inscriptions à cet évènement sont terminées. Veuillez contacter l'organisateur de la course pour modifier ou supprimer votre inscription.
+        </p>
     {% endif %}
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Export
+        </button>
+    </div>
 
     {% include 'Event/show__entries_list.html.twig' %}
 {% endif %}

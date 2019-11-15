@@ -16,7 +16,6 @@ class UserController extends AbstractController
     public function delete(User $user): Response
     {
         $this->isGranted('delete', $user);
-        $current_user = $this->getUser();
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($user);

@@ -61,12 +61,11 @@ class EntryVoter extends Voter
             return true;
         }
 
-        if ($entry->getEvent()->getDateEntries()->format('U') > date('U')) {
-            return true;
+        if ($entry->getEvent()->getDateEntries()->format('U') <= date('U')) {
+            return false;
         }
 
-
-        if ($entry->getCreateBy() === $user && $entry->contains($user->getBase())) {
+        if ($entry->getCreateBy() === $user || $entry->contains($user->getBase())) {
             return true;
         }
 
@@ -79,8 +78,8 @@ class EntryVoter extends Voter
             return true;
         }
 
-        if ($entry->getEvent()->getDateEntries()->format('U') > date('U')) {
-            return true;
+        if ($entry->getEvent()->getDateEntries()->format('U') <= date('U')) {
+            return false;
         }
 
 

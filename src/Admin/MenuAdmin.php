@@ -19,7 +19,6 @@ final class MenuAdmin extends AbstractEntityAdmin
         parent::configureFormFields($formMapper);
 
         $formMapper
-            ->add(self::LABEL, TextType::class)
             ->add('link', TextType::class);
     }
 }

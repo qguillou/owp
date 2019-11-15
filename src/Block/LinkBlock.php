@@ -25,28 +25,10 @@ final class LinkBlock extends AbstractBlockService
         $this->doctrine = $doctrine;
     }
 
-    public function configureSettings(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'template' => 'Common/Block/link_block.html.twig',
-        ]);
-    }
-
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
-    {
-    }
-
-    public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
-    {
-        
-    }
-
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $links = $this->doctrine->getRepository(Link::class)->findBy([]);
-
-        return $this->renderResponse($blockContext->getTemplate(), [
-            'links'     => $links,
+        return $this->renderResponse('Common/Block/link_block.html.twig', [
+            'links'     => $this->doctrine->getRepository(Link::class)->findBy([]),
             'block'     => $blockContext->getBlock(),
             'settings'  => $blockContext->getSettings()
         ], $response);

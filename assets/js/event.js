@@ -375,7 +375,6 @@ $.fn.zabuto_calendar = function (options) {
             var ajaxSettings = $calendarElement.data('ajaxSettings');
 
             if (typeof(ajaxSettings) != 'object' || typeof(ajaxSettings.url) == 'undefined') {
-                alert('Invalid calendar event settings');
                 return false;
             }
 

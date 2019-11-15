@@ -33,12 +33,8 @@ class EventController extends AbstractController
     {
         $event = $eventRepository->find($id);
 
-        $form = $entryService->getForm($event);
-        $form->handleRequest($request);
-        $entryService->entries($form);
-
         return $this->render('Event/show.html.twig', [
-            'form' => $form->createView(),
+            'form' => $this->isGranted('register', $event) ? $entryService->form($request, $event)->createView() : null,
             'event' => $event
         ]);
     }

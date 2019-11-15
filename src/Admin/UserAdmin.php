@@ -23,7 +23,8 @@ final class UserAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('username', TextType::class, [
+        $formMapper
+            ->add('username', TextType::class, [
                 'disabled' => true
             ])
             ->add('base', EntityType::class, [

@@ -25,29 +25,10 @@ final class AdminStatBlock extends AbstractBlockService
         $this->doctrine = $doctrine;
     }
 
-    public function configureSettings(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'template' => 'Administration/Block/admin_stat_block.html.twig',
-        ]);
-    }
-
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
-    {
-
-    }
-
-    public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
-    {
-        
-    }
-
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $users = $this->doctrine->getRepository(User::class)->count([]);
-
-        return $this->renderResponse($blockContext->getTemplate(), [
-            'users'     => $users,
+        return $this->renderResponse('Administration/Block/admin_stat_block.html.twig', [
+            'users'     => $this->doctrine->getRepository(User::class)->count([]),
             'block'     => $blockContext->getBlock(),
             'settings'  => $blockContext->getSettings()
         ], $response);

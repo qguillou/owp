@@ -24,7 +24,9 @@
 
 {% block content_admin_actions %}
     <a href="{{ path('admin_app_event_edit', {'id': event.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> Modifier</a>
-    <a href="{{ path('admin_app_event_delete', {'id': event.id}) }}" onclick="return confirm('Êtes vous sur de vouloir supprimer ?}');" class='btn btn-outline-light'><i class="fa fa-trash"></i> Supprimer</a>
+    <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('admin_app_event_delete', {'id': event.id}) }}" type="button" class="btn btn-outline-light">
+        <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
+    </button>
 {% endblock %}
 
 {% block content_body %}
@@ -32,7 +34,7 @@
         <div class="col-12  col-lg-10 offset-lg-1">
             {{ _self.breadcrumb([{'label':'Liste des événements', 'class': '', 'url':'owp_event_list'}, {'label': event.title, 'class': 'active'}])}}
         </div>
-        
+
         {% if event.content %}
             <div class="col-12 col-lg-10 offset-lg-1">{{ event.content|raw }}</div>
         {% endif %}
@@ -62,4 +64,6 @@
             {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
         </div>
     </div>
+
+    {% include 'Common/Modal/modal__confirm_delete.html.twig' %}
 {% endblock %}

@@ -25,28 +25,10 @@ final class MenuBlock extends AbstractBlockService
         $this->doctrine = $doctrine;
     }
 
-    public function configureSettings(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'template' => 'Common/Block/menu_block.html.twig',
-        ]);
-    }
-
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
-    {
-    }
-
-    public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
-    {
-        
-    }
-
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $links = $this->doctrine->getRepository(Menu::class)->findBy([]);
-
-        return $this->renderResponse($blockContext->getTemplate(), [
-            'menus'     => $links,
+        return $this->renderResponse('Common/Block/menu_block.html.twig', [
+            'menus'     => $this->doctrine->getRepository(Menu::class)->findBy([]),
             'block'     => $blockContext->getBlock(),
             'settings'  => $blockContext->getSettings()
         ], $response);

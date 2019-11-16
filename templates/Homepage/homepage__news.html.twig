@@ -9,13 +9,14 @@
             <div class="carousel-item {{ loop.index0 == 0 ? 'active' }}">
                 <img style="opacity:0.2" class="first-slide" src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" alt="First slide">
                 <div class="container">
-                    <div class="carousel-caption d-none d-md-block text-left">
+                    <div class="carousel-caption text-left">
                         <h1 class="text-primary">{{ new.title }}</h1>
                         <div class="text-white font-italic">
                             Publié le {{ period(new.createAt) }}
                             Modifié le {{ period(new.updateAt) }}
                         </div>
-                        <p class="text-justify">{{ new.content|striptags|truncate(500)|raw }}</p>
+                        <p class="text-justify d-lg-none">{{ new.content|striptags|truncate(250)|raw }}</p>
+                        <p class="text-justify d-none d-lg-block">{{ new.content|striptags|truncate(500)|raw }}</p>
                         <p>
                             <a class="btn btn-primary" href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">
                                 Lire la suite

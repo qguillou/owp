@@ -30,10 +30,6 @@
 
         <div>
             <input class="btn btn-primary" type="submit" value="Enregistrer les modifications" />
-            <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('owp_user_delete', {'id': user.id}) }}" type="button" class="btn btn-link text-danger btn-xs">
-                <i class="fa fa-trash" aria-hidden="true"></i> Supprimer mon compte
-            </button>
-            {% include 'Common/Modal/modal__confirm_delete.html.twig' %}
         </div>
     {{ form_end(form) }}
 </div>

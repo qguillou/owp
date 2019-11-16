@@ -9,15 +9,11 @@
         color: white !important;
     }
 
-    .bg-light {
-        background-color: $gray-800 !important;
-    }
-
     .table th, .table td {
         border-color: $gray-800 !important;
     }
 
-    .modal-dialog {
+    .modal-content {
         border: 1px solid white;
     }
 }

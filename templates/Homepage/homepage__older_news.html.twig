@@ -1,27 +1,25 @@
 {% if news|length > 6 %}
-    <div class="bg-light">
-        <div class="row m-0 p-4">
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <h2>Les anciennes actualités</h2>
-            </div>
+    <div class="row m-0 p-4">
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <h2>Les anciennes actualités</h2>
+        </div>
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="row">
-                    {% for new in news|slice(6, news|length) %}
-                    <div class="col-12 col-lg-4">
-                        <div class="card m-2 bg-transparent border-primary">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">{{ new.title }}</h5>
-                                <p>
-                                    Publié le {{ period(new.createAt) }}
-                                    Modifié le {{ period(new.updateAt) }}
-                                </p>
-                                <a href="{{ path('owp_news_show', {'id': new.id}) }}" class="btn btn-primary stretched-link">Lire l'actualité</a>
-                            </div>
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="row">
+                {% for new in news|slice(6, news|length) %}
+                <div class="col-12 col-lg-4">
+                    <div class="card m-2 bg-transparent border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ new.title }}</h5>
+                            <p>
+                                Publié le {{ period(new.createAt) }}
+                                Modifié le {{ period(new.updateAt) }}
+                            </p>
+                            <a href="{{ path('owp_news_show', {'id': new.id}) }}" class="btn btn-primary stretched-link">Lire l'actualité</a>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

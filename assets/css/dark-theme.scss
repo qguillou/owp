@@ -1,12 +1,23 @@
 @media (prefers-color-scheme: dark) {
     body,
     .breadcrumb,
-    .modal-content {
+    .modal-content,
+    .table,
+    .box,
+    .close {
         background-color: black !important;
         color: white !important;
     }
 
     .bg-light {
-        background-color: $gray-800;
+        background-color: $gray-800 !important;
+    }
+
+    .table th, .table td {
+        border-color: $gray-800 !important;
+    }
+
+    .modal-dialog {
+        border: 1px solid white;
     }
 }

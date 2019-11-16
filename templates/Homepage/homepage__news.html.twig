@@ -1,4 +1,4 @@
-<div id="news" class="carousel slide" data-ride="carousel">
+<div id="news" class="carousel border-bottom border-primary slide" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for new in news|slice(0, 6) %}
             <li data-target="#news" data-slide-to="{{ loop.index0 }}" class="{{ loop.index0 == 0 ? 'active' }}"></li>

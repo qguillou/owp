@@ -1,7 +1,12 @@
 @import "variables.scss";
 
 #map {
-    height: 400px;
+    height: 200px;
+}
+@media (min-width: 992px) {
+    #map {
+        height: 400px;
+    }
 }
 
 #events-list_wrapper .row:first-child {

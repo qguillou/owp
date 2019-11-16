@@ -4,6 +4,13 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black !important;
+        color: white !important;
+    }
+}
+
 h1 {
     color: $primary;
 }

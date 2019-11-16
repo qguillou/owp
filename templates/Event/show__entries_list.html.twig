@@ -6,7 +6,7 @@
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 {% if event.circuits|length > 0 %}<th scope="col">Circuit</th>{% endif %}
-                <th scope="col">Commentaire</th>
+                <th scope="col" class="d-none d-lg-block">Commentaire</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -32,7 +32,7 @@
                             {% endif %}
                         {% endfor %}
                     </td>
-                    <td>
+                    <td class="d-none d-lg-block">
                         {% for people in entry.peoples %}
                             <div class="text-center">{{ people.comment ? people.comment : '-' }}</div>
                         {% endfor %}

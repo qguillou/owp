@@ -59,8 +59,8 @@
 
         {% include 'Event/show__sections.html.twig' %}
 
-        <div class="col-10 offset-lg-1">
-            <h2>Comentaires</h2>
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <h2>Commentaires</h2>
             {% include '@FOSComment/Thread/async.html.twig' with {'id': 'event:' ~ event.id} %}
         </div>
     </div>

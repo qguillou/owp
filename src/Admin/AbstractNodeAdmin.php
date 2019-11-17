@@ -17,7 +17,7 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     const LABEL = 'title';
 
     protected $datagridValues = [
-        '_sort_by' => self::LABEL,
+        '_sort_by' => 'updateAt',
     ];
 
     protected function configureFormFields(FormMapper $formMapper)

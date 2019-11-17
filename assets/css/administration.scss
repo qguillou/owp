@@ -120,7 +120,8 @@
     display: block;
   }
 }
-body {
-  margin: 0px;
-  padding: 0px;
+
+th.sonata-ba-list-field-header-order-desc a:hover:after, th.sonata-ba-list-field-header-order-desc.sonata-ba-list-field-order-active a:after, th.sonata-ba-list-field-header-order-asc.sonata-ba-list-field-order-active a:hover:after,
+th.sonata-ba-list-field-header-order-asc a:hover:after, th.sonata-ba-list-field-header-order-asc.sonata-ba-list-field-order-active a:after, th.sonata-ba-list-field-header-order-desc.sonata-ba-list-field-order-active a:hover:after {
+    color: white;
 }

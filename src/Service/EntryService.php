@@ -30,12 +30,12 @@ class EntryService {
 
     public function form(Request $request, Event $event)
     {
-        if ($event->getNumberPeopleByEntries() === 1) {
+        /*if ($event->getNumberPeopleByEntries() === 1) {
             //$formFactory->create();
         }
-        else {
+        else {*/
             $form = $this->formFactory->create(EntryType::class, $this->values($event));
-        }
+        //}
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

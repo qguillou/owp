@@ -21,17 +21,31 @@ class EventController extends AbstractController
      */
     public function list(EventRepository $eventRepository): Response
     {
+        $eventFilters = [];
+
+        if (!$this->isGranted('ROLE_MEMBER')) {
+            $eventFilters['private'] = false;
+        }
+
         return $this->render('Event/list.html.twig', [
-            'events' => $eventRepository->findFutureEvent(),
+            'events' => $eventRepository->findFiltered($eventFilters),
         ]);
     }
 
     /**
-     * @Route("/event/{id}", name="owp_event_show")
+     * @Route("/event/{id}", name="owp_event_show", requirements={"page"="\d+"})
      */
     public function show(Request $request, $id, EventRepository $eventRepository, EntryService $entryService): Response
     {
         $event = $eventRepository->find($id);
+
+        if (!$event) {
+            throw $this->createNotFoundException('L\'événement est introuvable');
+        }
+
+        if (!$this->isGranted('view', $event)) {
+            throw $this->createAccessDeniedException('Vous n\'êtes par autorisé à consulter cette page.');
+        }
 
         return $this->render('Event/show.html.twig', [
             'form' => $this->isGranted('register', $event) ? $entryService->form($request, $event)->createView() : null,

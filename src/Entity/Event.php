@@ -93,6 +93,11 @@ class Event extends AbstractContent
      */
     protected $sections;
 
+    /**
+     * @ORM\Column(name="private", type="boolean", nullable=true)
+     */
+    protected $private;
+
     public function __construct()
     {
         $this->circuits = new ArrayCollection();
@@ -297,6 +302,18 @@ class Event extends AbstractContent
     public function addSections($sections)
     {
         $this->circuits->add($circuit);
+
+        return $this;
+    }
+
+    public function isPrivate(): ?bool
+    {
+        return $this->private;
+    }
+
+    public function setPrivate(bool $private): self
+    {
+        $this->private = $private;
 
         return $this;
     }

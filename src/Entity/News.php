@@ -16,12 +16,17 @@ class News extends AbstractContent
      */
     protected $promote;
 
+    /**
+     * @ORM\Column(name="private", type="boolean", nullable=true)
+     */
+    protected $private;
+
     public function __construct()
     {
         $this->setPromote(true);
     }
 
-    public function getPromote(): ?bool
+    public function isPromote(): ?bool
     {
         return $this->promote;
     }
@@ -29,6 +34,18 @@ class News extends AbstractContent
     public function setPromote(bool $promote): self
     {
         $this->promote = $promote;
+
+        return $this;
+    }
+
+    public function isPrivate(): ?bool
+    {
+        return $this->private;
+    }
+
+    public function setPrivate(bool $private): self
+    {
+        $this->private = $private;
 
         return $this;
     }

@@ -30,13 +30,15 @@ final class UserAdmin extends AbstractAdmin
             ->add('base', EntityType::class, [
                 'class' => Base::class,
                 'choice_label' => 'id',
-                'required' => false
+                'required' => false,
+                'label' => 'N° de licence'
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Super administrateur' => 'ROLE_SUPER_ADMIN',
                     'Administrateur' => 'ROLE_ADMIN',
                     'Webmasteur' => 'ROLE_WEBMASTER',
+                    'Licencié du club' => 'ROLE_MEMBER',
                     'Utilisateur' => 'ROLE_USER',
                 ],
                 'multiple' => true,

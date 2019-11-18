@@ -17,6 +17,7 @@ abstract class AbstractEntityAdmin extends AbstractAdmin
 
     protected $datagridValues = [
         '_sort_by' => self::LABEL,
+        '_per_page' => 50
     ];
 
     protected function configureFormFields(FormMapper $formMapper)

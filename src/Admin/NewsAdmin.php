@@ -23,17 +23,21 @@ final class NewsAdmin extends AbstractNodeAdmin
                 ->add(self::LABEL, TextType::class)
                 ->add('content', CKEditorType::class, array('config_name' => 'default'))
                 ->add('promote', CheckboxType::class, ['required' => false])
+                ->add('private', CheckboxType::class, [
+                    'required' => false,
+                    'label' => 'Rendre cette actualité privée, visible uniquement par les licenciés du club'
+                ])
             ->end()
         ;
 
         parent::configureFormFields($formMapper);
     }
 
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('show', $this->getRouterIdParameter(), [
-                '_controller' => 'App\Controller\NewsController::show',
-            ]
-        );
-    }
+    // protected function configureRoutes(RouteCollection $collection)
+    // {
+    //     $collection->add('show', $this->getRouterIdParameter(), [
+    //             '_controller' => 'App\Controller\NewsController::show',
+    //         ]
+    //     );
+    // }
 }

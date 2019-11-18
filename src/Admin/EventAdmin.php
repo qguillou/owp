@@ -50,6 +50,10 @@ final class EventAdmin extends AbstractNodeAdmin
                 ])
                 ->add('organizer', TextType::class, ['required' => false])
                 ->add('website', TextType::class, ['required' => false])
+                ->add('private', CheckboxType::class, [
+                    'required' => false,
+                    'label' => 'Rendre cette événement privé, visible uniquement par les licenciés du club'
+                ])
             ->end()
         ;
 
@@ -92,11 +96,11 @@ final class EventAdmin extends AbstractNodeAdmin
         ;
     }
 
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('show', $this->getRouterIdParameter(), [
-                '_controller' => 'App\Controller\EventController::show',
-            ]
-        );
-    }
+    // protected function configureRoutes(RouteCollection $collection)
+    // {
+    //     $collection->add('show', $this->getRouterIdParameter(), [
+    //             '_controller' => 'App\Controller\EventController::show',
+    //         ]
+    //     );
+    // }
 }

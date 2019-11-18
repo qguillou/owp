@@ -13,7 +13,7 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    public function findFutureEvent($limit = null)
+    public function findFiltered($values = [], $limit = null)
     {
         $query = $this->createQueryBuilder('e')
             ->where('e.dateBegin > :date')

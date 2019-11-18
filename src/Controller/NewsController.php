@@ -14,8 +14,18 @@ class NewsController extends AbstractController
      */
     public function show($id, NewsRepository $newsRepository): Response
     {
+        $news = $newsRepository->find($id);
+
+        if (!$news) {
+            throw $this->createNotFoundException('L\'actualité est introuvable');
+        }
+
+        if (!$this->isGranted('view', $news)) {
+            throw $this->createAccessDeniedException('Vous n\'êtes par autorisé à consulter cette page.');
+        }
+
         return $this->render('News/show.html.twig', [
-            'news' => $newsRepository->find($id),
+            'news' => $news,
         ]);
     }
 }

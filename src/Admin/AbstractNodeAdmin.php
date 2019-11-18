@@ -18,7 +18,8 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
 
     protected $datagridValues = [
         '_sort_by' => 'updateAt',
-        '_sort_order' => 'DESC'
+        '_sort_order' => 'DESC',
+        '_per_page' => 50
     ];
 
     protected function configureFormFields(FormMapper $formMapper)

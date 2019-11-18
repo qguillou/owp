@@ -2,16 +2,15 @@
 // src/Security/PostVoter.php
 namespace App\Security;
 
-use App\Entity\Event;
+use App\Entity\News;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
 
-class EventVoter extends Voter
+class NewsVoter extends Voter
 {
     const VIEW = 'view';
-    const REGISTER = 'register';
 
     private $security;
 
@@ -22,11 +21,11 @@ class EventVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REGISTER, self::VIEW])) {
+        if (!in_array($attribute, [self::VIEW])) {
             return false;
         }
 
-        if (!$subject instanceof Event) {
+        if (!$subject instanceof News) {
             return false;
         }
 
@@ -38,8 +37,6 @@ class EventVoter extends Voter
         $user = $token->getUser();
 
         switch ($attribute) {
-            case self::REGISTER:
-                return $this->canRegister($event, $user);
             case self::VIEW:
                 return $this->canView($event, $user);
         }
@@ -47,22 +44,9 @@ class EventVoter extends Voter
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canRegister(Event $event, $user)
+    private function canView(News $news, $user)
     {
-        if ($this->security->isGranted('ROLE_ADMIN')) {
-            return true;
-        }
-
-        if ($event->getAllowEntries() && $event->getDateEntries()->format('U') > date('U')) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private function canView(Event $event, $user)
-    {
-        if ($event->isPrivate() && !$this->security->isGranted('ROLE_MEMBER')) {
+        if ($news->isPrivate() && !$this->security->isGranted('ROLE_MEMBER')) {
             return false;
         }
 

@@ -15,9 +15,16 @@ class DefaultController extends AbstractController
      */
     public function index(NewsRepository $newsRepository, EventRepository $eventRepository): Response
     {
+        $newsFilters = $eventFilters = [];
+        $newsFilters['promote'] = true;
+
+        if (!$this->isGranted('ROLE_MEMBER')) {
+            $newsFilters['private'] = $eventFilters['private'] = false;
+        }
+
         return $this->render('Homepage/homepage.html.twig', [
-            'news' => $newsRepository->findBy(array('promote' => true), array('updateAt' => 'DESC')),
-            'events' => $eventRepository->findFutureEvent(3),
+            'news' => $newsRepository->findBy($newsFilters, array('updateAt' => 'DESC')),
+            'events' => $eventRepository->findFiltered($eventFilters, 4),
         ]);
     }
 }

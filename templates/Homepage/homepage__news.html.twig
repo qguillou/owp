@@ -18,7 +18,7 @@
                         <p class="text-justify d-lg-none">{{ new.content|striptags|truncate(250)|raw }}</p>
                         <p class="text-justify d-none d-lg-block">{{ new.content|striptags|truncate(500)|raw }}</p>
                         <p>
-                            <a class="btn btn-primary" href="{{ path('owp_news_show', {'id': new.id}) }}" role="button">
+                            <a class="btn btn-primary" href="{{ path('owp_news_show', {'slug': new.slug}) }}" role="button">
                                 Lire la suite
                             </a>
                         </p>

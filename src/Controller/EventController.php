@@ -9,10 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventRepository;
 use App\Entity\Entry;
 use App\Entity\People;
+use App\Entity\Event;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EntryType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use App\Service\EntryService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class EventController extends AbstractController
 {
@@ -34,12 +36,10 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{id}", name="owp_event_show", requirements={"page"="\d+"})
+     * @Route("/event/{slug}", name="owp_event_show", requirements={"page"="\d+"})
      */
-    public function show(Request $request, $id, EventRepository $eventRepository, EntryService $entryService): Response
+    public function show(Request $request, Event $event, EntryService $entryService): Response
     {
-        $event = $eventRepository->find($id);
-
         if (!$event) {
             throw $this->createNotFoundException('L\'événement est introuvable');
         }

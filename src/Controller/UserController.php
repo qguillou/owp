@@ -15,7 +15,9 @@ class UserController extends AbstractController
      */
     public function delete(User $user): Response
     {
-        $this->isGranted('delete', $user);
+        if (!$this->isGranted('delete', $user)) {
+            throw $this->createAccessDeniedException('Vous n\'êtes par autorisé à consulter cette page.');
+        }
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($user);

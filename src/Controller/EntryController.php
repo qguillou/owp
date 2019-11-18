@@ -8,26 +8,28 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventRepository;
 use App\Repository\EntryRepository;
 use App\Entity\Entry;
+use App\Entity\Event;
 use App\Entity\People;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EntryType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Service\EntryService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class EntryController extends AbstractController
 {
     /**
      * @Route("/entry/quick/{id}", name="owp_entry_quick", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
+     * @ParamConverter("event")
      */
-    public function quick($id, EventRepository $eventRepository, EntryService $entryService): Response
+    public function quick(Event $event, EventRepository $eventRepository, EntryService $entryService): Response
     {
-        $event = $eventRepository->find($id);
         $entry = $entryService->values($event, $this->getUser());
         $entryService->save($entry);
 
         return $this->redirectToRoute('owp_event_show', array(
-            'id' => $id,
+            'slug' => $event->getSlug(),
         ));
     }
 
@@ -35,9 +37,8 @@ class EntryController extends AbstractController
      * @Route("/entry/{id}/update", name="owp_entry_update", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
-    public function update($id, EntryRepository $entryRepository, EntryService $entryService): Response
+    public function update(Entry $entry, EntryService $entryService): Response
     {
-        $entry = $entryRepository->find($id);
         $entryService->update($entry);
         if ($this->isGranted('update', $entry)) {
 
@@ -47,7 +48,7 @@ class EntryController extends AbstractController
         }
 
         return $this->redirectToRoute('owp_event_show', array(
-            'id' => $entry->getEvent()->getId(),
+            'slug' => $entry->getEvent()->getSlug(),
         ));
     }
 
@@ -55,23 +56,20 @@ class EntryController extends AbstractController
      * @Route("/entry/{id}/delete", name="owp_entry_delete", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
-    public function delete($id, EntryRepository $entryRepository, EntryService $entryService): Response
+    public function delete(Entry $entry, EntryService $entryService): Response
     {
-        $entry = $entryRepository->find($id);
         $entryService->delete($entry);
 
         return $this->redirectToRoute('owp_event_show', array(
-            'id' => $entry->getEvent()->getId(),
+            'slug' => $entry->getEvent()->getSlug(),
         ));
     }
 
     /**
      * @Route("/entry/{id}/export/{format}", name="owp_entry_export", requirements={"page"="\d+"})
      */
-    public function export($id, $format, EventRepository $eventRepository, EntryService $entryService): Response
+    public function export(Event $event, $format, EntryService $entryService): Response
     {
-        $event = $eventRepository->find($id);
-
         return $entryService->export($event, $format);
     }
 }

@@ -66,6 +66,10 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
     {
         $listMapper
         ->addIdentifier(self::LABEL)
+        ->add('slug', 'text', [
+            'label' => 'URL',
+            'header_class' => 'd-none d-lg-table-cell',
+        ])
         ->add('createAt', 'datetime', [
             'format' => 'd/m/Y H:i',
             'header_class' => 'd-none d-lg-table-cell',

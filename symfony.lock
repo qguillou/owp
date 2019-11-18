@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "cocur/slugify": {
         "version": "v3.2"
     },
@@ -178,6 +181,9 @@
             "./config/packages/jms_serializer.yaml",
             "./config/packages/prod/jms_serializer.yaml"
         ]
+    },
+    "knplabs/doctrine-behaviors": {
+        "version": "1.6.0"
     },
     "knplabs/knp-markdown-bundle": {
         "version": "1.7.1"

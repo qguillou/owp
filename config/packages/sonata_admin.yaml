@@ -17,7 +17,8 @@ sonata_admin:
         layout:             'Administration/base_administration.html.twig'
         knp_menu_template:  'Administration/Menu/admin_menu.html.twig'
         button_create:      'Administration/Button/create_button.html.twig'
-        list:      'Administration/CRUD/base_list.html.twig'
+        list:               'Administration/CRUD/base_list.html.twig'
+        base_list_field:    'Administration/CRUD/base_list_field.html.twig'
     assets:
         stylesheets:
             # The default stylesheet list:

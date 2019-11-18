@@ -13,6 +13,7 @@
         <!-- Informations sur le compte utilisateur ou connexion -->
         {% if app.user %}
             <ul class="navbar-nav mr-auto d-lg-none">
+                <li class="dropdown-divider"></li>
                 <li class="nav-item"><a href="{{ path('fos_user_profile_show') }}" class="nav-link">Mon espace personnel</a></li>
                 {% if is_granted('ROLE_WEBMASTER') %}
                     <li class="nav-item"><a href="{{ path('sonata_admin_dashboard') }}" class="nav-link">Administration</a></li>
@@ -53,6 +54,7 @@
             </ul>
         {% else %}
             <ul class="navbar-nav mr-auto d-lg-none">
+                <li class="dropdown-divider"></li>
                 <li class="nav-item"><a href="{{ path('fos_user_security_login') }}" class="nav-link">Se connecter</a></li>
                 <li class="nav-item"><a href="{{ path('fos_user_registration_register') }}" class="nav-link">S'inscrire</a></li>
             </ul>

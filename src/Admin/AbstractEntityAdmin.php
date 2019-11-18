@@ -33,10 +33,20 @@ abstract class AbstractEntityAdmin extends AbstractAdmin
     {
         $listMapper
         ->addIdentifier(self::LABEL)
-        ->add('createAt', 'datetime', array('format' => 'd/m/Y H:i'))
-        ->add('createBy.username')
-        ->add('updateAt', 'datetime', array('format' => 'd/m/Y H:i'))
-        ->add('updateBy.username')
+        ->add('createAt', 'datetime', [
+            'format' => 'd/m/Y H:i',
+            'header_class' => 'd-none d-lg-table-cell',
+        ])
+        ->add('createBy.username', 'text', [
+            'header_class' => 'd-none d-lg-table-cell',
+        ])
+        ->add('updateAt', 'datetime', [
+            'format' => 'd/m/Y H:i',
+            'header_class' => 'd-none d-lg-table-cell',
+        ])
+        ->add('updateBy.username', 'text', [
+            'header_class' => 'd-none d-lg-table-cell',
+        ])
         ->add('_action', null, [
             'actions' => [
                 'edit' => ['template' => 'Administration/CRUD/list__action_edit.html.twig'],

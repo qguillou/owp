@@ -38,16 +38,18 @@
                         {% endfor %}
                     </td>
                     <td>
-                        {% if is_granted('update', entry) %}
+                        <div class="btn-group">
+                            {% if is_granted('update', entry) %}
                             <a href="{{ path('owp_entry_update', {'id': entry.id}) }}" class="btn btn-outline-secondary">
                                 <i class="fa fa-edit" aria-hidden="true"></i>
                             </a>
-                        {% endif %}
-                        {% if is_granted('delete', entry) %}
-                            <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('owp_entry_delete', {'id': entry.id}) }}" type="button" class="btn btn-outline-danger">
+                            {% endif %}
+                            {% if is_granted('delete', entry) %}
+                            <a href="#" data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('owp_entry_delete', {'id': entry.id}) }}" class="btn btn-outline-danger">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        {% endif %}
+                            </a>
+                            {% endif %}
+                        </div>
                     </td>
                 </tr>
             {% endfor %}

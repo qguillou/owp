@@ -9,6 +9,7 @@
     <div class="collapse navbar-collapse" id="navbar-administration">
         <ul class="navbar-nav mr-auto d-lg-none">
             {% for object in item %}
+                {% if loop.index > 1 %}<li class="dropdown-divider"></li>{% endif %}
                 {% for children in object.children %}
                     <li class="nav-item {{ app.request.get('_route') == children.uri ? 'active' }}">
                         <a class="nav-link" href="{{ children.uri }}">{{ children.label|trans }}</a>

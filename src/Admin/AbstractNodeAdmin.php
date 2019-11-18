@@ -54,6 +54,11 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
                     'required' => false,
                     'disabled' => true
                 ))
+                ->add('slug', TextType::class, array(
+                    'label' => 'URL'
+                    'required' => false,
+                    'disabled' => true
+                ))
             ->end();
     }
 

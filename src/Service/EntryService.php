@@ -12,20 +12,29 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Security;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Twig\Environment;
+use Knp\Snappy\Pdf;
 
 class EntryService {
+
+    const EXPORT_PDF = 'pdf';
 
     private $em;
     private $formFactory;
     private $session;
     private $security;
+    private $twig;
+    private $pdf;
 
-    public function __construct(EntityManagerInterface $em, FormFactoryInterface $formFactory, SessionInterface $session, Security $security)
+    public function __construct(EntityManagerInterface $em, FormFactoryInterface $formFactory, SessionInterface $session, Security $security, Environment $twig, Pdf $pdf)
     {
         $this->em = $em;
         $this->formFactory = $formFactory;
         $this->session = $session;
         $this->security = $security;
+        $this->twig = $twig;
+        $this->pdf = $pdf;
     }
 
     public function form(Request $request, Event $event)
@@ -65,6 +74,15 @@ class EntryService {
         }
     }
 
+    public function export(Event $event, $format)
+    {
+        switch($format)
+        {
+            case self::EXPORT_PDF:
+                return $this->exportPDF($event);
+        }
+    }
+
     private function save(Entry $entry)
     {
         if ($this->security->isGranted('register', $entry->getEvent())) {
@@ -100,5 +118,17 @@ class EntryService {
         }
 
         return $entry;
+    }
+
+    private function exportPDF(Event $event)
+    {
+        $html = $this->twig->render('Entry/export_pdf.html.twig', array(
+            'event'  => $event
+        ));
+        
+        return new PdfResponse(
+            $this->pdf->getOutputFromHtml($html),
+            'file.pdf'
+        );
     }
 }

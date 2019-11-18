@@ -17,7 +17,7 @@ use App\Service\EntryService;
 class EntryController extends AbstractController
 {
     /**
-     * @Route("/entry/quick/{id}", name="owp_entry_quick")
+     * @Route("/entry/quick/{id}", name="owp_entry_quick", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
     public function quick($id, EventRepository $eventRepository, EntryService $entryService): Response
@@ -32,7 +32,7 @@ class EntryController extends AbstractController
     }
 
     /**
-     * @Route("/entry/{id}/update", name="owp_entry_update")
+     * @Route("/entry/{id}/update", name="owp_entry_update", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
     public function update($id, EntryRepository $entryRepository, EntryService $entryService): Response
@@ -52,7 +52,7 @@ class EntryController extends AbstractController
     }
 
     /**
-     * @Route("/entry/{id}/delete", name="owp_entry_delete")
+     * @Route("/entry/{id}/delete", name="owp_entry_delete", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
     public function delete($id, EntryRepository $entryRepository, EntryService $entryService): Response
@@ -63,5 +63,15 @@ class EntryController extends AbstractController
         return $this->redirectToRoute('owp_event_show', array(
             'id' => $entry->getEvent()->getId(),
         ));
+    }
+
+    /**
+     * @Route("/entry/{id}/export/{format}", name="owp_entry_export", requirements={"page"="\d+"})
+     */
+    public function export($id, $format, EventRepository $eventRepository, EntryService $entryService): Response
+    {
+        $event = $eventRepository->find($id);
+
+        return $entryService->export($event, $format);
     }
 }

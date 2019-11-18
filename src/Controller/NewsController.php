@@ -10,7 +10,7 @@ use App\Repository\NewsRepository;
 class NewsController extends AbstractController
 {
     /**
-     * @Route("/news/{id}", name="owp_news_show")
+     * @Route("/news/{id}", name="owp_news_show", requirements={"page"="\d+"})
      */
     public function show($id, NewsRepository $newsRepository): Response
     {

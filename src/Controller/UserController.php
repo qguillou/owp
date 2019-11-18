@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/profile/delete/{id}", name="owp_user_delete")
+     * @Route("/profile/delete/{id}", name="owp_user_delete", requirements={"page"="\d+"})
      */
     public function delete(User $user): Response
     {

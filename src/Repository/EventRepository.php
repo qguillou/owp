@@ -16,9 +16,14 @@ class EventRepository extends ServiceEntityRepository
     public function findFiltered($values = [], $limit = null)
     {
         $query = $this->createQueryBuilder('e')
-            ->where('e.dateBegin > :date')
-            ->setParameter('date', date('Y-m-d'))
             ->orderBy('e.dateBegin', 'ASC');
+
+        foreach ($values as $value) {
+            $query
+                ->andWhere('e.' . $value['name'] . ' ' . $value['operator'] . ' :' . $value['name'])
+                ->setParameter($value['name'], $value['value'])
+            ;
+        }
 
         if (!empty($limit)) {
             $query->setMaxResults($limit);

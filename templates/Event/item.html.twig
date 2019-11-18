@@ -1,5 +1,5 @@
 <div class="card bg-transparent border-primary h-100">
-    <img src="https://l1visible.com/wp-content/uploads/2018/10/FORET.jpg" class="card-img-top" alt="...">
+    <img src="{{ asset('images/default.jpg') | imagine_filter('thumbnail') }}" class="card-img-top" alt="...">
     <div class="card-body">
         <h1 class="d-inline-flex"><span class="badge badge-primary">{{ event.dateBegin|date('d') }}</span></h1>
         <h3 class="d-inline-flex">{{ event.dateBegin|date('F')|trans }}</h3>

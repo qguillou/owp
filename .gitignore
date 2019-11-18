@@ -18,3 +18,7 @@ yarn-error.log
 .scannerwork/*
 
 /assets/css/variables.local.scss
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

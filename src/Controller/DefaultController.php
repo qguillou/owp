@@ -17,9 +17,11 @@ class DefaultController extends AbstractController
     {
         $newsFilters = $eventFilters = [];
         $newsFilters['promote'] = true;
+        $eventFilters[] = ['name' => 'dateBegin', 'value' => date('Y-m-d'), 'operator' => '>'];
 
         if (!$this->isGranted('ROLE_MEMBER')) {
-            $newsFilters['private'] = $eventFilters['private'] = false;
+            $newsFilters['private'] = false;
+            $eventFilters[] = ['name' => 'private', 'value' => false, 'operator' => '='];
         }
 
         return $this->render('Homepage/homepage.html.twig', [

@@ -22,9 +22,10 @@ class EventController extends AbstractController
     public function list(EventRepository $eventRepository): Response
     {
         $eventFilters = [];
+        $eventFilters[] = ['name' => 'dateBegin', 'value' => date('Y-m-d'), 'operator' => '>'];
 
         if (!$this->isGranted('ROLE_MEMBER')) {
-            $eventFilters['private'] = false;
+            $eventFilters[] = ['name' => 'private', 'value' => false, 'operator' => '='];
         }
 
         return $this->render('Event/list.html.twig', [

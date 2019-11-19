@@ -63,7 +63,7 @@ abstract class AbstractContent extends AbstractEntity
 
     public function generateSlugValue($values)
     {
-        return implode('-', $values);
+        return implode('-', str_replace(' ', '-', $values));
     }
 
     /**

@@ -80,9 +80,14 @@ class Event extends AbstractContent
     protected $numberPeopleByEntries;
 
     /**
-     * @ORM\OneToMany(targetEntity="Entry", cascade={"persist", "remove"}, mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Team", cascade={"persist", "remove"}, mappedBy="event")
      */
-    protected $entries;
+    protected $teams;
+
+    /**
+     * @ORM\OneToMany(targetEntity="People", cascade={"persist", "remove"}, mappedBy="event")
+     */
+    protected $peoples;
 
     /**
      * @ORM\ManyToMany(targetEntity="News")
@@ -262,9 +267,14 @@ class Event extends AbstractContent
         return $this;
     }
 
-    public function getEntries()
+    public function getTeams()
     {
-        return $this->entries;
+        return $this->teams;
+    }
+
+    public function getPeoples()
+    {
+        return $this->peoples;
     }
 
     public function getCircuits()

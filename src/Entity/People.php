@@ -8,15 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class People extends AbstractEntity
+class People extends AbstractEntry
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
     /**
      * @ORM\ManyToOne(targetEntity="Base")
      * @ORM\JoinColumn(nullable=true)
@@ -24,10 +17,10 @@ class People extends AbstractEntity
     protected $base;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Entry", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Team", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
-    protected $entry;
+    protected $team;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -57,18 +50,20 @@ class People extends AbstractEntity
     public function setBase(Base $base): self
     {
         $this->base = $base;
+        $this->setFirstName($base->getFirstName());
+        $this->setLastName($base->getLastName());
 
         return $this;
     }
 
-    public function getEntry(): ?Entry
+    public function getTeam(): ?Team
     {
-        return $this->entry;
+        return $this->team;
     }
 
-    public function setEntry(Entry $entry): self
+    public function setTeam(Team $team): self
     {
-        $this->entry = $entry;
+        $this->team = $team;
 
         return $this;
     }

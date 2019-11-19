@@ -2,13 +2,13 @@
 // src/Security/PostVoter.php
 namespace App\Security;
 
-use App\Entity\Entry;
+use App\Entity\People;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
 
-class EntryVoter extends Voter
+class PeopleVoter extends Voter
 {
     // these strings are just invented: you can use anything
     const UPDATE = 'update';
@@ -28,14 +28,14 @@ class EntryVoter extends Voter
             return false;
         }
 
-        if (!$subject instanceof Entry) {
+        if (!$subject instanceof People) {
             return false;
         }
 
         return true;
     }
 
-    protected function voteOnAttribute($attribute, $entry, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $people, TokenInterface $token)
     {
         $user = $token->getUser();
 
@@ -45,45 +45,58 @@ class EntryVoter extends Voter
 
         switch ($attribute) {
             case self::DELETE:
-                return $this->canDelete($entry, $user);
+                return $this->canDelete($people, $user);
             case self::UPDATE:
-                return $this->canUpdate($entry, $user);
+                return $this->canUpdate($people, $user);
             case self::ADD:
-                return $this->canAdd($entry, $user);
+                return $this->canAdd($people, $user);
         }
 
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canDelete(Entry $entry, User $user)
+    private function canAdd(People $people, User $user)
     {
-        if($this->security->isGranted('ROLE_ADMIN')) {
+        if (!empty($people->getBase())) {
+            foreach ($people->getEvent()->getPeoples() as $p) {
+                if ($people->getBase() === $p->getBase()) {
+                    return false;
+                }
+            }
+        }
+
+        return $this->security('register', $people->getEvent());
+    }
+
+    private function canDelete(People $people, User $user)
+    {
+        if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;
         }
 
-        if ($entry->getEvent()->getDateEntries()->format('U') <= date('U')) {
+        if ($people->getEvent()->getDateEntries()->format('U') <= date('U')) {
             return false;
         }
 
-        if ($entry->getCreateBy() === $user || $entry->contains($user->getBase())) {
+        if ($people->getCreateBy() === $user || ($people->getBase() === $user->getBase() && !empty($user->getBase()))) {
             return true;
         }
 
         return false;
     }
 
-    private function canUpdate(Entry $entry, User $user)
+    private function canUpdate(People $people, User $user)
     {
-        if($this->security->isGranted('ROLE_ADMIN')) {
+        if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;
         }
 
-        if ($entry->getEvent()->getDateEntries()->format('U') <= date('U')) {
+        if ($people->getEvent()->getDateEntries()->format('U') <= date('U')) {
             return false;
         }
 
 
-        if ($entry->getCreateBy() == $user && $entry->contains($user->getBase())) {
+        if ($people->getCreateBy() == $user || ($people->getBase === $user->getBase() && !empty($user->getBase()))) {
             return true;
         }
 

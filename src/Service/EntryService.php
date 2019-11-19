@@ -3,10 +3,10 @@
 namespace App\Service;
 
 use App\Entity\Event;
-use App\Entity\Entry;
+use App\Entity\Team;
 use App\Entity\People;
 use App\Entity\User;
-use App\Form\EntryType;
+use App\Form\TeamType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -43,7 +43,7 @@ class EntryService {
             //$formFactory->create();
         }
         else {*/
-            $form = $this->formFactory->create(EntryType::class, $this->values($event));
+            $form = $this->formFactory->create(TeamType::class, $this->values($event));
         //}
 
         $form->handleRequest($request);
@@ -61,9 +61,12 @@ class EntryService {
         $this->session->getFlashBag()->add('danger', 'Vous n\'êtes pas autorisé à modifier cette inscription.');
     }
 
-    public function delete(Entry $entry)
+    public function delete($entry)
     {
-        if ($this->security->isGranted('delete', $entry)) {
+        if (!($entry instanceof Team) && !($entry instanceof People)) {
+            $this->session->getFlashBag()->add('danger', 'Une erreur inattendue est survenue.');
+        }
+        elseif ($this->security->isGranted('delete', $entry)) {
             $this->em->remove($entry);
             $this->em->flush();
 
@@ -83,9 +86,12 @@ class EntryService {
         }
     }
 
-    private function save(Entry $entry)
+    public function save($entry)
     {
-        if ($this->security->isGranted('register', $entry->getEvent())) {
+        if (!($entry instanceof Team) && !($entry instanceof People)) {
+            $this->session->getFlashBag()->add('danger', 'Une erreur inattendue est survenue.');
+        }
+        elseif ($this->security->isGranted('add', $entry)) {
             $this->em->persist($entry);
             $this->em->flush();
 
@@ -96,15 +102,15 @@ class EntryService {
         }
     }
 
-    private function values(Event $event, User $user = null): Entry
+    private function values(Event $event, User $user = null): Team
     {
-        $entry = new Entry();
-        $entry->setEvent($event);
+        $team = new Team();
+        $team->setEvent($event);
 
         for ($i = 0; $i < $event->getNumberPeopleByEntries(); $i++) {
             $people = new People();
             $people->setPosition($i + 1);
-            $entry->addPeople($people);
+            $team->addPeople($people);
 
             if (!empty($user) && !empty($user->getBase())) {
                 $people->setBase($user->getBase());
@@ -117,7 +123,7 @@ class EntryService {
             }
         }
 
-        return $entry;
+        return $team;
     }
 
     private function exportPDF(Event $event)
@@ -125,7 +131,7 @@ class EntryService {
         $html = $this->twig->render('Entry/export_pdf.html.twig', array(
             'event'  => $event
         ));
-        
+
         return new PdfResponse(
             $this->pdf->getOutputFromHtml($html),
             'file.pdf'

@@ -72,4 +72,13 @@ class User extends BaseUser
 
         return $this;
     }
+
+    public function getPeople(Event $event): AbstractEntry
+    {
+        return (new People())
+            ->setBase($this->getBase())
+            ->setFirstName($this->getFirstName())
+            ->setLastName($this->getLastName())
+            ->setEvent($event);
+    }
 }

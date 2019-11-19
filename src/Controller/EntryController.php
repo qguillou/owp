@@ -5,13 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\EventRepository;
-use App\Repository\EntryRepository;
-use App\Entity\Entry;
-use App\Entity\Event;
+use App\Entity\Team;
 use App\Entity\People;
+use App\Entity\Event;
+use App\Entity\AbstractEntry;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\EntryType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Service\EntryService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -23,10 +21,9 @@ class EntryController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @ParamConverter("event")
      */
-    public function quick(Event $event, EventRepository $eventRepository, EntryService $entryService): Response
+    public function quick(Event $event, EntryService $entryService): Response
     {
-        $entry = $entryService->values($event, $this->getUser());
-        $entryService->save($entry);
+        $entryService->save($this->getUser()->getPeople($event));
 
         return $this->redirectToRoute('owp_event_show', array(
             'slug' => $event->getSlug(),
@@ -34,34 +31,54 @@ class EntryController extends AbstractController
     }
 
     /**
-     * @Route("/entry/{id}/update", name="owp_entry_update", requirements={"page"="\d+"})
+     * @Route("/team/{id}/update", name="owp_team_update", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
-    public function update(Entry $entry, EntryService $entryService): Response
+    public function updateTeam(Team $team, EntryService $entryService): Response
     {
-        $entryService->update($entry);
-        if ($this->isGranted('update', $entry)) {
-
-        }
-        else {
-            $this->addFlash('danger', 'Vous n\'êtes pas autorisé à modifier cette inscription.');
-        }
+        $entryService->updateTeam($team);
 
         return $this->redirectToRoute('owp_event_show', array(
-            'slug' => $entry->getEvent()->getSlug(),
+            'slug' => $team->getEvent()->getSlug(),
         ));
     }
 
     /**
-     * @Route("/entry/{id}/delete", name="owp_entry_delete", requirements={"page"="\d+"})
+     * @Route("/people/{id}/update", name="owp_people_update", requirements={"page"="\d+"})
      * @IsGranted("ROLE_USER")
      */
-    public function delete(Entry $entry, EntryService $entryService): Response
+    public function updatePeople(People $people, EntryService $entryService): Response
     {
-        $entryService->delete($entry);
+        $entryService->updatePeople($people);
 
         return $this->redirectToRoute('owp_event_show', array(
-            'slug' => $entry->getEvent()->getSlug(),
+            'slug' => $people->getEvent()->getSlug(),
+        ));
+    }
+
+    /**
+     * @Route("/team/{id}/delete", name="owp_team_delete", requirements={"page"="\d+"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function deleteTeam(Team $team, EntryService $entryService): Response
+    {
+        $entryService->deleteTeam($team);
+
+        return $this->redirectToRoute('owp_event_show', array(
+            'slug' => $team->getEvent()->getSlug(),
+        ));
+    }
+
+    /**
+     * @Route("/people/{id}/delete", name="owp_people_delete", requirements={"page"="\d+"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function deletePeople(People $people, EntryService $entryService): Response
+    {
+        $entryService->delete($people);
+
+        return $this->redirectToRoute('owp_event_show', array(
+            'slug' => $people->getEvent()->getSlug(),
         ));
     }
 

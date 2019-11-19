@@ -6,33 +6,21 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EntryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Entry extends AbstractEntity
+class Team extends AbstractEntry
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
     /**
      * @ORM\Column(type="string", nullable=true)
      */
     protected $label;
 
     /**
-     * @ORM\OneToMany(targetEntity="People", mappedBy="entry", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="People", mappedBy="team", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     protected $peoples;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
-    */
-    protected $event;
 
     public function __construct()
     {
@@ -47,18 +35,6 @@ class Entry extends AbstractEntity
     public function setLabel(string $label): self
     {
         $this->label = $label;
-
-        return $this;
-    }
-
-    public function getEvent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(Event $event): self
-    {
-        $this->event = $event;
 
         return $this;
     }
@@ -78,7 +54,8 @@ class Entry extends AbstractEntity
     public function addPeople(People $people): self
     {
         $this->peoples->add($people);
-        $people->setEntry($this);
+        $people->setTeam($this);
+        $people->setEvent($this->getEvent());
 
         return $this;
     }

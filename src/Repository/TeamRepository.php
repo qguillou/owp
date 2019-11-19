@@ -2,14 +2,14 @@
 
 namespace App\Repository;
 
-use App\Entity\Entry;
+use App\Entity\Team;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
-class EntryRepository extends ServiceEntityRepository
+class TeamRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Entry::class);
+        parent::__construct($registry, Team::class);
     }
 }

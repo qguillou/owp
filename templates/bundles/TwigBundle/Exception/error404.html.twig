@@ -1,11 +1,33 @@
-{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
-{% extends 'base.html.twig' %}
+{% extends 'content.html.twig' %}
 
-{% block body %}
-    <h1>Page not found</h1>
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 
-    <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or 
-    </p>
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}Page introuvable{% endblock %}
+
+{% block content_header %}
+    <img style="opacity:0.2" class="first-slide" src="{{ asset('images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
+    <div class="container">
+        <div class="carousel-caption text-left content-header col-12 col-lg-10 offset-lg-1">
+            <h1>Erreur 404 - Page Manquante (PM)</h1>
+            <div class="my-4">
+                <a href="{{ path('owp_homepage') }}" class="btn btn-primary">Retourner sur la page d'accueil</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_body %}
+    <div class="row">
+        <div class="col-12  col-lg-10 offset-lg-1">
+            <p>
+                La page que vous tentez d'accéder est introuvable, celle-ci n'existe pas ou plus.
+            </p>
+        </div>
+    </div>
 {% endblock %}

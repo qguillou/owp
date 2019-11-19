@@ -39,10 +39,6 @@ class EventController extends AbstractController
      */
     public function show(Request $request, Event $event, EntryService $entryService): Response
     {
-        if (!$event) {
-            throw $this->createNotFoundException('L\'événement est introuvable');
-        }
-
         if (!$this->isGranted('view', $event)) {
             throw $this->createAccessDeniedException('Vous n\'êtes par autorisé à consulter cette page.');
         }

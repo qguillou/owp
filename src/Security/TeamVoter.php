@@ -57,7 +57,7 @@ class TeamVoter extends Voter
 
     private function canAdd(Team $team, User $user)
     {
-        return $this->security('register', $team->getEvent());
+        return $this->security->isGranted('register', $team->getEvent());
     }
 
     private function canDelete(Team $team, User $user)

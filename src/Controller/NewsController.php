@@ -16,10 +16,6 @@ class NewsController extends AbstractController
      */
     public function show(News $news): Response
     {
-        if (!$news) {
-            throw $this->createNotFoundException('L\'actualité est introuvable');
-        }
-
         if (!$this->isGranted('view', $news)) {
             throw $this->createAccessDeniedException('Vous n\'êtes par autorisé à consulter cette page.');
         }

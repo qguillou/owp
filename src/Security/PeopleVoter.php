@@ -65,7 +65,7 @@ class PeopleVoter extends Voter
             }
         }
 
-        return $this->security('register', $people->getEvent());
+        return $this->security->isGranted('register', $people->getEvent());
     }
 
     private function canDelete(People $people, User $user)

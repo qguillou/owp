@@ -1,0 +1,42 @@
+{% extends 'content.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}Page introuvable{% endblock %}
+
+{% block content_header %}
+    <img style="opacity:0.2" class="first-slide" src="{{ asset('images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
+    <div class="container">
+        <div class="carousel-caption text-left content-header col-12 col-lg-10 offset-lg-1">
+            <h1>Erreur 403 - Accès non autorisé</h1>
+            {% if is_granted('ROLE_USER') %}
+                <div class="my-4">
+                    <a href="{{ path('owp_homepage') }}" class="btn btn-primary">Retourner sur la page d'accueil</a>
+                </div>
+            {% else %}
+                <div class="my-4">
+                    <h3>Vous avez un compte ?</h3>
+                    <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">Connectez-vous à votre compte</a>
+                    <h3>Sinon</h3>
+                    <a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_body %}
+    <div class="row">
+        <div class="col-12  col-lg-10 offset-lg-1">
+            <p>
+                Vous n'avez pas les droits d'accéder à cette page.
+            </p>
+        </div>
+    </div>
+{% endblock %}

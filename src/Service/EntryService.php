@@ -128,12 +128,22 @@ class EntryService {
 
     private function exportPDF(Event $event)
     {
-        $html = $this->twig->render('Entry/export_pdf.html.twig', array(
-            'event'  => $event
-        ));
+        if ($event->getNumberPeopleByEntries() > 1) {
+            $html = $this->twig->render('Entry/export_pdf__teams.html.twig', array(
+                'event'  => $event
+            ));
+        }
+        else {
+            $html = $this->twig->render('Entry/export_pdf__individuals.html.twig', array(
+                'event'  => $event
+            ));
+        }
+
 
         return new PdfResponse(
-            $this->pdf->getOutputFromHtml($html),
+            $this->pdf->getOutputFromHtml($html, array(
+                'encoding' => 'utf-8'
+            )),
             'file.pdf'
         );
     }

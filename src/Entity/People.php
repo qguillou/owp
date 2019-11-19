@@ -35,6 +35,11 @@ class People extends AbstractEntry
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    protected $club;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $comment;
 
     /**
@@ -52,6 +57,7 @@ class People extends AbstractEntry
         $this->base = $base;
         $this->setFirstName($base->getFirstName());
         $this->setLastName($base->getLastName());
+        $this->setClub($base->getClub());
 
         return $this;
     }
@@ -88,6 +94,18 @@ class People extends AbstractEntry
     public function setLastName($lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getClub(): ?string
+    {
+        return $this->club;
+    }
+
+    public function setClub($club): self
+    {
+        $this->club = $club;
 
         return $this;
     }

@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block content_body %}
-    <div class="row">
+    <div class="row my-4 mx-0 mx-lg-4">
         <div class="col-12  col-lg-10 offset-lg-1">
             {{ _self.breadcrumb([{'label':'Liste des événements', 'class': '', 'url':'owp_event_list'}, {'label': event.title, 'class': 'active'}])}}
         </div>
@@ -50,7 +50,7 @@
             {% endif %}
         </div>
 
-        <div class="col-12 col-lg-5 mb-4">
+        <div class="col-12 col-lg-5 mb-4 overflow-auto">
             {% if event.circuits|length > 0 %}
                 {% include 'Event/show__circuits.html.twig' %}
             {% endif %}

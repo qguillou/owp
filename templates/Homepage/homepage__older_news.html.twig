@@ -1,14 +1,14 @@
 {% if news|length > 6 %}
-    <div class="row m-0 p-4">
-        <div class="col-12 col-lg-10 offset-lg-1">
+    <div class="row my-4 mx-0 mx-lg-4">
+        <div class="col-12 col-lg-10 offset-lg-1 mb-2">
             <h2>Les anciennes actualités</h2>
         </div>
 
         <div class="col-12 col-lg-10 offset-lg-1">
             <div class="row">
                 {% for new in news|slice(6, news|length) %}
-                <div class="col-12 col-lg-4">
-                    <div class="card m-2 bg-transparent border-primary">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card bg-transparent border-primary">
                         <div class="card-body">
                             <h5 class="card-title text-primary">{{ new.title }}</h5>
                             <p>

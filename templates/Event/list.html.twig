@@ -13,7 +13,7 @@
 {% block title %}Liste des événements{% endblock %}
 
 {% block content_header %}
-    <img style="opacity:0.2" class="first-slide" src="{{ asset('images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
+    <img class="first-slide opacity-20" src="{{ asset('images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
     <div class="container">
         <div class="carousel-caption text-left content-header col-12 col-lg-10 offset-lg-1">
             <h1>Liste des événements</h1>
@@ -22,16 +22,14 @@
 {% endblock %}
 
 {% block content_body %}
-    <div class="row">
+    <div class="row my-4 mx-0 mx-lg-4">
         <div class="col-12 col-lg-10 offset-lg-1">
-            <div class="row">
-                {{ _self.breadcrumb([{'label':'Liste des événements', 'url':'#', 'class': 'active'}])}}
-            </div>
+            {{ _self.breadcrumb([{'label':'Liste des événements', 'url':'#', 'class': 'active'}])}}
         </div>
         <div class="col-12 col-lg-10 offset-lg-1">
             <div class="row">
                 {% for event in events %}
-                    <div class="col-12 col-lg-4 mb-4">
+                    <div class="col-12 col-md-6 col-lg-4 mb-1">
                         {% include 'Event/item.html.twig' %}
                     </div>
                 {% endfor %}

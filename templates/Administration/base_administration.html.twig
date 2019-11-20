@@ -17,115 +17,107 @@
 {% block body %}
     {{ knp_menu_render('sonata_admin_sidebar', {template: get_global_template('knp_menu_template')}) }}
 
-    <div class="m-4">
-        {% block content %}
-            {% set _title = block('title') is defined ? block('title')|trim : null %}
-            {% set _preview = block('preview') is defined ? block('preview')|trim : null %}
-            {% set _form = block('form') is defined ? block('form')|trim : null %}
-            {% set _show = block('show') is defined ? block('show')|trim : null %}
-            {% set _list_table = block('list_table') is defined ? block('list_table')|trim : null %}
-            {% set _list_filters = block('list_filters') is defined ? block('list_filters')|trim : null %}
-            {% set _actions = block('actions') is defined ? block('actions')|trim : null %}
-            {% set _breadcrumb = block('breadcrumb') is defined ? block('breadcrumb')|trim : null %}
-            {% set _navbar_title = block('navbar_title') is defined ? block('navbar_title')|trim : null %}
-            {% set _tab_menu = block('tab_menu') is defined ? block('tab_menu')|trim : null %}
-            {% set _list_filters_actions = block('list_filters_actions') is defined ? block('list_filters_actions')|trim : null -%}
+    {% block content %}
+        {% set _title = block('title') is defined ? block('title')|trim : null %}
+        {% set _preview = block('preview') is defined ? block('preview')|trim : null %}
+        {% set _form = block('form') is defined ? block('form')|trim : null %}
+        {% set _show = block('show') is defined ? block('show')|trim : null %}
+        {% set _list_table = block('list_table') is defined ? block('list_table')|trim : null %}
+        {% set _list_filters = block('list_filters') is defined ? block('list_filters')|trim : null %}
+        {% set _actions = block('actions') is defined ? block('actions')|trim : null %}
+        {% set _breadcrumb = block('breadcrumb') is defined ? block('breadcrumb')|trim : null %}
+        {% set _navbar_title = block('navbar_title') is defined ? block('navbar_title')|trim : null %}
+        {% set _tab_menu = block('tab_menu') is defined ? block('tab_menu')|trim : null %}
+        {% set _list_filters_actions = block('list_filters_actions') is defined ? block('list_filters_actions')|trim : null -%}
 
-            <div class="row">
-                <div class="col-12 col-lg-10 offset-lg-1">
-                    {% block sonata_breadcrumb %}
-                    {% if _breadcrumb is not empty or action is defined %}
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            {% if _breadcrumb is empty %}
-                            {% if action is defined %}
-                            {% for menu in breadcrumbs_builder.breadcrumbs(admin, action) %}
-                            {%- set translation_domain = menu.extra('translation_domain', 'messages') -%}
-                            {%- set label = menu.label -%}
-                            {%- if translation_domain is not same as(false) -%}
-                            {%- set label = label|trans(menu.extra('translation_params', {}), translation_domain) -%}
-                            {%- endif -%}
+        <div class="row my-4 mx-0 mx-lg-4">
+            <div class="col-12 col-lg-10 offset-lg-1">
+                {% block sonata_breadcrumb %}
+                {% if _breadcrumb is not empty or action is defined %}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% if _breadcrumb is empty %}
+                        {% if action is defined %}
+                        {% for menu in breadcrumbs_builder.breadcrumbs(admin, action) %}
+                        {%- set translation_domain = menu.extra('translation_domain', 'messages') -%}
+                        {%- set label = menu.label -%}
+                        {%- if translation_domain is not same as(false) -%}
+                        {%- set label = label|trans(menu.extra('translation_params', {}), translation_domain) -%}
+                        {%- endif -%}
 
-                            {% if not loop.last %}
-                            <li class="breadcrumb-item">
-                                {% if menu.uri is not empty %}
-                                <a href="{{ menu.uri }}">
-                                    {% if menu.extra('safe_label', true) %}
-                                    {{- label|trans|raw -}}
-                                    {% else %}
-                                    {{- label|trans|truncate(100) -}}
-                                    {% endif %}
-                                </a>
+                        {% if not loop.last %}
+                        <li class="breadcrumb-item">
+                            {% if menu.uri is not empty %}
+                            <a href="{{ menu.uri }}">
+                                {% if menu.extra('safe_label', true) %}
+                                {{- label|trans|raw -}}
                                 {% else %}
-                                <span>{{ label|trans|truncate(100) }}</span>
+                                {{- label|trans|truncate(100) -}}
                                 {% endif %}
-                            </li>
+                            </a>
                             {% else %}
-                            <li class="breadcrumb-item active" aria-current="page"><span>{{ label|trans|truncate(100) }}</span></li>
+                            <span>{{ label|trans|truncate(100) }}</span>
                             {% endif %}
-                            {% endfor %}
+                        </li>
+                        {% else %}
+                        <li class="breadcrumb-item active" aria-current="page"><span>{{ label|trans|truncate(100) }}</span></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% else %}
+                        {{ _breadcrumb|raw }}
+                        {% endif %}
+                    </ol>
+                </nav>
+                {% endif %}
+                {% endblock sonata_breadcrumb %}
+
+                {% block notice %}
+                {% include '@SonataCore/FlashMessage/render.html.twig' %}
+                {% endblock notice %}
+
+                {% if _preview is not empty %}
+                <div class="sonata-ba-preview">{{ _preview|raw }}</div>
+                {% endif %}
+
+                {% if _show is not empty %}
+                <div class="sonata-ba-show">{{ _show|raw }}</div>
+                {% endif %}
+
+                {% if _navbar_title is not empty
+                    or _tab_menu is not empty
+                    or _actions is not empty
+                    or _list_filters_actions is not empty
+                    %}
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container-fluid">
+                            {% block tab_menu_navbar_header %}
+                            {% if _navbar_title is not empty %}
+                            <h1>{{ _navbar_title|raw }}</h1>
                             {% endif %}
-                            {% else %}
-                            {{ _breadcrumb|raw }}
-                            {% endif %}
-                        </ol>
+                            {% endblock %}
+                        </div>
                     </nav>
                     {% endif %}
-                    {% endblock sonata_breadcrumb %}
 
-                    {% block notice %}
-                    {% include '@SonataCore/FlashMessage/render.html.twig' %}
-                    {% endblock notice %}
-
-                    {% if _preview is not empty %}
-                    <div class="sonata-ba-preview">{{ _preview|raw }}</div>
+                    {% if _form is not empty %}
+                    <div class="sonata-ba-form">{{ _form|raw }}</div>
                     {% endif %}
-
-                    {% if _show is not empty %}
-                    <div class="sonata-ba-show">{{ _show|raw }}</div>
-                    {% endif %}
-
-                    {% if _navbar_title is not empty
-                        or _tab_menu is not empty
-                        or _actions is not empty
-                        or _list_filters_actions is not empty
-                        %}
-                        <nav class="navbar navbar-default" role="navigation">
-                            <div class="container-fluid">
-                                {% block tab_menu_navbar_header %}
-                                {% if _navbar_title is not empty %}
-                                <h1>{{ _navbar_title|raw }}</h1>
-                                {% endif %}
-                                {% endblock %}
-                            </div>
-                        </nav>
-                        {% endif %}
-
-                        {% if _form is not empty %}
-                        <div class="sonata-ba-form">{{ _form|raw }}</div>
-                        {% endif %}
-                </div>
             </div>
 
             {% if _list_table is not empty %}
                 {% if _actions is not empty %}
-                <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
                         <div class="sonata-ba-preview">{{ _actions|raw }}</div>
                     </div>
-                </div>
                 {% endif %}
 
                 {% if _list_filters is not empty %}
-                    <div class="row">
-                        {{ _list_filters|raw }}
-                    </div>
+                    {{ _list_filters|raw }}
                 {% endif %}
 
-                <div class="row">
-                    {{ _list_table|raw }}
-                </div>
+                {{ _list_table|raw }}
             {% endif %}
-        {% endblock %}
-    </div>
+        </div>
+    {% endblock %}
 {% endblock %}

@@ -11,7 +11,7 @@
 {% block title %}Page introuvable{% endblock %}
 
 {% block content_header %}
-    <img style="opacity:0.2" class="first-slide" src="{{ asset('images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
+    <img class="first-slide opacity-20" src="{{ asset('images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
     <div class="container">
         <div class="carousel-caption text-left content-header col-12 col-lg-10 offset-lg-1">
             <h1>Erreur 403 - Accès non autorisé</h1>
@@ -32,7 +32,7 @@
 {% endblock %}
 
 {% block content_body %}
-    <div class="row">
+    <div class="row my-4 mx-0 mx-lg-4">
         <div class="col-12  col-lg-10 offset-lg-1">
             <p>
                 Vous n'avez pas les droits d'accéder à cette page.

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% macro breadcrumb(items) %}
-    <nav aria-label="breadcrumb" class="col-12">
+    <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item fs-20"><a href="{{ path('owp_homepage') }}"><i class="fa fa-home"></i></a></li>
             {% for item in items %}
@@ -52,9 +52,7 @@
         {% endif %}
     {% endblock %}
 
-    <div class="m-4">
-        {% block content_body %}{% endblock %}
-    </div>
+    {% block content_body %}{% endblock %}
 
     {% block content_footer %}{% endblock %}
 {% endblock %}

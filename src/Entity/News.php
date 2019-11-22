@@ -4,22 +4,24 @@ namespace App\Entity;
 
 use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\Common as OwpCommonTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class News extends AbstractContent
+class News
 {
+    use OwpCommonTrait\IdTrait;
+    use OwpCommonTrait\TitleTrait;
+    use OwpCommonTrait\ContentTrait;
+    use OwpCommonTrait\AuthorTrait;
+    use OwpCommonTrait\PrivateTrait;
+
     /**
      * @ORM\Column(name="promote", type="boolean")
      */
     protected $promote;
-
-    /**
-     * @ORM\Column(name="private", type="boolean", nullable=true)
-     */
-    protected $private;
 
     public function __construct()
     {
@@ -34,18 +36,6 @@ class News extends AbstractContent
     public function setPromote(bool $promote): self
     {
         $this->promote = $promote;
-
-        return $this;
-    }
-
-    public function isPrivate(): ?bool
-    {
-        return $this->private;
-    }
-
-    public function setPrivate(bool $private): self
-    {
-        $this->private = $private;
 
         return $this;
     }

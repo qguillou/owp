@@ -4,13 +4,18 @@ namespace App\Entity;
 
 use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\Common as OwpCommonTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LinkRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Link extends AbstractToolkit
+class Link
 {
+    use OwpCommonTrait\IdTrait;
+    use OwpCommonTrait\LabelTrait;
+    use OwpCommonTrait\AuthorTrait;
+
     /**
      * @ORM\Column(type="string", length=255)
      */

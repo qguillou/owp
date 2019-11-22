@@ -5,6 +5,8 @@ namespace App\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\Common as OwpCommonTrait;
+use App\Model\User as OwpUserTrait;
 
 /**
  * @ORM\Entity
@@ -12,10 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    use OwpUserTrait\UserNameTrait;
+
     /**
-     * @ORM\Id
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
@@ -25,38 +29,9 @@ class User extends BaseUser
      */
     private $base;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $firstName;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $lastName;
-
-    public function getFirstName(): ?string
+    public function getId(): ?int
     {
-        return $this->firstName;
-    }
-
-    public function setFirstName($firstName): self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName($lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
+        return $this->id;
     }
 
     public function getBase(): ?Base

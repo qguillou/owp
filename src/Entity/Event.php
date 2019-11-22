@@ -6,13 +6,24 @@ use App\Entity\User;
 use App\Entity\EventType;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Model\Common as OwpCommonTrait;
+use App\Model\Event as OwpEventTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Event extends AbstractContent
+class Event
 {
+    use OwpCommonTrait\IdTrait;
+    use OwpCommonTrait\TitleTrait;
+    use OwpCommonTrait\ContentTrait;
+    use OwpCommonTrait\AuthorTrait;
+    use OwpCommonTrait\PrivateTrait;
+
+    use OwpEventTrait\EventLocationTrait;
+    use OwpEventTrait\EventEntryTrait;
+
     /**
      * @ORM\Column(type="datetime")
      */
@@ -40,54 +51,9 @@ class Event extends AbstractContent
     protected $website;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $locationTitle;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $locationInformation;
-
-    /**
-     * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
-     */
-    protected $latitude;
-
-    /**
-     * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
-     */
-    protected $longitude;
-
-    /**
      * @ORM\OneToMany(targetEntity="Circuit", cascade={"persist", "remove"}, mappedBy="event")
      */
     protected $circuits;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $allowEntries;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $dateEntries;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $numberPeopleByEntries;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Team", cascade={"persist", "remove"}, mappedBy="event")
-     */
-    protected $teams;
-
-    /**
-     * @ORM\OneToMany(targetEntity="People", cascade={"persist", "remove"}, mappedBy="event")
-     */
-    protected $peoples;
 
     /**
      * @ORM\ManyToMany(targetEntity="News")
@@ -98,10 +64,6 @@ class Event extends AbstractContent
      */
     protected $sections;
 
-    /**
-     * @ORM\Column(name="private", type="boolean", nullable=true)
-     */
-    protected $private;
 
     public function __construct()
     {
@@ -130,54 +92,6 @@ class Event extends AbstractContent
     public function setWebsite(string $website): self
     {
         $this->website = $website;
-
-        return $this;
-    }
-
-    public function getLocationTitle(): ?string
-    {
-        return $this->locationTitle;
-    }
-
-    public function setLocationTitle(string $locationTitle): self
-    {
-        $this->locationTitle = $locationTitle;
-
-        return $this;
-    }
-
-    public function getLocationInformation(): ?string
-    {
-        return $this->locationInformation;
-    }
-
-    public function setLocationInformation($locationInformation): self
-    {
-        $this->locationInformation = $locationInformation;
-
-        return $this;
-    }
-
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-
-    public function setLatitude($latitude): self
-    {
-        $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-
-    public function setLongitude($longitude): self
-    {
-        $this->longitude = $longitude;
 
         return $this;
     }
@@ -230,53 +144,6 @@ class Event extends AbstractContent
         return $this;
     }
 
-
-    public function getAllowEntries(): ?bool
-    {
-        return $this->allowEntries;
-    }
-
-    public function setAllowEntries(bool $allowEntries): self
-    {
-        $this->allowEntries = $allowEntries;
-
-        return $this;
-    }
-
-    public function getDateEntries(): ?\DateTimeInterface
-    {
-        return $this->dateEntries;
-    }
-
-    public function setDateEntries($dateEntries): self
-    {
-        $this->dateEntries = $dateEntries;
-
-        return $this;
-    }
-
-    public function getNumberPeopleByEntries(): ?int
-    {
-        return $this->numberPeopleByEntries;
-    }
-
-    public function setNumberPeopleByEntries($numberPeopleByEntries): self
-    {
-        $this->numberPeopleByEntries = $numberPeopleByEntries;
-
-        return $this;
-    }
-
-    public function getTeams()
-    {
-        return $this->teams;
-    }
-
-    public function getPeoples()
-    {
-        return $this->peoples;
-    }
-
     public function getCircuits()
     {
         return $this->circuits;
@@ -312,18 +179,6 @@ class Event extends AbstractContent
     public function addSections($sections)
     {
         $this->circuits->add($circuit);
-
-        return $this;
-    }
-
-    public function isPrivate(): ?bool
-    {
-        return $this->private;
-    }
-
-    public function setPrivate(bool $private): self
-    {
-        $this->private = $private;
 
         return $this;
     }

@@ -3,13 +3,28 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\Common as OwpCommonTrait;
+use App\Model\Event as OwpEventTrait;
+use App\Model\User as OwpUserTrait;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class People extends AbstractEntry
+class People
 {
+    use OwpCommonTrait\IdTrait;
+    use OwpCommonTrait\AuthorTrait;
+
+    use OwpEventTrait\EventReferenceTrait;
+
+    use OwpUserTrait\UserNameTrait;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
+    */
+    protected $event;
+
     /**
      * @ORM\ManyToOne(targetEntity="Base")
      * @ORM\JoinColumn(nullable=true)
@@ -21,16 +36,6 @@ class People extends AbstractEntry
      * @ORM\JoinColumn(nullable=true)
      */
     protected $team;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $firstName;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $lastName;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -70,30 +75,6 @@ class People extends AbstractEntry
     public function setTeam(Team $team): self
     {
         $this->team = $team;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName($firstName): self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName($lastName): self
-    {
-        $this->lastName = $lastName;
 
         return $this;
     }

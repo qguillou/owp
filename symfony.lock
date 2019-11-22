@@ -234,6 +234,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.3"
     },
+    "owp/owp_core": {
+        "version": "dev-master"
+    },
     "phpoption/phpoption": {
         "version": "1.5.0"
     },
@@ -350,6 +353,9 @@
     },
     "symfony/dotenv": {
         "version": "v3.4.31"
+    },
+    "symfony/error-handler": {
+        "version": "v4.4.0"
     },
     "symfony/event-dispatcher": {
         "version": "v3.4.31"
@@ -542,6 +548,9 @@
     },
     "symfony/validator": {
         "version": "v3.4.31"
+    },
+    "symfony/var-dumper": {
+        "version": "v4.4.0"
     },
     "symfony/var-exporter": {
         "version": "v4.3.5"

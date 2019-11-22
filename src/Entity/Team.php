@@ -4,17 +4,25 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Model\Common as OwpCommonTrait;
+use App\Model\Event as OwpEventTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Team extends AbstractEntry
+class Team
 {
+    use OwpCommonTrait\IdTrait;
+    use OwpCommonTrait\LabelTrait;
+    use OwpCommonTrait\AuthorTrait;
+
+    use OwpEventTrait\EventReferenceTrait;
+
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $label;
+    * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
+    */
+    protected $event;
 
     /**
      * @ORM\OneToMany(targetEntity="People", mappedBy="team", cascade={"persist", "remove"})
@@ -25,18 +33,6 @@ class Team extends AbstractEntry
     public function __construct()
     {
         $this->peoples = new ArrayCollection();
-    }
-
-    public function getLabel(): ?string
-    {
-        return $this->label;
-    }
-
-    public function setLabel(string $label): self
-    {
-        $this->label = $label;
-
-        return $this;
     }
 
     public function getPeoples()
@@ -84,13 +80,5 @@ class Team extends AbstractEntry
         }
 
         return false;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getLabel();
     }
 }

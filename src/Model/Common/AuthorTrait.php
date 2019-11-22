@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Model\Common;
 
-use Doctrine\ORM\Mapping as ORM;
-
-abstract class AbstractEntity
+Trait AuthorTrait
 {
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -27,11 +25,6 @@ abstract class AbstractEntity
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $updateAt;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getCreateBy(): ?User
     {
@@ -86,13 +79,5 @@ abstract class AbstractEntity
         $this->updateBy = $user;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getLabel();
     }
 }

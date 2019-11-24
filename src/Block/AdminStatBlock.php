@@ -10,7 +10,7 @@ use Sonata\BlockBundle\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\User;
+use Owp\OwpCore\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Templating\EngineInterface;
 

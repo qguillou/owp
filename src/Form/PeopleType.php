@@ -3,13 +3,13 @@
 namespace App\Form;
 
 use App\Entity\People;
-use App\Entity\Base;
+use Owp\OwpCore\Entity\Base;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use App\Repository\BaseRepository;
+use Owp\OwpCore\Repository\BaseRepository;
 
 class PeopleType extends AbstractType
 {

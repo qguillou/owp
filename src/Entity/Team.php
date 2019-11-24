@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use App\Model\Common as OwpCommonTrait;
-use App\Model\Event as OwpEventTrait;
+use Owp\OwpCore\Model as OwpCoreModel;
+use Owp\OwpEvent\Model as OwpEventTrait;
+use Owp\OwpEvent\Entity\Event;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
@@ -13,14 +14,14 @@ use App\Model\Event as OwpEventTrait;
  */
 class Team
 {
-    use OwpCommonTrait\IdTrait;
-    use OwpCommonTrait\LabelTrait;
-    use OwpCommonTrait\AuthorTrait;
+    use OwpCoreModel\IdTrait;
+    use OwpCoreModel\LabelTrait;
+    use OwpCoreModel\AuthorTrait;
 
     use OwpEventTrait\EventReferenceTrait;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
+    * @ORM\ManyToOne(targetEntity="Owp\OwpEvent\Entity\Event", inversedBy="entries")
     */
     protected $event;
 

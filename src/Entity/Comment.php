@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;
 use FOS\CommentBundle\Model\SignedCommentInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Owp\OwpCore\Entity\User;
 
 /**
  * @ORM\Entity
@@ -30,7 +31,7 @@ class Comment extends BaseComment implements SignedCommentInterface
     protected $thread;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Owp\OwpCore\Entity\User")
      * @ORM\JoinColumn(nullable=true)
      */
     protected $createBy;

@@ -1,0 +1,8 @@
+owp_core:
+    resource: "@OwpCoreBundle/Resources/config/routes.xml"
+
+owp_news:
+    resource: "@OwpNewsBundle/Resources/config/routes.xml"
+
+owp_event:
+    resource: "@OwpEventBundle/Resources/config/routes.xml"

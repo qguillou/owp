@@ -2,31 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\NewsRepository;
-use App\Repository\EventRepository;
 
-class DefaultController extends AbstractController
+class DefaultController extends Controller
 {
     /**
      * @Route("/", name="owp_homepage")
      */
-    public function index(NewsRepository $newsRepository, EventRepository $eventRepository): Response
+    public function index(): Response
     {
-        $newsFilters = $eventFilters = [];
-        $newsFilters['promote'] = true;
-        $eventFilters[] = ['name' => 'dateBegin', 'value' => date('Y-m-d'), 'operator' => '>'];
-
-        if (!$this->isGranted('ROLE_MEMBER')) {
-            $newsFilters['private'] = false;
-            $eventFilters[] = ['name' => 'private', 'value' => false, 'operator' => '='];
-        }
-
         return $this->render('Homepage/homepage.html.twig', [
-            'news' => $newsRepository->findBy($newsFilters, array('updateAt' => 'DESC')),
-            'events' => $eventRepository->findFiltered($eventFilters, 4),
+            'news' => $this->has('service.news') ? $this->get('service.news')->getBy() : [],
+            'events' => $this->has('service.event') ? $this->get('service.event')->getBy() : [],
         ]);
     }
 }

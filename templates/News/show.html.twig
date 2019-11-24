@@ -16,8 +16,8 @@
 {% endblock %}
 
 {% block content_admin_actions %}
-    <a href="{{ path('admin_app_news_edit', {'id': news.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> Modifier</a>
-    <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('admin_app_news_delete', {'id': news.id}) }}" type="button" class="btn btn-outline-light">
+    <a href="{{ path('admin_owp_owpnews_news_edit', {'id': news.id}) }}" class='btn btn-outline-light' href=""><i class="fa fa-edit"></i> Modifier</a>
+    <button data-toggle="modal" data-target="#confirm-delete" data-href="{{ path('admin_owp_owpnews_news_delete', {'id': news.id}) }}" type="button" class="btn btn-outline-light">
         <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
     </button>
 {% endblock %}

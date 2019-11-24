@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
-use App\Entity\Event;
+use Owp\OwpEvent\Entity\Event;
 use App\Entity\Team;
 use App\Entity\People;
-use App\Entity\User;
+use Owp\OwpCore\Entity\User;
 use App\Form\TeamType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;

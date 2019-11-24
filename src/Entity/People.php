@@ -3,9 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Model\Common as OwpCommonTrait;
-use App\Model\Event as OwpEventTrait;
-use App\Model\User as OwpUserTrait;
+use Owp\OwpCore\Model as OwpCoreModel;
+use Owp\OwpEvent\Model as OwpEventTrait;
+use Owp\OwpCore\Entity\Base;
+use Owp\OwpEvent\Entity\Event;
 
 /**
  * @ORM\Entity
@@ -13,20 +14,19 @@ use App\Model\User as OwpUserTrait;
  */
 class People
 {
-    use OwpCommonTrait\IdTrait;
-    use OwpCommonTrait\AuthorTrait;
+    use OwpCoreModel\IdTrait;
+    use OwpCoreModel\UserNameTrait;
+    use OwpCoreModel\AuthorTrait;
 
     use OwpEventTrait\EventReferenceTrait;
 
-    use OwpUserTrait\UserNameTrait;
-
     /**
-    * @ORM\ManyToOne(targetEntity="Event", inversedBy="entries")
+    * @ORM\ManyToOne(targetEntity="Owp\OwpEvent\Entity\Event", inversedBy="entries")
     */
     protected $event;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Base")
+     * @ORM\ManyToOne(targetEntity="Owp\OwpCore\Entity\Base")
      * @ORM\JoinColumn(nullable=true)
      */
     protected $base;

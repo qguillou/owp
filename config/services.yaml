@@ -24,9 +24,5 @@ services:
     # please note that last definitions always *replace* previous ones
     sonata.block.admin_stat:
         class: App\Block\AdminStatBlock
-        arguments:
-            - '@twig'
-            - '@templating'
-            - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }

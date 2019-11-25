@@ -1,5 +1,8 @@
 const $ = require('jquery');
 
+require('leaflet/dist/leaflet.css');
+require('leaflet/dist/leaflet.js');
+
 $(document).ready(function () {
     if ($('#map').length) {
         var lat = $('#map').data('lat');

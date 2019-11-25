@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "@symfony/webpack-encore": "^0.24.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
@@ -13,6 +14,8 @@
   },
   "dependencies": {
     "ckeditor": "^4.0.0",
-    "encore": "^0.0.30-beta"
+    "datatables": "^1.10.18",
+    "encore": "^0.0.30-beta",
+    "leaflet": "^1.6.0"
   }
 }

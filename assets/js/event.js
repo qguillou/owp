@@ -10,6 +10,9 @@ require('../css/event.scss');
 
 const $ = require('jquery');
 
+require('datatables/media/css/jquery.dataTables.min.css');
+require('datatables/media/js/jquery.dataTables.min.js');
+
 /**
  * Create calendar
  *

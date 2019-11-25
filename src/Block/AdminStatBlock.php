@@ -2,16 +2,12 @@
 
 namespace App\Block;
 
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityManager;
+use Owp\OwpCore\Entity\User;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Mapper\FormMapper;
-use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\Form\Validator\ErrorElement;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Owp\OwpCore\Entity\User;
-use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
 final class AdminStatBlock extends AbstractBlockService

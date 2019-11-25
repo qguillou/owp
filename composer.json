@@ -9,6 +9,7 @@
         "knplabs/knp-snappy-bundle": "^1.6",
         "liip/imagine-bundle": "^2.2",
         "owp/owp-core": "dev-master",
+        "owp/owp-entry": "dev-master",
         "owp/owp-event": "dev-master",
         "owp/owp-news": "dev-master",
         "sensio/framework-extra-bundle": "^5.4",

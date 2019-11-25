@@ -20,10 +20,6 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-    App\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
-
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     sonata.block.admin_stat:
@@ -34,8 +30,3 @@ services:
             - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }
-
-    service.entry:
-        class: App\Service\EntryService
-        arguments: []
-        public: true

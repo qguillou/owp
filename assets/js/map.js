@@ -2,8 +2,8 @@ const $ = require('jquery');
 
 $(document).ready(function () {
     if ($('#map').length) {
-        var lat = $('#map').attr('lat');
-        var lon = $('#map').attr('lon');
+        var lat = $('#map').data('lat');
+        var lon = $('#map').data('lon');
 
         var map = L.map('map').setView([lat, lon], 11);
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {

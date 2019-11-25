@@ -228,6 +228,9 @@
     "owp/owp-core": {
         "version": "dev-master"
     },
+    "owp/owp-entry": {
+        "version": "dev-master"
+    },
     "owp/owp-event": {
         "version": "dev-master"
     },

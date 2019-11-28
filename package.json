@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "ckeditor": "^4.0.0",
-    "datatables": "^1.10.18",
+    "datatables.net-bs": "^1.10.20",
+    "datatables.net-bs4": "^1.10.20",
     "encore": "^0.0.30-beta",
     "leaflet": "^1.6.0"
   }

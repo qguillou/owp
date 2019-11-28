@@ -6,3 +6,6 @@ owp_news:
 
 owp_event:
     resource: "@OwpEventBundle/Resources/config/routes.xml"
+
+owp_entry:
+    resource: "@OwpEntryBundle/Resources/config/routes.xml"

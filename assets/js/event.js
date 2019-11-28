@@ -10,8 +10,8 @@ require('../css/event.scss');
 
 const $ = require('jquery');
 
-require('datatables/media/css/jquery.dataTables.min.css');
-require('datatables/media/js/jquery.dataTables.min.js');
+require('datatables.net-bs4/css/dataTables.bootstrap4.min.css');
+require('datatables.net-bs4/js/dataTables.bootstrap4.min.js');
 
 /**
  * Create calendar

@@ -17,4 +17,14 @@
     .modal-content {
         border: 1px solid white;
     }
+
+    .bg-primary,
+    .table-primary {
+        background-color: darken($primary, 15%) !important;
+    }
+
+    .bg-secondary,
+    .table-secondary {
+        background-color: darken($secondary, 15%) !important;
+    }
 }

@@ -3518,12 +3518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_core.git",
-                "reference": "0015f12693e6563c442da53d37f4a820958d136d"
+                "reference": "127ab9718f0c33578b6c9d18afeb61246bb600cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/0015f12693e6563c442da53d37f4a820958d136d",
-                "reference": "0015f12693e6563c442da53d37f4a820958d136d",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/127ab9718f0c33578b6c9d18afeb61246bb600cd",
+                "reference": "127ab9718f0c33578b6c9d18afeb61246bb600cd",
                 "shasum": ""
             },
             "require": {
@@ -3553,7 +3553,7 @@
                 }
             ],
             "description": "Package OWP Core : coeur du système OWP",
-            "time": "2019-11-28T10:40:17+00:00"
+            "time": "2019-11-28T10:47:12+00:00"
         },
         {
             "name": "owp/owp-entry",
@@ -3561,12 +3561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_entry.git",
-                "reference": "a084e09a31ae34c1d5a435eb02081af1f32f1c67"
+                "reference": "72b654c21e9fd5b72bb65979599789f3e615f51a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_entry/zipball/a084e09a31ae34c1d5a435eb02081af1f32f1c67",
-                "reference": "a084e09a31ae34c1d5a435eb02081af1f32f1c67",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_entry/zipball/72b654c21e9fd5b72bb65979599789f3e615f51a",
+                "reference": "72b654c21e9fd5b72bb65979599789f3e615f51a",
                 "shasum": ""
             },
             "require": {
@@ -3590,7 +3590,7 @@
                 }
             ],
             "description": "Package OWP Entry : gestion des inscriptions pour les système OWP",
-            "time": "2019-11-28T10:40:08+00:00"
+            "time": "2019-11-28T11:43:21+00:00"
         },
         {
             "name": "owp/owp-event",

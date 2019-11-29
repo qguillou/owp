@@ -3518,12 +3518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_core.git",
-                "reference": "b96f93b13cb2c7871932dcd3a5f4222c6117bbf4"
+                "reference": "2523ee1e843ca026d6dd71cc1a7376c43d1e9fd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/b96f93b13cb2c7871932dcd3a5f4222c6117bbf4",
-                "reference": "b96f93b13cb2c7871932dcd3a5f4222c6117bbf4",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/2523ee1e843ca026d6dd71cc1a7376c43d1e9fd8",
+                "reference": "2523ee1e843ca026d6dd71cc1a7376c43d1e9fd8",
                 "shasum": ""
             },
             "require": {
@@ -3553,7 +3553,7 @@
                 }
             ],
             "description": "Package OWP Core : coeur du système OWP",
-            "time": "2019-11-28T15:17:41+00:00"
+            "time": "2019-11-29T10:58:05+00:00"
         },
         {
             "name": "owp/owp-entry",
@@ -3561,12 +3561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_entry.git",
-                "reference": "d80184af859632bfbc69407cb6000276f7a1f884"
+                "reference": "e0e86572242a8f140fa952ad7d37b1d1e3a9449f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_entry/zipball/d80184af859632bfbc69407cb6000276f7a1f884",
-                "reference": "d80184af859632bfbc69407cb6000276f7a1f884",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_entry/zipball/e0e86572242a8f140fa952ad7d37b1d1e3a9449f",
+                "reference": "e0e86572242a8f140fa952ad7d37b1d1e3a9449f",
                 "shasum": ""
             },
             "require": {
@@ -3590,7 +3590,7 @@
                 }
             ],
             "description": "Package OWP Entry : gestion des inscriptions pour les système OWP",
-            "time": "2019-11-28T15:18:03+00:00"
+            "time": "2019-11-29T10:43:23+00:00"
         },
         {
             "name": "owp/owp-event",
@@ -3598,12 +3598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_event.git",
-                "reference": "11824a5a0485931c332a1f8d5df7d7a7372430a5"
+                "reference": "e0ecd3d75941948eb277670c09a6cdcf1082a3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/11824a5a0485931c332a1f8d5df7d7a7372430a5",
-                "reference": "11824a5a0485931c332a1f8d5df7d7a7372430a5",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/e0ecd3d75941948eb277670c09a6cdcf1082a3b4",
+                "reference": "e0ecd3d75941948eb277670c09a6cdcf1082a3b4",
                 "shasum": ""
             },
             "require": {
@@ -3625,7 +3625,7 @@
                     "email": "guillou.quentin.29@gmail.com"
                 }
             ],
-            "time": "2019-11-28T15:17:53+00:00"
+            "time": "2019-11-29T10:37:00+00:00"
         },
         {
             "name": "owp/owp-news",
@@ -3633,12 +3633,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_news.git",
-                "reference": "35bac3be5c0a13d29d28d27a2f63e90e08e9238c"
+                "reference": "d34f819968b425ef2f9620c514cca5d90d033c55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_news/zipball/35bac3be5c0a13d29d28d27a2f63e90e08e9238c",
-                "reference": "35bac3be5c0a13d29d28d27a2f63e90e08e9238c",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_news/zipball/d34f819968b425ef2f9620c514cca5d90d033c55",
+                "reference": "d34f819968b425ef2f9620c514cca5d90d033c55",
                 "shasum": ""
             },
             "require": {
@@ -3661,7 +3661,7 @@
                 }
             ],
             "description": "Package OWP News : gestion des actualités pour les système OWP",
-            "time": "2019-11-28T14:49:32+00:00"
+            "time": "2019-11-29T10:34:33+00:00"
         },
         {
             "name": "phpoption/phpoption",

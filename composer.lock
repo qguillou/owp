@@ -2787,34 +2787,34 @@
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "3.4.1",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "d5af7fe83fead9b791dd6b46a936d5e6e42deed4"
+                "reference": "5793ec59b2243365a625c0fd78415732097c11e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/d5af7fe83fead9b791dd6b46a936d5e6e42deed4",
-                "reference": "d5af7fe83fead9b791dd6b46a936d5e6e42deed4",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/5793ec59b2243365a625c0fd78415732097c11e8",
+                "reference": "5793ec59b2243365a625c0fd78415732097c11e8",
                 "shasum": ""
             },
             "require": {
                 "jms/serializer": "^2.3|^3.0",
                 "php": "^7.2",
-                "symfony/dependency-injection": "^3.3 || ^4.0",
-                "symfony/framework-bundle": "^3.0 || ^4.0"
+                "symfony/dependency-injection": "^3.3 || ^4.0 || ^5.0",
+                "symfony/framework-bundle": "^3.0 || ^4.0 || ^5.0"
             },
             "require-dev": {
                 "doctrine/orm": "^2.4",
                 "phpunit/phpunit": "^6.0",
-                "symfony/expression-language": "^3.0 || ^4.0",
-                "symfony/finder": "^3.0 || ^4.0",
-                "symfony/form": "^3.0 || ^4.0",
-                "symfony/stopwatch": "^3.0 || ^4.0",
+                "symfony/expression-language": "^3.0 || ^4.0 || ^5.0",
+                "symfony/finder": "^3.0 || ^4.0 || ^5.0",
+                "symfony/form": "^3.0 || ^4.0 || ^5.0",
+                "symfony/stopwatch": "^3.0 || ^4.0 || ^5.0",
                 "symfony/twig-bundle": "*",
-                "symfony/validator": "^3.0 || ^4.0",
-                "symfony/yaml": "^3.0 || ^4.0"
+                "symfony/validator": "^3.0 || ^4.0 || ^5.0",
+                "symfony/yaml": "^3.0 || ^4.0 || ^5.0"
             },
             "suggest": {
                 "jms/di-extra-bundle": "Required to get lazy loading (de)serialization visitors, ^1.3",
@@ -2823,7 +2823,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "3.5-dev"
                 }
             },
             "autoload": {
@@ -2840,12 +2840,12 @@
             ],
             "authors": [
                 {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                },
-                {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com"
+                },
+                {
+                    "name": "Asmir Mustafic",
+                    "email": "goetas@gmail.com"
                 }
             ],
             "description": "Allows you to easily serialize, and deserialize data of any complexity",
@@ -2856,7 +2856,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-06-27T07:24:18+00:00"
+            "time": "2019-11-29T13:03:07+00:00"
         },
         {
             "name": "knplabs/doctrine-behaviors",
@@ -3518,12 +3518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_core.git",
-                "reference": "2523ee1e843ca026d6dd71cc1a7376c43d1e9fd8"
+                "reference": "5d3e177320ac2da1f1e12675f9e83215a27b90ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/2523ee1e843ca026d6dd71cc1a7376c43d1e9fd8",
-                "reference": "2523ee1e843ca026d6dd71cc1a7376c43d1e9fd8",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/5d3e177320ac2da1f1e12675f9e83215a27b90ce",
+                "reference": "5d3e177320ac2da1f1e12675f9e83215a27b90ce",
                 "shasum": ""
             },
             "require": {
@@ -3553,7 +3553,7 @@
                 }
             ],
             "description": "Package OWP Core : coeur du système OWP",
-            "time": "2019-11-29T10:58:05+00:00"
+            "time": "2019-11-29T14:54:35+00:00"
         },
         {
             "name": "owp/owp-entry",
@@ -3561,12 +3561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_entry.git",
-                "reference": "e0e86572242a8f140fa952ad7d37b1d1e3a9449f"
+                "reference": "72ee7bba56331628075f0a2d369c2f40186c3922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_entry/zipball/e0e86572242a8f140fa952ad7d37b1d1e3a9449f",
-                "reference": "e0e86572242a8f140fa952ad7d37b1d1e3a9449f",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_entry/zipball/72ee7bba56331628075f0a2d369c2f40186c3922",
+                "reference": "72ee7bba56331628075f0a2d369c2f40186c3922",
                 "shasum": ""
             },
             "require": {
@@ -3590,7 +3590,7 @@
                 }
             ],
             "description": "Package OWP Entry : gestion des inscriptions pour les système OWP",
-            "time": "2019-11-29T10:43:23+00:00"
+            "time": "2019-11-29T14:56:48+00:00"
         },
         {
             "name": "owp/owp-event",
@@ -3598,12 +3598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_event.git",
-                "reference": "e0ecd3d75941948eb277670c09a6cdcf1082a3b4"
+                "reference": "994208edb8682d8fc84b3ce6ab49018bbb4c6f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/e0ecd3d75941948eb277670c09a6cdcf1082a3b4",
-                "reference": "e0ecd3d75941948eb277670c09a6cdcf1082a3b4",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/994208edb8682d8fc84b3ce6ab49018bbb4c6f53",
+                "reference": "994208edb8682d8fc84b3ce6ab49018bbb4c6f53",
                 "shasum": ""
             },
             "require": {
@@ -3625,7 +3625,7 @@
                     "email": "guillou.quentin.29@gmail.com"
                 }
             ],
-            "time": "2019-11-29T10:37:00+00:00"
+            "time": "2019-11-29T14:56:21+00:00"
         },
         {
             "name": "owp/owp-news",

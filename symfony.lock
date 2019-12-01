@@ -237,6 +237,9 @@
     "owp/owp-news": {
         "version": "dev-master"
     },
+    "php": {
+        "version": "7.3"
+    },
     "phpoption/phpoption": {
         "version": "1.5.2"
     },

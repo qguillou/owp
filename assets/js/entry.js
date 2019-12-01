@@ -10,12 +10,7 @@ $(document).ready(function () {
         }
 
         var numberEntries = $('input:checkbox:checked').length;
-        if (numberEntries == 0) {
-            $('button[type=submit]').prop('disabled', true);
-        }
-        else {
-            $('button[type=submit]').prop('disabled', false);
-            $('#number-entries span').html(numberEntries);
-        }
+        $('button[type=submit]').prop('disabled', numberEntries == 0);
+        $('#number-entries span').html(numberEntries);
     });
 });

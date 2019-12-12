@@ -28,7 +28,9 @@
         "twig/extensions": "^1.5"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.13"
+        "symfony/debug-pack": "^1.0",
+        "symfony/maker-bundle": "^1.13",
+        "symfony/profiler-pack": "^1.0"
     },
     "config": {
         "preferred-install": {

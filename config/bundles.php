@@ -16,6 +16,7 @@ return [
     Owp\OwpNews\OwpNewsBundle::class => ['all' => true],
     Owp\OwpEntry\OwpEntryBundle::class => ['all' => true],
     Owp\OwpEvent\OwpEventBundle::class => ['all' => true],
+    Owp\OwpMap\OwpMapBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
     FOS\RestBundle\FOSRestBundle::class => ['all' => true],

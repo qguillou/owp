@@ -249,6 +249,9 @@
     "owp/owp-event": {
         "version": "dev-master"
     },
+    "owp/owp-map": {
+        "version": "dev-master"
+    },
     "owp/owp-news": {
         "version": "dev-master"
     },

@@ -9,3 +9,6 @@ owp_event:
 
 owp_entry:
     resource: "@OwpEntryBundle/Resources/config/routes.xml"
+
+owp_map:
+    resource: "@OwpMapBundle/Resources/config/routes.xml"

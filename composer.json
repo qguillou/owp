@@ -11,6 +11,7 @@
         "owp/owp-core": "dev-master",
         "owp/owp-entry": "dev-master",
         "owp/owp-event": "dev-master",
+        "owp/owp-map": "dev-master",
         "owp/owp-news": "dev-master",
         "sensio/framework-extra-bundle": "^5.4",
         "symfony/console": "3.4.*",

@@ -212,6 +212,9 @@
             "./config/packages/knp_snappy.yaml"
         ]
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.0.1"
+    },
     "liip/imagine-bundle": {
         "version": "1.8",
         "recipe": {
@@ -256,7 +259,7 @@
         "version": "dev-master"
     },
     "php": {
-        "version": "7.3"
+        "version": "7.4"
     },
     "phpoption/phpoption": {
         "version": "1.5.2"
@@ -670,6 +673,9 @@
     },
     "twig/twig": {
         "version": "v2.11.3"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.0.0"
     },
     "willdurand/jsonp-callback-validator": {
         "version": "v1.1.0"

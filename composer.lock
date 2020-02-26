@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9ae37a276b78e25ee9daafe4f1e5f60",
+    "content-hash": "71ad173cd3edf0f3910de5f96040c113",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3621,12 +3621,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_core.git",
-                "reference": "0507daf364d3c79618c02cfa497766cd1e7e48f0"
+                "reference": "35057df35220bbabfdfb8f44531c7b591a5fcab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/0507daf364d3c79618c02cfa497766cd1e7e48f0",
-                "reference": "0507daf364d3c79618c02cfa497766cd1e7e48f0",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_core/zipball/35057df35220bbabfdfb8f44531c7b591a5fcab1",
+                "reference": "35057df35220bbabfdfb8f44531c7b591a5fcab1",
                 "shasum": ""
             },
             "require": {
@@ -3657,7 +3657,7 @@
                 }
             ],
             "description": "Package OWP Core : coeur du système OWP",
-            "time": "2020-02-24T18:28:28+00:00"
+            "time": "2020-02-26T20:43:50+00:00"
         },
         {
             "name": "owp/owp-entry",
@@ -3702,12 +3702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_event.git",
-                "reference": "d6a46e5bc51b7d596b56a1425bd36375114347be"
+                "reference": "3ed517ff41024708f06cbe45264d81fc261a746f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/d6a46e5bc51b7d596b56a1425bd36375114347be",
-                "reference": "d6a46e5bc51b7d596b56a1425bd36375114347be",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/3ed517ff41024708f06cbe45264d81fc261a746f",
+                "reference": "3ed517ff41024708f06cbe45264d81fc261a746f",
                 "shasum": ""
             },
             "require": {
@@ -3729,7 +3729,7 @@
                     "email": "guillou.quentin.29@gmail.com"
                 }
             ],
-            "time": "2020-02-24T18:27:06+00:00"
+            "time": "2020-02-26T20:46:18+00:00"
         },
         {
             "name": "owp/owp-map",
@@ -3773,12 +3773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_news.git",
-                "reference": "2a1d137f053d3f4b041015b6304cd43d9072edf2"
+                "reference": "c9fd73025f213b7ea011faef59b24f23da95c684"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_news/zipball/2a1d137f053d3f4b041015b6304cd43d9072edf2",
-                "reference": "2a1d137f053d3f4b041015b6304cd43d9072edf2",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_news/zipball/c9fd73025f213b7ea011faef59b24f23da95c684",
+                "reference": "c9fd73025f213b7ea011faef59b24f23da95c684",
                 "shasum": ""
             },
             "require": {
@@ -3801,7 +3801,7 @@
                 }
             ],
             "description": "Package OWP News : gestion des actualités pour les système OWP",
-            "time": "2019-12-12T22:24:37+00:00"
+            "time": "2020-02-26T20:45:26+00:00"
         },
         {
             "name": "phpoption/phpoption",

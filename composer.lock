@@ -3702,12 +3702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_event.git",
-                "reference": "3ed517ff41024708f06cbe45264d81fc261a746f"
+                "reference": "ab04fea32a47571eb61fa571b93cd7a147b6f775"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/3ed517ff41024708f06cbe45264d81fc261a746f",
-                "reference": "3ed517ff41024708f06cbe45264d81fc261a746f",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_event/zipball/ab04fea32a47571eb61fa571b93cd7a147b6f775",
+                "reference": "ab04fea32a47571eb61fa571b93cd7a147b6f775",
                 "shasum": ""
             },
             "require": {
@@ -3729,7 +3729,7 @@
                     "email": "guillou.quentin.29@gmail.com"
                 }
             ],
-            "time": "2020-02-26T20:46:18+00:00"
+            "time": "2020-02-26T21:10:56+00:00"
         },
         {
             "name": "owp/owp-map",
@@ -3773,12 +3773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Orienteering-Web-Project/owp_news.git",
-                "reference": "c9fd73025f213b7ea011faef59b24f23da95c684"
+                "reference": "5108604447d97771d34db8401165520125eefcba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_news/zipball/c9fd73025f213b7ea011faef59b24f23da95c684",
-                "reference": "c9fd73025f213b7ea011faef59b24f23da95c684",
+                "url": "https://api.github.com/repos/Orienteering-Web-Project/owp_news/zipball/5108604447d97771d34db8401165520125eefcba",
+                "reference": "5108604447d97771d34db8401165520125eefcba",
                 "shasum": ""
             },
             "require": {
@@ -3801,7 +3801,7 @@
                 }
             ],
             "description": "Package OWP News : gestion des actualités pour les système OWP",
-            "time": "2020-02-26T20:45:26+00:00"
+            "time": "2020-02-26T21:10:39+00:00"
         },
         {
             "name": "phpoption/phpoption",
